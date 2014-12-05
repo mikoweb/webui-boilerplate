@@ -1,0 +1,85 @@
+Bootstrap v3.3.1
+
+I.
+
+    0. W przypadku problemów z kompilacją plików LESS pobierz pakiet z https://github.com/enav/bootstrap-lessphp
+
+    1. bootstrap.less
+
+        Na samym końcu dodano:
+        // system styles
+        @import "../system/system.less";
+
+    2. mixins/vendor-prefixes.less
+
+        Zmodyfikowano domieszke .placeholder()
+        Obsługa pluginu jquery.placeholder
+
+        .placeholder(@color: @input-color-placeholder) {
+          .......
+
+          &.placeholder                 { color: @color; } // jQuery Placeholder Plugin
+        }
+
+    3. variables.less
+
+        Zmienion ścieżkę w zmiennej:
+
+            @icon-font-path:          "@{path-theme}/fonts/";
+
+
+II. Personalne ustawienia szablonu
+
+    1. variables.less
+
+        dodano @domain-path do @icon-font-path
+
+        zmieniono wartości:
+            @font-size-base: 16px;
+            @line-height-base: 1.35;
+            @headings-line-height: 1.3;
+            @link-hover-decoration: none;
+
+    2. scaffolding.less
+
+        a {
+          .transition(color .3s);
+        }
+
+    3. type.less
+
+        h1, h2, h3, h4, h5, h6,
+        .h1, .h2, .h3, .h4, .h5, .h6 {
+          line-height: unit(@headings-line-height, em);
+        }
+
+        h1, .h1,
+        h2, .h2,
+        h3, .h3 {
+          line-height: unit(@headings-line-height - 0.1, em);
+          margin: 0 0 (0.45em);
+        }
+
+        h4, .h4,
+        h5, .h5,
+        h6, .h6 {
+          margin: 0 0 (0.6em);
+        }
+
+        p {
+          margin: 0 0 unit(@line-height-base, em);
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        .page-header {
+          padding-bottom: 0.8em;
+          margin: 0 0 unit((@line-height-base*0.9), em);
+          border-bottom: 1px solid @page-header-border-color;
+
+          h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 0.1em;
+          }
+        }

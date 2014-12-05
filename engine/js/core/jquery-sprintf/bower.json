@@ -1,0 +1,12 @@
+{
+    "name": "jquery-sprintf",
+    "version": "0.0.1",
+    "homepage": "https://github.com/mikoweb/jquery-sprintf",
+    "description": "Based on the functionality of the Perl implementation of sprintf.",
+    "main": "jquery.sprintf.js",
+    "keywords": [
+        "jquery",
+        "sprintf",
+        "printf"
+    ]
+}

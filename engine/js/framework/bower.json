@@ -1,0 +1,8 @@
+{
+    "name": "engine-js-framework",
+    "dependencies": {
+        "jquery": "~2.1.1",
+        "bootstrap": "~3.3.1",
+        "jquery-app": "~0.0.2"
+    }
+}

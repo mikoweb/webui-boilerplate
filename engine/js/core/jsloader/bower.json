@@ -1,0 +1,17 @@
+{
+    "name": "jsloader",
+    "version": "0.0.1",
+    "homepage": "https://github.com/mikoweb/jsloader",
+    "authors": [
+        "Rafał Mikołajun <rafal@vision-web.pl>"
+    ],
+    "description": "Loader skryptów wykorzystujący yepnope.",
+    "main": "jsloader.js",
+    "keywords": [
+        "yepnope",
+        "asynchronous",
+        "loader",
+        "script inject"
+    ],
+    "license": "GPLv2"
+}

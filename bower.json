@@ -1,0 +1,20 @@
+{
+    "name": "WebUI",
+    "version": "0.0.1",
+    "homepage": "http://vision-web.pl",
+    "authors": [
+        "Rafał Mikołajun <rafal@vision-web.pl>"
+    ],
+    "description": "WebUI complete package",
+    "main": "???",
+    "keywords": [
+        "vsymfo",
+        "joomla",
+        "webui",
+        "webgui"
+    ],
+    "license": "CC-BY-NC-ND",
+    "ignore": [
+        ".idea"
+    ]
+}

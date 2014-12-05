@@ -7,7 +7,8 @@ module.exports = function (grunt) {
                 src: [
                     "modernizr/modernizr.custom.js",
                     "modernizr/modernizr.es5.js",
-                    "core/jsloader/jsloader.js"
+                    "core/jsloader/jsloader.js",
+                    "../startapp.js"
                 ],
                 dest: "loader.js"
             }
@@ -17,7 +18,7 @@ module.exports = function (grunt) {
                 src: "loader.js",
                 dest: "loader.min.js"
             }
-        },
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-concat');

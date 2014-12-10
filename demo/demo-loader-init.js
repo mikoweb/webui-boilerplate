@@ -1,7 +1,11 @@
+/*globals require, jsloader, require*/
 jsloader.onLoad(function () {
-    jQuery.app.theme.ready(function () {
-        jQuery.hashRouter().getReady();
+    "use strict";
+    require(['jquery.app', 'jquery.hash-router'], function(app, router) {
+        app.theme.ready(function () {
+            router.getReady();
+        });
+        app.theme.init();
     });
-    jQuery.app.theme.init();
 });
 jsloader.init();

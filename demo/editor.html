@@ -20,7 +20,7 @@
         jsloader.add("demo", ["js/pages/editor.js"], true);
 
         // nagłówek i stopka
-        jsloader.onLoad("core", function () {
+        jsloader.onLoad("framework", function () {
             var body = $("body");
             $.get("include/header.html", function(data) {body.prepend(data);});
             $.get("include/footer.html", function(data) {body.append(data);});

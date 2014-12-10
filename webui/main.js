@@ -1,4 +1,3 @@
-/*globals require, define*/
 require.config({
 });
 

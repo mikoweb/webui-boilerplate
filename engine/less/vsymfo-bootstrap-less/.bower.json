@@ -1,6 +1,6 @@
 {
   "name": "vsymfo-bootstrap-less",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://github.com/mikoweb/vsymfo-bootstrap-less",
   "authors": [
     "mikoweb <rafal@mikoweb.pl>"
@@ -17,13 +17,13 @@
     ".idea",
     "LICENSE"
   ],
-  "_release": "0.0.5",
+  "_release": "0.0.6",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.5",
-    "commit": "557dff0562d9ffc19f5c1641b775a27dd78862f4"
+    "tag": "0.0.6",
+    "commit": "d0f32d8d4a3b5657ab3d9129a0611562c918c857"
   },
   "_source": "git://github.com/mikoweb/vsymfo-bootstrap-less.git",
-  "_target": "~0.0.5",
+  "_target": "~0.0.6",
   "_originalSource": "vsymfo-bootstrap-less"
 }

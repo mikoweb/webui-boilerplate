@@ -10,3 +10,24 @@ select.invalid {
     .box-shadow(@shadow);
   }
 }
+
+// details polyfill
+// https://github.com/mathiasbynens/jquery-details
+details, .details {
+  > summary + *, > .summary + *  {
+    display: none;
+  }
+}
+
+details[open], details.open, .details.open {
+  > summary + *, > .summary + * {
+    display: block;
+  }
+}
+
+summary {
+  outline: none;
+  &::-webkit-details-marker {
+    display: none;
+  }
+}

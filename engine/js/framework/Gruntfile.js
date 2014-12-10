@@ -7,7 +7,8 @@ module.exports = function (grunt) {
                 src: [
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
-                    "jquery-app/jquery.app.js"
+                    "jquery-app/jquery.app.js",
+                    "requirejs/require.js"
                 ],
                 dest: "framework.js"
             }

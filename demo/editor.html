@@ -20,14 +20,10 @@
         jsloader.add("demo", ["js/pages/editor.js"], true);
 
         // nagłówek i stopka
-        jsloader.onLoad("framework", function () {
+        jsloader.onLoad("core", function () {
             var body = $("body");
             $.get("include/header.html", function(data) {body.prepend(data);});
             $.get("include/footer.html", function(data) {body.append(data);});
-
-            require(['jquery.hash-router'], function(test) {
-                console.log(test);
-            });
         });
     </script>
     <script type="text/javascript" src="demo-loader-init.js"></script>

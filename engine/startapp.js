@@ -62,9 +62,7 @@ var startapp = function(data) {
 
         // webui vendors
         require(["webgui-vendor"], function (vendor) {
-            vendor();
-            vendor();
-            vendor();
+            vendor(data.path.webui);
         });
     });
 

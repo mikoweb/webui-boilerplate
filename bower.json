@@ -17,7 +17,8 @@
     "ignore": [
         ".idea",
         "engine/startapp.js",
-        "demo"
+        "demo",
+        "build"
     ],
     "dependencies": {
         "tinymce-dist": "~4.1.7"

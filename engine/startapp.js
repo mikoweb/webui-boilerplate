@@ -59,6 +59,13 @@ var startapp = function(data) {
     jsloader.onLoad('framework', function () {
         jQuery.app.define("path_base", data.path.base);
         jQuery.app.trans.add(data.translations);
+
+        // webui vendors
+        require(["webgui-vendor"], function (vendor) {
+            vendor();
+            vendor();
+            vendor();
+        });
     });
 
     // zamień żeby nikt nie użył po raz kolejny

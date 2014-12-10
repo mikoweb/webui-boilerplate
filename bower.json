@@ -16,6 +16,7 @@
     "license": "CC-BY-NC-ND",
     "ignore": [
         ".idea",
-        "engine/startapp.js"
+        "engine/startapp.js",
+        "demo"
     ]
 }

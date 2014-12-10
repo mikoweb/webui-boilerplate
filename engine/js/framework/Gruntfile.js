@@ -5,10 +5,10 @@ module.exports = function (grunt) {
         concat: {
             build: {
                 src: [
+                    "requirejs/require.js",
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
                     "jquery-app/jquery.app.js",
-                    "requirejs/require.js",
                     "../../../webui/main.js"
                 ],
                 dest: "framework.js"

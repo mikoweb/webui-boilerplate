@@ -1,0 +1,4 @@
+/*globals require*/
+require.config({
+
+});

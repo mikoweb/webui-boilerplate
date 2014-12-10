@@ -24,6 +24,10 @@
             var body = $("body");
             $.get("include/header.html", function(data) {body.prepend(data);});
             $.get("include/footer.html", function(data) {body.append(data);});
+
+            require(['jquery.hash-router'], function(test) {
+                console.log(test);
+            });
         });
     </script>
     <script type="text/javascript" src="demo-loader-init.js"></script>

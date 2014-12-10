@@ -7,7 +7,7 @@
         "selectivizr": "~1.0.2",
         "jquery-details": "~0.1.0",
         "picturefill": "~2.2.0",
-        "jquery-hash-router": "~1.0.4",
+        "jquery-hash-router": "~1.0.5",
         "bootstrap-paginator": "~1.0.2",
         "bootstrap-hover-dropdown": "~2.0.11"
     }

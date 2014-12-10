@@ -1,3 +1,4 @@
+/*globals define*/
 /*
  * This file is part of the Joomla Rapid Framework
  *
@@ -301,4 +302,10 @@
             }())
         }
     });
+
+    if (typeof define === 'function' && define.amd) {
+        define("jquery.app", ['jquery'], function ($) {
+            return $.app;
+        });
+    }
 }(jQuery));

@@ -1,3 +1,4 @@
+/*globals define*/
 /**
  * jQuery Hash Router
  * Mechanizm trasowania
@@ -1030,4 +1031,9 @@
         }
     });
 
+    if (typeof define === 'function' && define.amd) {
+        define("jquery.hash-router", ['jquery'], function ($) {
+            return $.hashRouter();
+        });
+    }
 }(jQuery));

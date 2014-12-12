@@ -21,6 +21,7 @@
         "build"
     ],
     "dependencies": {
-        "tinymce-dist": "~4.1.7"
+        "tinymce-dist": "~4.1.7",
+        "vsymfo-tinymce-helper": "~0.0.2"
     }
 }

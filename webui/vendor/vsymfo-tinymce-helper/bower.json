@@ -1,0 +1,20 @@
+{
+    "name": "vsymfo-tinymce-helper",
+    "version": "0.0.2",
+    "homepage": "https://github.com/mikoweb/vsymfo-tinymce-helper",
+    "authors": [
+        "Rafał Mikołajun <rafal@vision-web.pl>"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "bower_components",
+        "tests",
+        "node_modules"
+    ],
+    "devDependencies": {
+        "qunit": "1.16.0",
+        "requirejs": "~2.1.15",
+        "jquery": "~2.1.1",
+        "tinymce-dist": "~4.1.7"
+    }
+}

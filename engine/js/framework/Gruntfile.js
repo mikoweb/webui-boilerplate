@@ -6,10 +6,10 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     "requirejs/require.js",
+                    "main.js",
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
-                    "jquery-app/jquery.app.js",
-                    "main.js"
+                    "jquery-app/jquery.app.js"
                 ],
                 dest: "framework.js"
             }
@@ -18,6 +18,10 @@ module.exports = function (grunt) {
             build: {
                 src: "framework.js",
                 dest: "framework.min.js"
+            },
+            jquery_mobile: {
+                src: "jquery.mobile.only-events.js",
+                dest: "jquery.mobile.only-events.min.js"
             }
         }
     });

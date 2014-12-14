@@ -66,6 +66,13 @@ var startapp = function(data) {
         require(["webgui-vendor"], function (vendor) {
             vendor(data.path.webui);
         });
+
+        // webui css loader
+        require(["webui-cssloader"], function (loader) {
+            loader.timeout(data.timeout);
+            loader.mode('static');
+            loader.setBasePath(data.path.webui);
+        });
     });
 
     // zamień żeby nikt nie użył po raz kolejny

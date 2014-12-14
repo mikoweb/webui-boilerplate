@@ -9,7 +9,8 @@ module.exports = function (grunt) {
                     "main.js",
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
-                    "jquery-app/jquery.app.js"
+                    "jquery-app/jquery.app.js",
+                    "../webui-cssloader.js"
                 ],
                 dest: "framework.js"
             }

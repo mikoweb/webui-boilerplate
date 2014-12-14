@@ -85,19 +85,16 @@ var jsloader = (function() {
         }
 
         if (scripts[name] === undefined) {
-            Object.defineProperty(scripts, name, {
-                value: (function () {
-                    var group = [];
-                    group.dependencies = Array.isArray(dependencies) ? dependencies : [];
-                    group.load = false;
-                    group.beforeLoad = false;
-                    group.onload = [];
+            scripts[name] = (function () {
+                var group = [];
+                group.dependencies = Array.isArray(dependencies) ? dependencies : [];
+                group.load = false;
+                group.beforeLoad = false;
+                group.onload = [];
 
-                    nonloaded++;
-                    return group;
-                }()),
-                enumerable: true
-            });
+                nonloaded++;
+                return group;
+            }());
         } else {
             throw new Error("group '" + name + "' is declared");
         }

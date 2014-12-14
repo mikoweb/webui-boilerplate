@@ -20,6 +20,7 @@ startapp({
     "translations":{},
     "path": {
         "base": "./",
-        "webui": "../webui"
+        "webui": "../webui",
+        "webui_engine": "../engine"
     }
 });

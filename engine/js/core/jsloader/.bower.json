@@ -1,6 +1,6 @@
 {
   "name": "jsloader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/mikoweb/jsloader",
   "authors": [
     "Rafał Mikołajun <rafal@vision-web.pl>"
@@ -14,11 +14,11 @@
     "script inject"
   ],
   "license": "GPLv2",
-  "_release": "0.0.1",
+  "_release": "0.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "c4d8845144a96fd0d4c3e506ee3526d8a36ccf9e"
+    "tag": "0.0.2",
+    "commit": "c1dc9db7e13c3812f24ec081727515a6487961b5"
   },
   "_source": "git://github.com/mikoweb/jsloader.git",
   "_target": "~0.0.1",

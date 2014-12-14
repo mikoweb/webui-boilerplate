@@ -7,6 +7,8 @@ module.exports = function (grunt) {
                 src: [
                     "modernizr/modernizr.custom.js",
                     "modernizr/modernizr.es5.js",
+                    "modernizr/isarray.js",
+                    "modernizr/yepnope.js",
                     "core/jsloader/jsloader.js",
                     "../startapp.js"
                 ],

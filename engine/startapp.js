@@ -13,7 +13,7 @@ var startapp = function(data) {
     // warunkowe wczytywanie es5-shim, jeżeli przeglądarka nie implementuje ES5
     jsloader.requirement({
         test: Modernizr.es5array && Modernizr.es5date && Modernizr.es5function && Modernizr.es5object && Modernizr.es5string,
-        nope: [data.path.base + '/engine/js/es5-shim.min.js', data.path.base + '/engine/js/es5-sham.min.js']
+        nope: [data.path.webui_engine + '/js/es5-shim.min.js', data.path.webui_engine + '/js/es5-sham.min.js']
     });
 
     /**
@@ -47,7 +47,7 @@ var startapp = function(data) {
 
     // jeżeli wykryto urządzenie dotykowe to załaduj jQuery Mobile
     if (Modernizr.touch) {
-        jsloader.add("core", [data.path.base + '/engine/js/framework/jquery.mobile.only-events.min.js'], true);
+        jsloader.add("core", [data.path.webui_engine + '/js/framework/jquery.mobile.only-events.min.js'], true);
     }
 
     // zasoby nieznane - nieprzypisane do żadnej grupy
@@ -58,6 +58,8 @@ var startapp = function(data) {
     // co zrobić po załadowaniu skryptów frameworka
     jsloader.onLoad('framework', function () {
         jQuery.app.define("path_base", data.path.base);
+        jQuery.app.define("path_webui", data.path.webui);
+        jQuery.app.define("path_webui_engine", data.path.webui_engine);
         jQuery.app.trans.add(data.translations);
 
         // webui vendors

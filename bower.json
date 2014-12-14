@@ -22,6 +22,7 @@
     ],
     "dependencies": {
         "tinymce-dist": "~4.1.7",
-        "vsymfo-tinymce-helper": "~0.0.2"
+        "vsymfo-tinymce-helper": "~0.0.2",
+        "webui-selectize-js": null
     }
 }

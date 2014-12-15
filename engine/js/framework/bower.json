@@ -4,6 +4,7 @@
         "jquery": "~2.1.1",
         "bootstrap": "~3.3.1",
         "jquery-app": "~0.0.3",
-        "requirejs": "~2.1.15"
+        "requirejs": "~2.1.15",
+        "backbone": "~1.1.2"
     }
 }

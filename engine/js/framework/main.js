@@ -1,12 +1,20 @@
 (function () {
     "use strict";
 
-    define("jquery", function () {
+    define("jquery", [], function () {
         return jQuery;
     });
 
     define("bootstrap", ['jquery'], function ($) {
         return $;
+    });
+
+    define("underscore", [], function() {
+        return _;
+    });
+
+    define("backbone", ['underscore'], function() {
+        return Backbone;
     });
 
     var used = false;

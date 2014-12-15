@@ -63,6 +63,7 @@ var startapp = function(data) {
         jQuery.app.trans.add(data.translations);
 
         // webui vendors
+        // dopiero po załadowaniu frameworka można używać AMD
         require(["webgui-vendor"], function (vendor) {
             vendor(data.path.webui);
         });

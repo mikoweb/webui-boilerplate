@@ -5,12 +5,17 @@ module.exports = function (grunt) {
         concat: {
             build: {
                 src: [
-                    "requirejs/require.js",
-                    "main.js",
-                    "../core/webui-cssloader/webui-cssloader.js",
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
-                    "jquery-app/jquery.app.js"
+                    "underscore/underscore.js",
+                    "backbone/backbone.js",
+                    // requirejs w tym miejscu bo powyższe biblioteki mają się zadeklarować globalnie
+                    // powyższe biblioteki będą zdefiniowane jako moduły w main.js
+                    "requirejs/require.js",
+                    "main.js",
+                    // od tego miejsca można używać define
+                    "jquery-app/jquery.app.js",
+                    "../core/webui-cssloader/webui-cssloader.js"
                 ],
                 dest: "framework.js"
             }

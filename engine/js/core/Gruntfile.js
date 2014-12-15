@@ -20,9 +20,10 @@ module.exports = function (grunt) {
 
                     // jQuery Hash Router:
                     // https://github.com/mikoweb/jQuery_Hash_Router
+                    // wyłączamy to, gdyż backbone implementuje lepszy routing ale zostawiamy hashchange polyfill
                     "jquery-hash-router/jquery.hashchange.js",
-                    "jquery-hash-router/jquery.hash-router.js",
-                    "jquery-hash-router/jquery.hash-router-ajax-response.js",
+                    //"jquery-hash-router/jquery.hash-router.js",
+                    //"jquery-hash-router/jquery.hash-router-ajax-response.js",
 
                     // Bootstrap Paginator
                     // https://github.com/lyonlai/bootstrap-paginator

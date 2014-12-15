@@ -59,13 +59,6 @@
         // skrypt demostracyjny
         jsloader.group("demo", ["framework", "core"]);
         jsloader.add("demo", ["js/pages/forms.js"], true);
-
-        // nagłówek i stopka
-        jsloader.onLoad("framework", function () {
-            var body = $("body");
-            $.get("include/header.html", function(data) {body.prepend(data);});
-            $.get("include/footer.html", function(data) {body.append(data);});
-        });
     </script>
     <script type="text/javascript" src="demo-loader-init.js"></script>
 </body>

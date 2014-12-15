@@ -7,10 +7,10 @@ module.exports = function (grunt) {
                 src: [
                     "requirejs/require.js",
                     "main.js",
+                    "../core/webui-cssloader/webui-cssloader.js",
                     "jquery/dist/jquery.js",
                     "bootstrap/dist/js/bootstrap.js",
-                    "jquery-app/jquery.app.js",
-                    "../webui-cssloader.js"
+                    "jquery-app/jquery.app.js"
                 ],
                 dest: "framework.js"
             }

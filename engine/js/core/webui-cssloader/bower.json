@@ -1,0 +1,16 @@
+{
+    "name": "webui-cssloader",
+    "version": "0.0.1",
+    "homepage": "https://github.com/mikoweb/webui-cssloader",
+    "authors": [
+        "Rafał Mikołajun <rafal@vision-web.pl>"
+    ],
+    "description": "Loader arkuszy stylów dla WebUI.",
+    "main": "webui-cssloader.js",
+    "keywords": [
+        "webui",
+        "vsymfo",
+        "css loader"
+    ],
+    "license": "GPLv2"
+}

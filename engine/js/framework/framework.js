@@ -16627,7 +16627,7 @@ var requirejs, require, define;
         return _;
     });
 
-    define("backbone", ['underscore'], function() {
+    define("backbone", ['underscore', 'jquery'], function() {
         return Backbone;
     });
 

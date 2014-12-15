@@ -6,12 +6,16 @@ require(['jquery', 'jquery.app'], function ($, app) {
             $("#selectize1").selectize({
                 copyClassesToDropdown: false
             });
-        });
 
-        require(['selectize'], function () {
             $("#selectize2").selectize({
                 copyClassesToDropdown: false
             });
         });
     });
+});
+
+require(['backbone'], function (Backbone) {
+    "use strict";
+
+    console.log(Backbone);
 });

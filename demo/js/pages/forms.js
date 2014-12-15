@@ -13,9 +13,3 @@ require(['jquery', 'jquery.app'], function ($, app) {
         });
     });
 });
-
-require(['backbone'], function (Backbone) {
-    "use strict";
-
-    console.log(Backbone);
-});

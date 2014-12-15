@@ -1,0 +1,23 @@
+{
+    "name": "webui-selectize-js",
+    "version": "0.11.2",
+    "homepage": "https://github.com/mikoweb/webui-selectize-js",
+    "description": "Selectize is a jQuery-based custom <select> UI control. Useful for tagging, contact lists, country selectors, etc.",
+    "main": [
+        "selectize.js",
+        "selectize.min.js",
+        "selectize.css"
+    ],
+    "keywords": [
+        "webui",
+        "select",
+        "selectize.js"
+    ],
+    "license": "Apache License, Version 2.0",
+    "ignore": [
+        "node_modules",
+        "vendor/vsymfo-bootstrap-less",
+        "js",
+        "less"
+    ]
+}

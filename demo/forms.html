@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WebUI Demo - Forms</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="../engine/less/build.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../engine/js/loader.min.js"></script>
+    <script type="text/javascript" src="demo-init.js"></script>
+    <style type="text/css">
+        button[type="submit"] {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Forms</h1>
+        <form action="javascript:void(0)" id="example-form">
+            <fieldset>
+                <legend>Selectbox</legend>
+                <div class="form-group">
+                    <label for="select-field">Native Select</label>
+                    <div class="input-group">
+                        <select class="form-control" title="lorem ipsum" data-placement="top" id="select-field" required>
+                            <option value="">wybierz</option>
+                            <option>test</option>
+                        </select>
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Selectize</label>
+                    <select class="form-control" id="selectize1">
+                        <option value="AL">Alabama</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Selectize</label>
+                    <div class="input-group">
+                        <select class="form-control" id="selectize2">
+                            <option value="">wybierz</option>
+                            <option value="AL">Alabama</option>
+                            <option value="WY">Wyoming</option>
+                        </select>
+                        <span class="input-group-addon">.00</span>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="form-group">
+                <button class="btn btn-primary" type="submit">Test</button>
+            </fieldset>
+        </form>
+    </main>
+
+    <script type="text/javascript">
+        // skrypt demostracyjny
+        jsloader.group("demo", ["framework", "core"]);
+        jsloader.add("demo", ["js/pages/forms.js"], true);
+
+        // nagłówek i stopka
+        jsloader.onLoad("framework", function () {
+            var body = $("body");
+            $.get("include/header.html", function(data) {body.prepend(data);});
+            $.get("include/footer.html", function(data) {body.append(data);});
+        });
+    </script>
+    <script type="text/javascript" src="demo-loader-init.js"></script>
+</body>
+</html>

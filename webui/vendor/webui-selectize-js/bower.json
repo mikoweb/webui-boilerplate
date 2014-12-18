@@ -17,6 +17,6 @@
     "ignore": [
         "node_modules",
         "vendor/vsymfo-bootstrap-less",
-        "src/less"
+        "src/js"
     ]
 }

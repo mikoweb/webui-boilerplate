@@ -1,0 +1,17 @@
+// inline-block white-space fix
+.selectize-control {
+  font-size: 0;
+}
+
+// brak zaokrąglonych narożników z lewej, bądź z prawej w .input-group
+.input-group {
+  > select:first-child + .selectize-control .selectize-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  > .selectize-control:last-child .selectize-input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}

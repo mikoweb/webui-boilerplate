@@ -19,11 +19,11 @@
     "js",
     "less"
   ],
-  "_release": "2067f369d0",
+  "_release": "752262875e",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "2067f369d0be73bccfc3f949540cc60c4d4d8815"
+    "commit": "752262875e432c829f190734f7d7aeb856491d03"
   },
   "_source": "git://github.com/mikoweb/webui-selectize-js.git",
   "_target": "*",

@@ -36,7 +36,7 @@
 
         switch (injectMode) {
             case 'dynamic':
-                path = patterPath.replace("{package-name}", encodeURIComponent('/' + filename));
+                path = patterPath.replace("{package-name}", encodeURIComponent('/' + filename.replace("/", "|")));
                 break;
             case 'static':
             default:

@@ -17008,7 +17008,7 @@ var requirejs, require, define;
 
         switch (injectMode) {
             case 'dynamic':
-                path = patterPath.replace("{package-name}", encodeURIComponent(filename).replace("%2F", "|"));
+                path = patterPath.replace("{package-name}", encodeURIComponent(filename).replace(/%2F/g, "|"));
                 break;
             case 'static':
             default:

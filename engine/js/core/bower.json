@@ -2,7 +2,7 @@
     "name": "engine-js-core",
     "dependencies": {
         "jsloader": "~0.0.1",
-        "webui-cssloader": "~0.0.5",
+        "webui-cssloader": "~0.0.6",
         "jquery-sprintf": "~0.0.1",
         "jquery-placeholder": "~2.0.8",
         "selectivizr": "~1.0.2",

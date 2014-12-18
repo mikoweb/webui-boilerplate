@@ -17057,11 +17057,12 @@ var requirejs, require, define;
             throw new Error('pattern is not string');
         }
 
+        pattern = decodeURIComponent(pattern);
         if (pattern.indexOf("{package-name}") === -1) {
             throw new Error('pattern does not contain a chain: {package-name}');
         }
 
-        patterPath = decodeURIComponent(pattern);
+        patterPath = pattern;
     }
 
     module = {

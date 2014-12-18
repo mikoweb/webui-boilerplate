@@ -31,10 +31,10 @@ function inArray(key, arr)
 
 	tinymce = parent.tinymce;
 	editor = tinymce.activeEditor;
-    var i;
+	var i, userSettings = editor.settings.codemirror ? editor.settings.codemirror : null;
 	CMsettings = {
-		path: 'codemirror-4.8',
-		indentOnInit: false,
+		path: userSettings.path || 'CodeMirror',
+		indentOnInit: userSettings.indentOnInit || false,
 		config: {// Default config
 			mode: 'htmlmixed',
 			lineNumbers: true,
@@ -54,15 +54,32 @@ function inArray(key, arr)
 			'addon/dialog/dialog.js',
 			'addon/search/searchcursor.js',
 			'addon/search/search.js',
-			'addon/selection/active-line.js',
-            'mode/clike/clike.js',
-            'mode/php/php.js'
+			'addon/selection/active-line.js'
 		],
 		cssFiles: [// Default CSS files
 			'lib/codemirror.css',
 			'addon/dialog/dialog.css'
 		]
 	};
+
+	// Merge config
+	for (i in userSettings.config) {
+		CMsettings.config[i] = userSettings.config[i];
+	}
+	
+	// Merge jsFiles
+	for (i in userSettings.jsFiles) {
+		if (!inArray(userSettings.jsFiles[i], CMsettings.jsFiles)) {
+			CMsettings.jsFiles.push(userSettings.jsFiles[i]);
+		}
+	}
+
+	// Merge cssFiles
+	for (i in userSettings.cssFiles) {
+		if (!inArray(userSettings.cssFiles[i], CMsettings.cssFiles)) {
+			CMsettings.cssFiles.push(userSettings.cssFiles[i]);
+		}
+	}
 
 	// Add trailing slash to path
 	if (!/\/$/.test(CMsettings.path)) {
@@ -114,6 +131,16 @@ function start()
 		if (cursor.findNext()) {
 			inst.setCursor(cursor.to());
 			cursor.replace('');
+		}
+		
+		// Indent all code, if so requested:
+		if (editor.settings.codemirror.indentOnInit) {
+			var last = inst.lineCount();
+			inst.operation(function() {
+				for (var i = 0; i < last; ++i) {
+					inst.indentLine(i);
+				}
+			});
 		}
 	});
 

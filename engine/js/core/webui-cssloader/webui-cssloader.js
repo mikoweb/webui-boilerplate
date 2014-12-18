@@ -17,7 +17,7 @@
     "use strict";
 
     var timeout = 5000, module, injected = {}, injectMode = 'static',
-        basePath = '.', patterPath = '.{package-name}';
+        basePath = '.', patterPath = './{package-name}';
 
     /**
      * Limit czasu wczytywania arkusza
@@ -36,7 +36,7 @@
 
         switch (injectMode) {
             case 'dynamic':
-                path = patterPath.replace("{package-name}", encodeURIComponent('/' + filename.replace("/", "|")));
+                path = patterPath.replace("{package-name}", encodeURIComponent(filename.replace("/", "|")));
                 break;
             case 'static':
             default:

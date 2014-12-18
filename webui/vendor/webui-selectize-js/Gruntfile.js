@@ -6,7 +6,7 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     "vendor/selectize/dist/js/standalone/selectize.js",
-                    "js/inject-css.js"
+                    "src/js/inject-css.js"
                 ],
                 dest: "selectize.js"
             }
@@ -24,7 +24,7 @@ module.exports = function (grunt) {
                     yuicompress: true,
                     optimization: 2
                 },
-                files: {"selectize.css": "less/build.less"}
+                files: {"selectize.css": "src/less/build.less"}
             }
         }
     });

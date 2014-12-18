@@ -1,0 +1,9 @@
+{
+    "name": "webui-selectize-js",
+    "dependencies": {
+        "selectize": "0.11.2"
+    },
+    "devDependencies": {
+        "vsymfo-bootstrap-less": "~0.0.6"
+    }
+}

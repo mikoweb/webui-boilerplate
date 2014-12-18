@@ -16,14 +16,13 @@
   "ignore": [
     "node_modules",
     "vendor/vsymfo-bootstrap-less",
-    "src/js",
     "src/less"
   ],
-  "_release": "d1127c4ffe",
+  "_release": "663e3491c0",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "d1127c4ffe62c087ae1b71ab017f92ca4dc5ff85"
+    "commit": "663e3491c03dce0f22dc62b2c2f9b73954441918"
   },
   "_source": "git://github.com/mikoweb/webui-selectize-js.git",
   "_target": "*",

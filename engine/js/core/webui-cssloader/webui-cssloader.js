@@ -89,7 +89,7 @@
             throw new Error('pattern does not contain a chain: {package-name}');
         }
 
-        patterPath = pattern;
+        patterPath = decodeURIComponent(pattern);
     }
 
     module = {

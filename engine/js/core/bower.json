@@ -4,7 +4,7 @@
         "jsloader": "~0.0.1",
         "webui-cssloader": "~0.0.9",
         "jquery-sprintf": "~0.0.1",
-        "jquery-placeholder": "~2.0.8",
+        "jquery-placeholder": "2.0.8",
         "selectivizr": "~1.0.2",
         "jquery-details": "~0.1.0",
         "picturefill": "~2.2.0",

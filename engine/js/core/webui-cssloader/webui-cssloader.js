@@ -30,8 +30,10 @@
     /**
      * Ładowanie arkusza
      * @param {string} filename
+     * @param {Function} [callback]
+     * @param {Object} [elemAttributes]
      */
-    function inject(filename) {
+    function inject(filename, callback, elemAttributes) {
         var path;
 
         switch (injectMode) {
@@ -45,7 +47,7 @@
 
         if (injected[path] === undefined) {
             injected[path] = true;
-            yepnope.injectCss(path, null, null, timeout);
+            yepnope.injectCss(path, callback, elemAttributes, timeout);
         }
     }
 

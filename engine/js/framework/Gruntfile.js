@@ -15,7 +15,7 @@ module.exports = function (grunt) {
                     "main.js",
                     // od tego miejsca można używać define
                     "jquery-app/jquery.app.js",
-                    "../core/webui-cssloader/webui-cssloader.js"
+                    "webui-cssloader/webui-cssloader.js"
                 ],
                 dest: "framework.js"
             }

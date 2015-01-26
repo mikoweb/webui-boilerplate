@@ -17,7 +17,7 @@
         return Backbone;
     });
 
-    var used = false;
+    var used = false, vendorCss;
     function vendor(path) {
         if (!used) {
             require.config({
@@ -41,5 +41,13 @@
 
     define("webgui-vendor", function () {
         return vendor;
+    });
+
+    vendorCss = {
+        'selectize': 'vendor/webui-selectize-js/selectize'
+    };
+
+    define("webgui-vendor-css", function () {
+        return vendorCss;
     });
 }());

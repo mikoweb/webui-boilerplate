@@ -69,10 +69,11 @@ var startapp = function(data) {
         });
 
         // webui css loader
-        require(["webui-cssloader"], function (loader) {
+        require(["webui-cssloader", "webgui-vendor-css"], function (loader, paths) {
             loader.timeout(data.timeout);
             loader.mode('static');
             loader.setBasePath(data.path.webui);
+            loader.definePath(paths);
         });
     });
 

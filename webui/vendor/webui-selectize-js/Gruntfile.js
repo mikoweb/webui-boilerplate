@@ -5,8 +5,7 @@ module.exports = function (grunt) {
         concat: {
             build: {
                 src: [
-                    "vendor/selectize/dist/js/standalone/selectize.js",
-                    "src/js/inject-css.js"
+                    "vendor/selectize/dist/js/standalone/selectize.js"
                 ],
                 dest: "selectize.js"
             }

@@ -17,14 +17,23 @@
     "use strict";
 
     var timeout = 5000, module, injected = {}, injectMode = 'static',
-        basePath = '.', patternPath = './{package-name}', definitions = {};
+        basePath = '.', patternPath = './{package-name}', definitions = {},
+        callbackTimeout = 0;
 
     /**
-     * Limit czasu wczytywania arkusza
+     * Maksymalny czas wczytywania arkusza
      * @param {int} time
      */
-    function setTimeout(time) {
+    function setLoadTimeout(time) {
         timeout = time;
+    }
+
+    /**
+     * Opóźnienie wykonywania callbacka po wczytyaniu arkusza
+     * @param {int} time
+     */
+    function setCallbackTimeout(time) {
+        callbackTimeout = time;
     }
 
     /**
@@ -61,9 +70,16 @@
      * @param {string} filename
      * @param {Function} [callback]
      * @param {Object} [elemAttributes]
+     * @param {int} [callTimeout]
      */
-    function inject(filename, callback, elemAttributes) {
-        var path;
+    function inject(filename, callback, elemAttributes, callTimeout) {
+        var path, ctimeout;
+
+        if (callTimeout) {
+            ctimeout = callTimeout;
+        } else {
+            ctimeout = callbackTimeout;
+        }
 
         if (filename.charAt(0) === '@' && getPath(filename.substring(1)) !== undefined) {
             filename = getPath(filename.substring(1));
@@ -80,7 +96,18 @@
 
         if (injected[path] === undefined) {
             injected[path] = true;
-            yepnope.injectCss(path, callback, elemAttributes, timeout);
+
+            if (callback) {
+                yepnope.injectCss(path, function () {
+                    if (ctimeout > 0) {
+                        setTimeout(callback, ctimeout);
+                    } else {
+                        yepnope.injectCss(path, callback, elemAttributes, timeout);
+                    }
+                }, elemAttributes, timeout);
+            } else {
+                yepnope.injectCss(path, null, elemAttributes, timeout);
+            }
         }
     }
 
@@ -129,12 +156,13 @@
     }
 
     module = {
-        timeout: setTimeout,
+        timeout: setLoadTimeout,
         inject: inject,
         mode: setInjectMode,
         setBasePath: setBasePath,
         setPatternPath: setPatternPath,
-        definePath: definePath
+        definePath: definePath,
+        setCallbackTimeout: setCallbackTimeout
     };
 
     define("webui-cssloader", function () {

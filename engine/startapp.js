@@ -74,6 +74,9 @@ var startapp = function(data) {
             loader.mode('static');
             loader.setBasePath(data.path.webui);
             loader.definePath(paths);
+            if (data.css_callback_timeout !== undefined) {
+                loader.setCallbackTimeout(data.css_callback_timeout);
+            }
         });
     });
 

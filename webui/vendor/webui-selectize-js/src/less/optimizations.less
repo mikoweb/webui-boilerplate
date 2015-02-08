@@ -25,3 +25,31 @@
 .selectize-dropdown-content .option {
   white-space: nowrap;
 }
+
+
+// rozmiary pól
+.selectize-control.input-lg {
+  .selectize-input {
+    .box-sizing(border-box);
+    padding: @padding-large-vertical @padding-large-horizontal;
+    min-height: @input-height-large;
+    border-radius: @input-border-radius-large;
+    .item {
+      font-size: @font-size-large;
+      line-height: 1.1em;
+    }
+  }
+}
+
+.selectize-control.input-sm {
+  .selectize-input {
+    .box-sizing(border-box);
+    padding: @padding-small-vertical @padding-small-horizontal;
+    min-height: @input-height-small;
+    border-radius: @input-border-radius-small;
+    .item {
+      font-size: @font-size-small;
+      line-height: 1.1;
+    }
+  }
+}

@@ -18,11 +18,11 @@
     "vendor/vsymfo-bootstrap-less",
     "src/js"
   ],
-  "_release": "49167abd3f",
+  "_release": "98845c9280",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "49167abd3f68c60689ef56701b4e680083d5e1f8"
+    "commit": "98845c928057b36300b102a29a12d13e09836268"
   },
   "_source": "git://github.com/mikoweb/webui-selectize-js.git",
   "_target": "*",

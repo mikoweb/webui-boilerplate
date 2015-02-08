@@ -4,11 +4,7 @@ require(['jquery', 'jquery.app'], function ($, app) {
     app.theme.ready(function() {
         require(['selectize', 'webui-cssloader'], function (Selectize, loader) {
             loader.inject('@selectize', function () {
-                $("#selectize1").selectize({
-                    copyClassesToDropdown: false
-                });
-
-                $("#selectize2").selectize({
+                $("#selectize1, #selectize2, #selectize3, #selectize4").selectize({
                     copyClassesToDropdown: false
                 });
             });

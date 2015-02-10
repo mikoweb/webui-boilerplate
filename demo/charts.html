@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>WebUI Demo - Forms</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <link href="../engine/less/build.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../engine/js/loader.min.js"></script>
+    <script type="text/javascript" src="demo-init.js"></script>
+    <style type="text/css">
+        #demoChart1 {
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1>Chart.js</h1>
+        <canvas id="demoChart1" width="640" height="250"></canvas>
+    </main>
+    <script type="text/javascript">
+        // skrypt demostracyjny
+        jsloader.group("demo", ["framework", "core"]);
+        jsloader.add("demo", ["js/pages/charts.js"], true);
+    </script>
+    <script type="text/javascript" src="demo-loader-init.js"></script>
+</body>
+</html>

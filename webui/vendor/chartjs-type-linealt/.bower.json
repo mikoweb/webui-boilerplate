@@ -1,0 +1,21 @@
+{
+  "name": "chartjs-type-linealt",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mikoweb/chartjs-type-linealt",
+  "main": [
+    "chartjs-type-linealt.js",
+    "chartjs-type-linealt.min.js"
+  ],
+  "ignore": [
+    "node_modules"
+  ],
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "6dcc99f969d05ab3b532eccbb6421c43a6422a0f"
+  },
+  "_source": "git://github.com/mikoweb/chartjs-type-linealt.git",
+  "_target": "0.0.1",
+  "_originalSource": "chartjs-type-linealt"
+}

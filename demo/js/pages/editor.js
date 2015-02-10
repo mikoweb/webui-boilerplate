@@ -1,6 +1,8 @@
 require(['jquery', 'jquery.app'], function ($, app) {
     "use strict";
 
+    // przykład z użyciem ready
+    // jeżeli skrypty są dole body to nie musisz tego używać
     app.theme.ready(function() {
         var editor = $("#tinymceExample");
 

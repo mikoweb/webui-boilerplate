@@ -25,7 +25,9 @@
                     'tinymce':  path + '/vendor/tinymce-dist/tinymce.min',
                     'tinymce.jquery': path + '/vendor/tinymce-dist/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
-                    'selectize': path + '/vendor/webui-selectize-js/selectize.min'
+                    'selectize': path + '/vendor/webui-selectize-js/selectize.min',
+                    'chartjs': path + '/vendor/chartjs/Chart.min',
+                    'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min'
                 },
                 'shim': {
                     'tinymce': {

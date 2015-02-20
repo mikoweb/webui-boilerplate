@@ -23,6 +23,8 @@ I.
 
     3. variables.less
 
+        ustawiono domyślną wartość @path-theme: '';
+
         Zmienion ścieżkę w zmiennej:
 
             @icon-font-path:          "@{path-theme}/fonts/";
@@ -31,8 +33,6 @@ I.
 II. Personalne ustawienia szablonu
 
     1. variables.less
-
-        dodano @domain-path do @icon-font-path
 
         zmieniono wartości:
             @font-size-base: 16px;

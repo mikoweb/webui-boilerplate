@@ -6,6 +6,7 @@ var data = {
         //return true if this label should be filtered out
         return label % 5 !== 0;
     },
+    labelsRotate: 0,
     datasets: [{
         label: "My First dataset",
         fillColor: "rgba(220,220,220,0.2)",

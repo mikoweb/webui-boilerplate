@@ -25,6 +25,6 @@
         "vsymfo-tinymce-helper": "~0.0.2",
         "webui-selectize-js": null,
         "chartjs": "~1.0.1",
-        "chartjs-type-linealt": "0.0.1"
+        "chartjs-type-linealt": "~0.0.4"
     }
 }

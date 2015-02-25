@@ -57,6 +57,11 @@ define('chartjs.type.linealt', ['chartjs'], function(Chart) {
                     if (typeof this.labelsFilter === "function" && this.labelsFilter(label, index)) {
                         return;
                     }
+
+                    if (typeof this.labelsRotate === "number") {
+                        this.xLabelRotation = this.labelsRotate;
+                    }
+
                     var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
                     // Check to see if line/bar here and decide where to place the line
                         linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
@@ -112,9 +117,8 @@ define('chartjs.type.linealt', ['chartjs'], function(Chart) {
             //ensure the new option is part of the options
             //======================================================
             this.options.labelsFilter = data.labelsFilter || null;
+            this.options.labelsRotate = data.labelsRotate;
             Chart.types.Line.prototype.initialize.apply(this, arguments);
-
-
         },
         buildScale: function (labels) {
             var helpers = Chart.helpers;
@@ -139,6 +143,7 @@ define('chartjs.type.linealt', ['chartjs'], function(Chart) {
                 //pass this new options to the scale object
                 //======================================================
                 labelsFilter: this.options.labelsFilter,
+                labelsRotate: this.options.labelsRotate,
                 fontStyle: this.options.scaleFontStyle,
                 fontFamily: this.options.scaleFontFamily,
                 valuesCount: labels.length,

@@ -16642,13 +16642,18 @@ var requirejs, require, define;
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
                     'selectize': path + '/vendor/webui-selectize-js/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',
-                    'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min'
+                    'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
+                    'highcharts': path + '/vendor/highcharts-release/highcharts'
                 },
                 'shim': {
                     'tinymce': {
                         exports: 'tinymce'
                     },
-                    'tinymce.jquery': ['jquery', 'tinymce']
+                    'tinymce.jquery': ['jquery', 'tinymce'],
+                    'highcharts': {
+                        deps: ['jquery'],
+                        exports: 'Highcharts'
+                    }
                 }
             });
 

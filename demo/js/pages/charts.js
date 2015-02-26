@@ -1,4 +1,4 @@
-require(['jquery', 'chartjs', 'chartjs.type.linealt'], function ($, Chart) {
+require(['jquery', 'chartjs', 'highcharts', 'chartjs.type.linealt'], function ($, Chart, Highcharts) {
     "use strict";
 
     Chart.defaults.global.responsive = true;
@@ -31,7 +31,8 @@ require(['jquery', 'chartjs', 'chartjs.type.linealt'], function ($, Chart) {
             }
         ]
     }, {
-        animationSteps: 5
+        animationSteps: 5,
+        animation: false
     });
 
     new Chart($("#demoChart2").get(0).getContext("2d")).LineAlt({
@@ -66,7 +67,7 @@ require(['jquery', 'chartjs', 'chartjs.type.linealt'], function ($, Chart) {
         animation: false
     });
 
-    setInterval(function () {
+    /*setInterval(function () {
         var i, j;
         for (i = 0; i < demoChart1.datasets.length; i++) {
             for (j = 0; j < demoChart1.datasets[i].points.length; j++) {
@@ -75,5 +76,78 @@ require(['jquery', 'chartjs', 'chartjs.type.linealt'], function ($, Chart) {
         }
 
         demoChart1.update();
-    }, 1000);
+    }, 1000);*/
+
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    $('#highcharts').highcharts({
+        chart: {
+            type: 'spline',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+            events: {
+                load: function () {
+
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        var x = (new Date()).getTime(), // current time
+                            y = Math.random();
+                        series.addPoint([x, y], true, true);
+                    }, 1000);
+                }
+            }
+        },
+        title: {
+            text: 'Live random data'
+        },
+        xAxis: {
+            type: 'datetime',
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: 'Value'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.series.name + '</b><br/>' +
+                    Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                    Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: 'Random data',
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -19; i <= 0; i += 1) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: Math.random()
+                    });
+                }
+                return data;
+            }())
+        }]
+    });
 });

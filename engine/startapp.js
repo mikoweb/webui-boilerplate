@@ -64,12 +64,12 @@ var startapp = function(data) {
 
         // webui vendors
         // dopiero po załadowaniu frameworka można używać AMD
-        require(["webgui-vendor"], function (vendor) {
+        require(["webui-vendor"], function (vendor) {
             vendor(data.path.webui);
         });
 
         // webui css loader
-        require(["webui-cssloader", "webgui-vendor-css"], function (loader, paths) {
+        require(["webui-cssloader", "webui-vendor-css"], function (loader, paths) {
             loader.timeout(data.timeout);
             loader.mode('static');
             loader.setBasePath(data.path.webui);

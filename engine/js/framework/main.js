@@ -46,7 +46,7 @@
         }
     }
 
-    define("webgui-vendor", function () {
+    define("webui-vendor", function () {
         return vendor;
     });
 
@@ -54,7 +54,7 @@
         'selectize': 'vendor/webui-selectize-js/selectize'
     };
 
-    define("webgui-vendor-css", function () {
+    define("webui-vendor-css", function () {
         return vendorCss;
     });
 }());

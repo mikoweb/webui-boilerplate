@@ -16643,7 +16643,8 @@ var requirejs, require, define;
                     'selectize': path + '/vendor/webui-selectize-js/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
-                    'highcharts': path + '/vendor/highcharts-release/highcharts'
+                    'highcharts': path + '/vendor/highcharts-release/highcharts',
+                    'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min'
                 },
                 'shim': {
                     'tinymce': {

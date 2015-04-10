@@ -16637,8 +16637,8 @@ var requirejs, require, define;
         if (!used) {
             require.config({
                 'paths': {
-                    'tinymce':  path + '/vendor/tinymce-dist/tinymce.min',
-                    'tinymce.jquery': path + '/vendor/tinymce-dist/jquery.tinymce.min',
+                    'tinymce':  path + '/tinymce/tinymce.min',
+                    'tinymce.jquery': path + '/tinymce/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
                     'selectize': path + '/vendor/webui-selectize-js/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',

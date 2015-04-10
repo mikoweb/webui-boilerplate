@@ -19,6 +19,7 @@
         "chartjs": "~1.0.1",
         "chartjs-type-linealt": "~0.0.4",
         "highcharts-release": "~4.1.1",
-        "jquery-smooth-scroll": "~1.5.5"
+        "jquery-smooth-scroll": "~1.5.5",
+        "jquery.easing": "1.3.1"
     }
 }

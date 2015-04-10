@@ -26,6 +26,6 @@
     "commit": "2fab319b85b6509bd9615d50ddb196262cfa6b93"
   },
   "_source": "git://github.com/kswedberg/jquery-smooth-scroll.git",
-  "_target": "1.5.5",
+  "_target": "~1.5.5",
   "_originalSource": "jquery-smooth-scroll"
 }

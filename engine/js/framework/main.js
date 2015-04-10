@@ -29,7 +29,8 @@
                     'chartjs': path + '/vendor/chartjs/Chart.min',
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
-                    'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min'
+                    'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
+                    'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min'
                 },
                 'shim': {
                     'tinymce': {

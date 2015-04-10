@@ -6,7 +6,6 @@
         "Rafał Mikołajun <rafal@vision-web.pl>"
     ],
     "description": "WebUI complete package",
-    "main": "webui/main.js",
     "keywords": [
         "vsymfo",
         "joomla",
@@ -14,12 +13,6 @@
         "webgui"
     ],
     "license": "CC-BY-NC-ND",
-    "ignore": [
-        ".idea",
-        "engine/startapp.js",
-        "demo",
-        "build"
-    ],
     "dependencies": {
         "tinymce-dist": "~4.1.7",
         "vsymfo-tinymce-helper": "~0.0.2",

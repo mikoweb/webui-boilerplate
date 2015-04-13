@@ -30,7 +30,9 @@
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
                     'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
-                    'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min'
+                    'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
+                    'jquery.themepunch.tools': path + '/slider-revolution4/js/jquery.themepunch.tools.min',
+                    'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min'
                 },
                 'shim': {
                     'tinymce': {
@@ -53,7 +55,8 @@
     });
 
     vendorCss = {
-        'selectize': 'vendor/webui-selectize-js/selectize'
+        'selectize': 'vendor/webui-selectize-js/selectize',
+        'jquery.themepunch.revolution': 'slider-revolution4/slider-style'
     };
 
     define("webui-vendor-css", function () {

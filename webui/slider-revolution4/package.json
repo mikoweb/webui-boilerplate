@@ -1,0 +1,13 @@
+{
+    "name": "slider-revolution4",
+    "repository": {},
+    "private": true,
+    "version": "4.6.4",
+    "engines": {
+        "node": ">= 0.12.0"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-contrib-less": "~0.8.2"
+    }
+}

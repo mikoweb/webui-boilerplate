@@ -1,19 +1,13 @@
-require(['jquery', 'jquery.app'], function ($, app) {
+require(['jquery', 'jquery.app', 'tinymce.helper'], function ($, app, helper) {
     "use strict";
 
-    // przykład z użyciem ready
-    // jeżeli skrypty są dole body to nie musisz tego używać
-    app.theme.ready(function() {
-        var editor = $("#tinymceExample");
+    var editor = $("#tinymceExample");
 
-        require(['tinymce.helper'], function (helper) {
-            helper.initEditor(editor, $.extend(helper.getConfig("advanced"), {
-                "language": "pl",
-                "content_css": "../../../engine/less/build.css",
-                "document_base_url": app.get("path_base"),
-                "relative_urls": true
-                //file_browser_callback: elFinderBrowser
-            }));
-        });
-    });
+    helper.initEditor(editor, $.extend(helper.getConfig("advanced"), {
+        "language": "pl",
+        "content_css": "../../../engine/less/build.css",
+        "document_base_url": app.get("path_base"),
+        "relative_urls": true
+        //file_browser_callback: elFinderBrowser
+    }));
 });

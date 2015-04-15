@@ -68,14 +68,13 @@
 
     /**
      * Ustaw zdarzenie onLoad dla arkusza stylów o podanym atrybucie href
-     * @link http://www.phpied.com/when-is-a-stylesheet-really-loaded/
      * @param {string} href
      * @param {Function} callback
      * @param {Object} [elemAttributes]
      * @param {int} [timeout]
      */
     function styleSheetCreate(href, callback, elemAttributes, timeout) {
-        var link = document.createElement('link'), prop;
+        var link = document.createElement('link'), prop, called = false, cssnum, ti;
 
         if (timeout === undefined) {
             timeout = 0;
@@ -95,9 +94,54 @@
             }
         }
 
-        link.addEventListener("load", function () {
-            callback();
-        });
+        /**
+         * Zdarzenie ma się wykonać tylko raz
+         */
+        function call() {
+            if (!called) {
+                callback();
+                called = true;
+            }
+        }
+
+        // tutaj będzie trochę kombinacji, chcę mieć pewność, że zadziała w róznych przeglądarkach
+        // więcej info na http://www.phpied.com/when-is-a-stylesheet-really-loaded/
+
+        // #1
+        link.onload = function () {
+            call();
+        };
+
+        // #2
+        if (link.addEventListener) {
+            link.addEventListener("load", function () {
+                call();
+            });
+        }
+
+        // #3
+        link.onreadystatechange = function() {
+            var state = link.readyState;
+            if (state === 'loaded' || state === 'complete') {
+                link.onreadystatechange = null;
+                call();
+            }
+        };
+
+        // #4
+        cssnum = document.styleSheets.length;
+        ti = setInterval(function() {
+            if (document.styleSheets.length > cssnum) {
+                // needs more work when you load a bunch of CSS files quickly
+                // e.g. loop from cssnum to the new length, looking
+                // for the document.styleSheets[n].href === url
+                // ...
+
+                // FF changes the length prematurely :()
+                call();
+                clearInterval(ti);
+            }
+        }, 10);
 
         head.appendChild(link);
     }

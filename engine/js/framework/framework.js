@@ -17272,21 +17272,6 @@ var requirejs, require, define;
             }
         };
 
-        // #4
-        cssnum = document.styleSheets.length;
-        ti = setInterval(function() {
-            if (document.styleSheets.length > cssnum) {
-                // needs more work when you load a bunch of CSS files quickly
-                // e.g. loop from cssnum to the new length, looking
-                // for the document.styleSheets[n].href === url
-                // ...
-
-                // FF changes the length prematurely :()
-                call();
-                clearInterval(ti);
-            }
-        }, 10);
-
         head.appendChild(link);
     }
 

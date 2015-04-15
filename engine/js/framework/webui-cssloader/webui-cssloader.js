@@ -18,7 +18,7 @@
 
     var timeout = 5000, module, injected = {}, injectMode = 'static',
         basePath = '.', patternPath = './{package-name}', definitions = {},
-        callbackTimeout = 0;
+        head = document.getElementsByTagName('head')[0], callbackTimeout = 0;
 
     /**
      * Maksymalny czas wczytywania arkusza
@@ -29,7 +29,8 @@
     }
 
     /**
-     * Opóźnienie wykonywania callbacka po wczytyaniu arkusza
+     * Opóźnienie wykonywania callbacka po wczytyaniu arkusza.
+     * Ta opcja jest używana tylko wtedy gdy nie działa onLoad dla arkuszy.
      * @param {int} time
      */
     function setCallbackTimeout(time) {
@@ -66,6 +67,42 @@
     }
 
     /**
+     * Ustaw zdarzenie onLoad dla arkusza stylów o podanym atrybucie href
+     * @link http://www.phpied.com/when-is-a-stylesheet-really-loaded/
+     * @param {string} href
+     * @param {Function} callback
+     * @param {Object} [elemAttributes]
+     * @param {int} [timeout]
+     */
+    function styleSheetCreate(href, callback, elemAttributes, timeout) {
+        var link = document.createElement('link'), prop;
+
+        if (timeout === undefined) {
+            timeout = 0;
+        }
+
+        if (typeof elemAttributes !== "object") {
+            elemAttributes = {};
+        }
+
+        link.setAttribute("href", href);
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("type", "text/css");
+
+        for (prop in elemAttributes) {
+            if (elemAttributes.hasOwnProperty(prop)) {
+                link.setAttribute(prop, elemAttributes[prop]);
+            }
+        }
+
+        link.addEventListener("load", function () {
+            callback();
+        });
+
+        head.appendChild(link);
+    }
+
+    /**
      * Ładowanie arkusza
      * @param {string} filename
      * @param {Function} [callback]
@@ -98,15 +135,9 @@
             injected[path] = true;
 
             if (callback) {
-                yepnope.injectCss(path, function () {
-                    if (ctimeout > 0) {
-                        setTimeout(callback, ctimeout);
-                    } else {
-                        yepnope.injectCss(path, callback, elemAttributes, timeout);
-                    }
-                }, elemAttributes, timeout);
+                styleSheetCreate(path, callback, elemAttributes, ctimeout);
             } else {
-                yepnope.injectCss(path, null, elemAttributes, timeout);
+                styleSheetCreate(path, function () {}, elemAttributes, ctimeout);
             }
         }
     }

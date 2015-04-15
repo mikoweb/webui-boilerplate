@@ -16,7 +16,7 @@
 (function () {
     "use strict";
 
-    var timeout = 5000, module, injected = {}, injectMode = 'static',
+    var timeout = 5000, module, injected = {}, injectMode = 'static', domainPath = '',
         basePath = '.', patternPath = './{package-name}', definitions = {},
         head = document.getElementsByTagName('head')[0], callbackTimeout = 0;
 
@@ -64,6 +64,26 @@
                 }
             }
         }
+    }
+
+    /**
+     * Ustaw domenę
+     * @param path
+     */
+    function setDomainPath(path) {
+        if (typeof path !== 'string') {
+            throw new Error('path is not string');
+        }
+
+        domainPath = path;
+    }
+
+    /**
+     * Ścieżka domeny
+     * @returns {string}
+     */
+    function getDomainPath() {
+        return domainPath;
     }
 
     /**
@@ -185,6 +205,8 @@
                 path = basePath + '/' + filename + '.css';
         }
 
+        path = getDomainPath() + path;
+
         if (injected[path] === undefined) {
             injected[path] = true;
 
@@ -244,6 +266,7 @@
         timeout: setLoadTimeout,
         inject: inject,
         mode: setInjectMode,
+        setDomainPath: setDomainPath,
         setBasePath: setBasePath,
         setPatternPath: setPatternPath,
         definePath: definePath,

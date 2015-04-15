@@ -67,6 +67,14 @@
     }
 
     /**
+     * Załóżmy, że jak przeglądarka nie ma canvas to nie jest przeglądarką nowej generacji
+     * @returns {boolean}
+     */
+    function browserTest() {
+        return !!document.createElement('canvas').getContext;
+    }
+
+    /**
      * Ustaw zdarzenie onLoad dla arkusza stylów o podanym atrybucie href
      * @param {string} href
      * @param {Function} callback
@@ -127,6 +135,23 @@
                 call();
             }
         };
+
+        // na przeglądarkach starej generacji niech będzie działał ułomny mechanizm
+        if (!browserTest()) {
+            cssnum = document.styleSheets.length;
+            ti = setInterval(function() {
+                if (document.styleSheets.length > cssnum) {
+                    // needs more work when you load a bunch of CSS files quickly
+                    // e.g. loop from cssnum to the new length, looking
+                    // for the document.styleSheets[n].href === url
+                    // ...
+
+                    // FF changes the length prematurely :()
+                    call();
+                    clearInterval(ti);
+                }
+            }, 10);
+        }
 
         head.appendChild(link);
     }

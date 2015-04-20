@@ -40,7 +40,18 @@ II. Personalne ustawienia szablonu
             @headings-line-height: 1.3;
             @link-hover-decoration: none;
 
+            @font-size-h1:            2.6em;
+            @font-size-h2:            2.15em;
+            @font-size-h3:            1.7em;
+            @font-size-h4:            1.25em;
+            @font-size-h5:            1em;
+            @font-size-h6:            0.85em;
+
     2. scaffolding.less
+
+        html {
+          font-size: @font-size-base;
+        }
 
         a {
           .transition(color .3s);

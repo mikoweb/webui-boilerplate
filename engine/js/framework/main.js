@@ -20,10 +20,21 @@
     var used = false, vendorCss;
     function vendor(path) {
         if (!used) {
+            var pathPart = document.createElement('a');
+            pathPart.href= path;
+
+            /*
+             * Informacja!
+             * W przypadku tinyMCE konieczne są ściezki bez domeny, ponieważ mogą wystąpić problemy z
+             * dostępem do obiektu parent.tinymce w elementach iframe, które stanowią okna modalne np.
+             * podczas używania pluginu codemirror. Problem występuje, gdy włączone są serwery CDN - wtedy
+             * w adresie URL występuje inna nazwa domeny niż domena główna i otrzymujemy błąd:
+             * Error: Permission denied to access property "tinymce"1 source.html.
+             */
             require.config({
                 'paths': {
-                    'tinymce':  path + '/tinymce/tinymce.min',
-                    'tinymce.jquery': path + '/tinymce/jquery.tinymce.min',
+                    'tinymce':  pathPart.pathname + '/tinymce/tinymce.min',
+                    'tinymce.jquery': pathPart.pathname + '/tinymce/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
                     'selectize': path + '/vendor/webui-selectize-js/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',

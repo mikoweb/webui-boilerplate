@@ -43,7 +43,8 @@
                     'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
                     'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
                     'jquery.themepunch.tools': path + '/slider-revolution4/js/jquery.themepunch.tools.min',
-                    'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min'
+                    'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min',
+                    'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min'
                 },
                 'shim': {
                     'tinymce': {

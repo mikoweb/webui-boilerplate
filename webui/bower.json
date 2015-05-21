@@ -1,6 +1,6 @@
 {
     "name": "WebUI",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "homepage": "http://vision-web.pl",
     "authors": [
         "Rafał Mikołajun <rafal@vision-web.pl>"
@@ -15,7 +15,7 @@
     "license": "CC-BY-NC-ND",
     "dependencies": {
         "vsymfo-tinymce-helper": "~0.0.2",
-        "webui-selectize-js": null,
+        "selectize": "0.12.1",
         "chartjs": "~1.0.1",
         "chartjs-type-linealt": "~0.0.4",
         "highcharts-release": "~4.1.1",

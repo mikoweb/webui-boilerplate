@@ -16802,7 +16802,7 @@ var requirejs, require, define;
                     'tinymce':  pathPart.pathname + '/tinymce/tinymce.min',
                     'tinymce.jquery': pathPart.pathname + '/tinymce/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
-                    'selectize': path + '/vendor/webui-selectize-js/selectize.min',
+                    'selectize': path + '/vendor/selectize/dist/js/standalone/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
@@ -16834,7 +16834,7 @@ var requirejs, require, define;
     });
 
     vendorCss = {
-        'selectize': 'vendor/webui-selectize-js/selectize',
+        'selectize': 'style/selectize/selectize',
         'jquery.themepunch.revolution': 'slider-revolution4/slider-style'
     };
 

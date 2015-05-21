@@ -22,8 +22,8 @@
                 <legend>Selectbox</legend>
                 <div class="form-group">
                     <label for="select-field">Native Select</label>
-                    <div class="input-group">
-                        <select class="form-control" title="lorem ipsum" data-placement="top" id="select-field" required>
+                    <div class="input-group" title="lorem ipsum" data-placement="top">
+                        <select class="form-control" id="select-field" required>
                             <option value="">wybierz</option>
                             <option>test</option>
                         </select>
@@ -31,14 +31,28 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Selectize</label>
+                    <label for="select-field-sm">Native Select</label>
+                    <select class="form-control input-sm" title="lorem ipsum" data-placement="top" id="select-field-sm">
+                        <option value="">wybierz</option>
+                        <option>test</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="select-field-lg">Native Select</label>
+                    <select class="form-control input-lg" title="lorem ipsum" data-placement="top" id="select-field-lg">
+                        <option value="">wybierz</option>
+                        <option>test</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="selectize1">Selectize</label>
                     <select class="form-control" id="selectize1">
                         <option value="AL">Alabama</option>
                         <option value="WY">Wyoming</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Selectize</label>
+                    <label for="selectize2">Selectize</label>
                     <div class="input-group">
                         <select class="form-control" id="selectize2">
                             <option value="">wybierz</option>
@@ -49,7 +63,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Selectize</label>
+                    <label for="selectize3">Selectize</label>
                     <div class="input-group">
                         <span class="input-group-addon">.00</span>
                         <select class="form-control" id="selectize3">
@@ -60,10 +74,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Selectize</label>
+                    <label for="selectize4">Selectize</label>
                     <div class="input-group">
                         <span class="input-group-addon">.00</span>
-                        <select class="form-control input-lg" id="selectize3">
+                        <select class="form-control input-lg" id="selectize4">
                             <option value="">wybierz</option>
                             <option value="AL">Alabama</option>
                             <option value="WY">Wyoming</option>
@@ -71,10 +85,10 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Selectize</label>
+                    <label for="selectize5">Selectize</label>
                     <div class="input-group">
                         <span class="input-group-addon">.00</span>
-                        <select class="form-control input-sm" id="selectize4">
+                        <select class="form-control input-sm" id="selectize5">
                             <option value="">wybierz</option>
                             <option value="AL">Alabama</option>
                             <option value="WY">Wyoming</option>
@@ -82,7 +96,36 @@
                     </div>
                 </div>
             </fieldset>
-            <fieldset class="form-group">
+            <fieldset>
+                <legend>Tagging</legend>
+                <div class="form-group">
+                    <label for="input-tags">Tags</label>
+                    <input id="input-tags" type="text" class="form-control">
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Option Groups</legend>
+                <div class="form-group">
+                    <label for="select-gear">Gear</label>
+                    <select id="select-gear" class="form-control demo-default" placeholder="Select gear...">
+                        <option value="">Select gear...</option>
+                        <optgroup label="Climbing">
+                            <option value="pitons">Pitons</option>
+                            <option value="cams">Cams</option>
+                            <option value="nuts">Nuts</option>
+                            <option value="bolts">Bolts</option>
+                            <option value="stoppers">Stoppers</option>
+                            <option value="sling">Sling</option>
+                        </optgroup>
+                        <optgroup label="Skiing">
+                            <option value="skis">Skis</option>
+                            <option value="skins">Skins</option>
+                            <option value="poles">Poles</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="form-group" style="height: 200px;">
                 <button class="btn btn-primary" type="submit">Test</button>
             </fieldset>
         </form>

@@ -16802,7 +16802,7 @@ var requirejs, require, define;
                     'tinymce':  pathPart.pathname + '/tinymce/tinymce.min',
                     'tinymce.jquery': pathPart.pathname + '/tinymce/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
-                    'selectize': path + '/vendor/selectize/dist/js/standalone/selectize.min',
+                    'selectize': path + '/selectize-fix/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
                     'highcharts': path + '/vendor/highcharts-release/highcharts',

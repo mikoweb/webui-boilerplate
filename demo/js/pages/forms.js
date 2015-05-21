@@ -3,7 +3,8 @@ require(['jquery', 'jquery.app', 'selectize', 'webui-cssloader'], function ($, a
 
     loader.inject('@selectize', function () {
         $("#selectize1, #selectize2, #selectize3, #selectize4, #selectize5").selectize({
-            copyClassesToDropdown: false
+            copyClassesToDropdown: false,
+            allowEmptyOption: true
         });
 
         $('#input-tags').selectize({
@@ -18,8 +19,9 @@ require(['jquery', 'jquery.app', 'selectize', 'webui-cssloader'], function ($, a
         });
 
         $('#select-gear').selectize({
-            sortField: 'text',
-            copyClassesToDropdown: false
+            //sortField: 'text',
+            copyClassesToDropdown: false,
+            allowEmptyOption: true
         });
     });
 });

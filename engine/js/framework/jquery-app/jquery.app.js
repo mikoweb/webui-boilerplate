@@ -1,15 +1,6 @@
-/*globals define*/
-/*
- * This file is part of the Joomla Rapid Framework
- *
- * website: www.vision-web.pl
- * (c) Rafał Mikołajun <rafal@vision-web.pl>
- */
-
 /**
  * Kontener aplikacji
  * @author Rafał Mikołajun <rafal@vision-web.pl>
- * @package Joomla Rapid Framework
  * @copyright 2014 Rafał Mikołajun
  * @license GPL v2
  */
@@ -25,7 +16,7 @@
     function callFromArray(arr, args) {
         var i;
         for (i = 0; i < arr.length; i++) {
-            if (arr[i] instanceof Function) {
+            if ($.isFunction(arr[i])) {
                 arr[i].apply(null, $.merge([], args));
             }
         }
@@ -47,16 +38,16 @@
                      * @returns {boolean}
                      */
                     define: function(name, value) {
-                        if (globals[name] === undefined) {
-                            Object.defineProperty(globals, name, {
-                                value: value
-                            });
-                            return true;
+                        if (globals[name] !== undefined) {
+                            throw new Error('jQuery.app.define: property "' + name + '" was defined');
                         }
 
-                        return false;
-                    },
+                        Object.defineProperty(globals, name, {
+                            value: value
+                        });
 
+                        return true;
+                    },
                     /**
                      * Podaj wartość zmiennej globalnej
                      * @param {string} name
@@ -65,7 +56,6 @@
                     get: function(name) {
                         return globals[name];
                     },
-
                     /**
                      * Czy zmienna jest zadeklarowana
                      * @param {string} name
@@ -78,11 +68,6 @@
             }())
         }
     });
-
-    /*
-     * Tworzenie pustego obiektu do przechowywania kontrolerów routera.
-     */
-    $.app.define('controller', {});
 
     Object.defineProperties($.app, {
         /**
@@ -141,21 +126,15 @@
                  */
                 function initialize() {
                     if (!init) {
+                        buidListOfElements();
+
                         // document ready
                         $(document).ready(function() {
-                            buidListOfElements();
                             callFromArray(layoutEvents.ready, [$.app.theme]);
                         });
 
                         // window ready
                         $(window).load(function() {
-                            // Aktywuj iframe po załadowaniu
-                            $('iframe').each(function() {
-                                var $this = $(this);
-                                $this.css('display', 'block');
-                                $this.attr('src', $this.data('src'));
-                            });
-
                             callFromArray(layoutEvents.load, [$.app.theme]);
                         });
 
@@ -178,7 +157,6 @@
                      * inicjalizacja szablonu
                      */
                     init: initialize,
-
                     /**
                      * Dodaj nowy element strony
                      * @param {Object} options
@@ -204,7 +182,6 @@
 
                         return false;
                     },
-
                     /**
                      * Czy element jest zdefiniowany
                      * @param {string} name
@@ -213,48 +190,43 @@
                     hasElement: function(name) {
                         return elements[name] !== undefined;
                     },
-
                     /**
                      * Podaj element o podanej nazwie
                      * @param {string} name
-                     * @returns {jQuery}
+                     * @returns {jQuery|undefined}
                      */
                     element: function (name) {
                         return elements[name];
                     },
-
                     /**
                      * @param {Function} func
                      */
                     ready: function (func) {
-                        if (func instanceof Function) {
+                        if ($.isFunction(func)) {
                             layoutEvents.ready.push(func);
                         }
                     },
-
                     /**
                      * @param {Function} func
                      */
                     load: function (func) {
-                        if (func instanceof Function) {
+                        if ($.isFunction(func)) {
                             layoutEvents.load.push(func);
                         }
                     },
-
                     /**
                      * @param {Function} func
                      */
                     resize: function (func) {
-                        if (func instanceof Function) {
+                        if ($.isFunction(func)) {
                             layoutEvents.resize.push(func);
                         }
                     },
-
                     /**
                      * @param {Function} func
                      */
                     scroll: function (func) {
-                        if (func instanceof Function) {
+                        if ($.isFunction(func)) {
                             layoutEvents.scroll.push(func);
                         }
                     }
@@ -279,13 +251,16 @@
                         var prop;
                         for (prop in strings) {
                             if (strings.hasOwnProperty(prop)
-                                && translations[prop] === undefined
-                                && typeof strings[prop] === 'string') {
+                                && typeof strings[prop] === 'string'
+                            ) {
+                                if (translations[prop] !== undefined) {
+                                    throw new Error('jQuery.app.trans: translation "' + prop + '" was defined');
+                                }
+
                                 translations[prop] = strings[prop];
                             }
                         }
                     },
-
                     /**
                      * Podaj tłumaczenie
                      * @param {string} text
@@ -303,7 +278,7 @@
         }
     });
 
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define !== 'undefined' && $.isFunction(define) && define.amd) {
         define("jquery.app", ['jquery'], function ($) {
             return $.app;
         });

@@ -1,24 +1,20 @@
 {
   "name": "jquery-app",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "homepage": "https://github.com/mikoweb/jquery-app",
   "authors": [
     "Rafał Mikołajun <rafal@vision-web.pl>"
   ],
-  "description": "Kontener aplikacji napisany do Joomla Rapid Framework.",
+  "description": "Uniwersalny kontener aplikacji",
   "main": "jquery.app.js",
-  "keywords": [
-    "jquery",
-    "joomla"
-  ],
   "license": "GPLv2",
-  "_release": "0.0.3",
+  "_release": "0.1.0",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.3",
-    "commit": "cea56a9cdf53a7209de712af4d6246b6015266e9"
+    "tag": "0.1.0",
+    "commit": "6c1704487b3dfba9e5b17a6e73ac579c08703062"
   },
   "_source": "git://github.com/mikoweb/jquery-app.git",
-  "_target": "~0.0.3",
+  "_target": "~0.1.0",
   "_originalSource": "jquery-app"
 }

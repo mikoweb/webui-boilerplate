@@ -78,6 +78,7 @@ This also works with submenus without any other configuring since Bootstrap alre
 
 * **delay**: *(optional)* The delay in miliseconds. This is the time to wait before closing a dropdown when the mouse is no longer over the dropdown or the button/nav item that activated it. Defaults to `500`.
 * **instantlyCloseOthers**: *(optional)* A boolean value that when true, will instantly close all other dropdowns matched by the selector used when you activate a new navigation. This is nice for when you have dropdowns close together that may overlap. Default is `true`.
+* **hoverDealy**: *(optional)* A delay *before opening* in miliseconds. Some people argue this improves user experience as it decreases the number of accidental menu openings. Defaults to `0`.
 
 ## Demo
 
@@ -93,6 +94,11 @@ This plugin purposedly lets you choose a selector (as opposed to apply this to e
 
 I'm a slacker and only started keeping track of changes/bug fixes starting in March of 2013.
 
+* **2015-02-07** *[v2.1.3]* Update version in JS files
+* **2015-02-07** *[v2.1.2]* Forgot to minify the last couple updates...
+* **2015-02-07** *[v2.1.1]* Merged another PR: `browserify` compatibility [#100](/../../issues/100).
+* **2015-02-07** *[v2.1.0]* Merged a couple PRs: ARIA support [#95](/../../issues/95) and hover delay support [#99](/../../issues/99).
+* **2014-06-16** Added package to composer.
 * **2014-05-12** Fixed an issue where you could click a parent menu item to close it, but moving away from it would re-open the menu. Also cleaned up some code, removed some redundency.
 * **2014-01-27** Fixed an issue where chaining could break on mobile and cleaned up the the way the plugin triggered events. Also cleaned up the demo (fixed navbar appearance).
 * **2013-12-05** Change all references of *Twitter Bootstrap* to *Bootstrap* to reflect Bootstrap's name change.
@@ -108,7 +114,11 @@ I'm a slacker and only started keeping track of changes/bug fixes starting in Ma
 
 ## Contributions
 
-[Mattia Larentis](https://github.com/nostalgiaz) helped me with the idea for the data-attributes and doing the options via an object.
+Thanks to all of you who have contributed to this project, whether by code or by filing an issue to help improve it. But of course, especially the [ones that contribute code](/../../graphs/contributors) =)
+
+A special thanks to [Mattia Larentis](https://github.com/nostalgiaz). He isn't in the contributor list, but he helped me with the idea for the data-attributes and doing the options via an object.
+
+I will also issue a very special thanks in the README for help with setting up a [testing suite](/../../issues/69)!
 
 ## Roadmap
 

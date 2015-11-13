@@ -21,6 +21,6 @@
     "commit": "c1dc9db7e13c3812f24ec081727515a6487961b5"
   },
   "_source": "git://github.com/mikoweb/jsloader.git",
-  "_target": "~0.0.1",
+  "_target": "~0.0.2",
   "_originalSource": "jsloader"
 }

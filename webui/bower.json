@@ -1,17 +1,5 @@
 {
     "name": "WebUI dependencies",
-    "homepage": "http://vision-web.pl",
-    "authors": [
-        "Rafał Mikołajun <rafal@vision-web.pl>"
-    ],
-    "description": "WebUI complete package",
-    "keywords": [
-        "vsymfo",
-        "joomla",
-        "webui",
-        "webgui"
-    ],
-    "license": "CC-BY-NC-ND",
     "dependencies": {
         "vsymfo-tinymce-helper": "~0.0.2",
         "selectize": "~0.12.1",

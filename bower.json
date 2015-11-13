@@ -1,0 +1,13 @@
+{
+    "name": "WebUI complete package",
+    "version": "0.1.0",
+    "homepage": "http://vision-web.pl",
+    "authors": [
+        "Rafał Mikołajun <rafal@vision-web.pl>"
+    ],
+    "license": "CC-BY-NC-ND",
+    "ignore": [
+        "LICENSE",
+        "demo"
+    ]
+}

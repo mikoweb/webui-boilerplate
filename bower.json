@@ -5,6 +5,7 @@
     "authors": [
         "Rafał Mikołajun <rafal@vision-web.pl>"
     ],
+    "main": "engine/startapp.js",
     "license": "CC-BY-NC-ND",
     "ignore": [
         "LICENSE",

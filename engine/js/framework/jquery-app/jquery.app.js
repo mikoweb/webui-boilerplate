@@ -76,7 +76,8 @@
          */
         "theme": {
             value: (function () {
-                var selectors = {}, elements = {}, init = false,
+                var selectors = {}, elements = {},
+                    init = false, registeredListeners = false,
                     layoutEvents = {
                         ready: [],
                         load: [],
@@ -128,35 +129,38 @@
                     if (!init) {
                         buidListOfElements();
 
-                        // document ready
-                        $(document).ready(function() {
-                            callFromArray(layoutEvents.ready, [$.app.theme]);
-                        });
-
-                        // window ready
-                        $(window).load(function() {
-                            callFromArray(layoutEvents.load, [$.app.theme]);
-                        });
-
-                        // window onResize
-                        $(window).resize(function() {
-                            callFromArray(layoutEvents.resize, [$.app.theme]);
-                        });
-
-                        // window onScroll
-                        $(window).scroll(function() {
-                            callFromArray(layoutEvents.scroll, [$.app.theme]);
-                        });
-
                         init = true;
                     }
                 }
 
+                /**
+                 * Rejestracja litenerów
+                 */
+                function registerListeners() {
+                    if (!registeredListeners) {
+                        $(document).ready(function() {
+                            callFromArray(layoutEvents.ready, [$.app.theme]);
+                        });
+
+                        $(window).load(function() {
+                            callFromArray(layoutEvents.load, [$.app.theme]);
+                        });
+
+                        $(window).resize(function() {
+                            callFromArray(layoutEvents.resize, [$.app.theme]);
+                        });
+
+                        $(window).scroll(function() {
+                            callFromArray(layoutEvents.scroll, [$.app.theme]);
+                        });
+
+                        registeredListeners = true;
+                    }
+                }
+
                 return {
-                    /**
-                     * inicjalizacja szablonu
-                     */
                     init: initialize,
+                    registerListeners: registerListeners,
                     /**
                      * Dodaj nowy element strony
                      * @param {Object} options

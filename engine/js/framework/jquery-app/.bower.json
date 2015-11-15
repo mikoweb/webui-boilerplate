@@ -1,6 +1,6 @@
 {
   "name": "jquery-app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/mikoweb/jquery-app",
   "authors": [
     "Rafał Mikołajun <rafal@vision-web.pl>"
@@ -8,13 +8,13 @@
   "description": "Uniwersalny kontener aplikacji",
   "main": "jquery.app.js",
   "license": "GPLv2",
-  "_release": "0.2.0",
+  "_release": "0.2.1",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.0",
-    "commit": "255cc09e2a4b9117eb0b6df4ae377097caba3754"
+    "tag": "0.2.1",
+    "commit": "36324e78d00d17e4370dc4fcaa634b295fb0c939"
   },
   "_source": "git://github.com/mikoweb/jquery-app.git",
-  "_target": "~0.2.0",
+  "_target": "~0.2.1",
   "_originalSource": "jquery-app"
 }

@@ -3,7 +3,7 @@
     "dependencies": {
         "jquery": "~2.1.4",
         "bootstrap": "~3.3.4",
-        "jquery-app": "~0.2.0",
+        "jquery-app": "~0.2.1",
         "requirejs": "~2.1.20",
         "backbone": "~1.2.3",
         "webui-cssloader": "~0.2.0"

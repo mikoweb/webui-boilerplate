@@ -17210,20 +17210,6 @@ var requirejs, require, define;
 (function ($) {
     "use strict";
 
-    /**
-     * wywołaj funkcje z tablicy
-     * @param {Array} arr
-     * @param {Array} args
-     */
-    function callFromArray(arr, args) {
-        var i;
-        for (i = 0; i < arr.length; i++) {
-            if ($.isFunction(arr[i])) {
-                arr[i].apply(null, $.merge([], args));
-            }
-        }
-    }
-
     Object.defineProperties($, {
         /**
          * kontener aplikacji
@@ -17279,13 +17265,8 @@ var requirejs, require, define;
         "theme": {
             value: (function () {
                 var selectors = {}, elements = {},
-                    init = false, registeredListeners = false,
-                    layoutEvents = {
-                        ready: [],
-                        load: [],
-                        resize: [],
-                        scroll: []
-                    };
+                    init = false,
+                    events = $('<div />');
 
                 /**
                  * stwórz element
@@ -17330,39 +17311,23 @@ var requirejs, require, define;
                 function initialize() {
                     if (!init) {
                         buidListOfElements();
-
                         init = true;
-                    }
-                }
-
-                /**
-                 * Rejestracja litenerów
-                 */
-                function registerListeners() {
-                    if (!registeredListeners) {
-                        $(document).ready(function() {
-                            callFromArray(layoutEvents.ready, [$.app.theme]);
-                        });
-
-                        $(window).load(function() {
-                            callFromArray(layoutEvents.load, [$.app.theme]);
-                        });
-
-                        $(window).resize(function() {
-                            callFromArray(layoutEvents.resize, [$.app.theme]);
-                        });
-
-                        $(window).scroll(function() {
-                            callFromArray(layoutEvents.scroll, [$.app.theme]);
-                        });
-
-                        registeredListeners = true;
+                        events.trigger('init', $.app.theme);
                     }
                 }
 
                 return {
                     init: initialize,
-                    registerListeners: registerListeners,
+                    /**
+                     *
+                     * @param {string} e
+                     * @param [selector]
+                     * @param [data]
+                     * @param [handler]
+                     */
+                    on: function (e, selector, data, handler) {
+                        events.on(e, selector, data, handler);
+                    },
                     /**
                      * Dodaj nowy element strony
                      * @param {Object} options
@@ -17373,20 +17338,29 @@ var requirejs, require, define;
                             selector = options.selector,
                             parent = options.parent;
 
-                        if (typeof name === 'string'
-                            && typeof selector === 'string'
-                            && selectors[name] === undefined) {
-                            Object.defineProperty(selectors, name, {
-                                value: {
-                                    selector: selector,
-                                    parent: parent
-                                },
-                                enumerable: true
-                            });
-                            return true;
+                        if (typeof name !== 'string') {
+                            throw new TypeError('jQuery.app.theme.addElement: name is not string!');
                         }
 
-                        return false;
+                        if (typeof selector !== 'string') {
+                            throw new TypeError('jQuery.app.theme.addElement: selector is not string!');
+                        }
+
+                        if (parent && typeof parent !== 'string') {
+                            throw new TypeError('jQuery.app.theme.addElement: parent is not string!');
+                        }
+
+                        Object.defineProperty(selectors, name, {
+                            value: {
+                                selector: selector,
+                                parent: parent
+                            },
+                            enumerable: true
+                        });
+
+                        createElement(name);
+
+                        return true;
                     },
                     /**
                      * Czy element jest zdefiniowany
@@ -17394,6 +17368,10 @@ var requirejs, require, define;
                      * @returns {boolean}
                      */
                     hasElement: function(name) {
+                        if (!init) {
+                            throw new Error('jQuery.app.theme.hasElement: Theme has not been initialized');
+                        }
+
                         return elements[name] !== undefined;
                     },
                     /**
@@ -17402,39 +17380,11 @@ var requirejs, require, define;
                      * @returns {jQuery|undefined}
                      */
                     element: function (name) {
+                        if (!init) {
+                            throw new Error('jQuery.app.theme.element: Theme has not been initialized');
+                        }
+
                         return elements[name];
-                    },
-                    /**
-                     * @param {Function} func
-                     */
-                    ready: function (func) {
-                        if ($.isFunction(func)) {
-                            layoutEvents.ready.push(func);
-                        }
-                    },
-                    /**
-                     * @param {Function} func
-                     */
-                    load: function (func) {
-                        if ($.isFunction(func)) {
-                            layoutEvents.load.push(func);
-                        }
-                    },
-                    /**
-                     * @param {Function} func
-                     */
-                    resize: function (func) {
-                        if ($.isFunction(func)) {
-                            layoutEvents.resize.push(func);
-                        }
-                    },
-                    /**
-                     * @param {Function} func
-                     */
-                    scroll: function (func) {
-                        if ($.isFunction(func)) {
-                            layoutEvents.scroll.push(func);
-                        }
                     }
                 };
             }())

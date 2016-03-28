@@ -5,7 +5,8 @@
         "bootstrap": "~3.3.4",
         "jquery-app": "~0.2.1",
         "requirejs": "~2.2",
-        "backbone": "~1.3",
-        "webui-cssloader": "~0.2.0"
+        "backbone": "~1.2",
+        "webui-cssloader": "~0.2.0",
+        "marionette": "~3.0"
     }
 }

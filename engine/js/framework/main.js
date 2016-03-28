@@ -9,13 +9,17 @@
         return $;
     });
 
-    define("underscore", [], function() {
-        return _;
-    });
+    if (_) {
+        define("underscore", [], function() {
+            return _;
+        });
+    }
 
-    define("backbone", ['underscore', 'jquery'], function() {
-        return Backbone;
-    });
+    if (Backbone) {
+        define("backbone", ['underscore', 'jquery'], function() {
+            return Backbone;
+        });
+    }
 
     var used = false, vendorCss;
     function vendor(path) {

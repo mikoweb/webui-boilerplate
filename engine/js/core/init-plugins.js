@@ -12,20 +12,22 @@ jQuery(function($) {
     // details summary polyfill
     $('details').details();
 
-    // Tooltip w polach formularza
-    $('input, textarea, select').tooltip({
-        trigger: 'focus',
-        container: 'body',
-        delay: { show: 100, hide: 500 }
-    });
-    $('label').tooltip({
-        trigger: 'hover',
-        container: 'body',
-        delay: { show: 100, hide: 100 }
-    });
-    $('.input-group').tooltip({
-        trigger: 'hover',
-        container: 'body',
-        delay: { show: 100, hide: 100 }
-    });
+    if ($.fn.tooltip) {
+        // Tooltip w polach formularza
+        $('input, textarea, select').tooltip({
+            trigger: 'focus',
+            container: 'body',
+            delay: { show: 100, hide: 500 }
+        });
+        $('label').tooltip({
+            trigger: 'hover',
+            container: 'body',
+            delay: { show: 100, hide: 100 }
+        });
+        $('.input-group').tooltip({
+            trigger: 'hover',
+            container: 'body',
+            delay: { show: 100, hide: 100 }
+        });
+    }
 });

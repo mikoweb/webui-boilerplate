@@ -4,11 +4,7 @@
         "jsloader": "~0.0.2",
         "jquery-sprintf": "~0.0.1",
         "jquery-placeholder": "2.0.8",
-        "selectivizr": "~1.0.2",
         "jquery-details": "~0.1.0",
-        "picturefill": "~3.0.1",
-        "jquery-hash-router": "~1.0.5",
-        "bootstrap-paginator": "~1.0.2",
-        "bootstrap-hover-dropdown": "~2.1.3"
+        "picturefill": "~3.0.1"
     }
 }

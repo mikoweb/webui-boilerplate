@@ -28,9 +28,4 @@ jQuery(function($) {
         container: 'body',
         delay: { show: 100, hide: 100 }
     });
-
-    // Ukryte linki
-    $('a[data-href]').on('click', function() {
-        window.location.href = $(this).data('href');
-    });
 });

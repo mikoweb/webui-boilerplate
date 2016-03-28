@@ -45,7 +45,9 @@
                     'jquery.themepunch.tools': path + '/slider-revolution4/js/jquery.themepunch.tools.min',
                     'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min',
                     'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
-                    'tinysort': path + '/vendor/tinysort/dist/tinysort.min'
+                    'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
+                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min.js',
+                    'bootstrap-hover-dropdown': path + '/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'
                 },
                 'shim': {
                     'tinymce': {

@@ -8,7 +8,7 @@ var startapp = function(data) {
 
     var k, i;
 
-    // maksymalny czas wczytywanie skryptu
+    // czas po, którym wczytywanie zostanie zatrzymane
     jsloader.timeout(data.timeout);
     // warunkowe wczytywanie es5-shim, jeżeli przeglądarka nie implementuje ES5
     jsloader.requirement({
@@ -17,9 +17,8 @@ var startapp = function(data) {
     });
 
     /**
-     * Umieść nowe zasoby js w loaderze.
-     * Da są zawarte w tablicy: data.res.resources.
-     * Struktura:
+     * Struktura obiektu data:
+     *
      * {
      *  "res": {
      *      "resources" {
@@ -55,7 +54,6 @@ var startapp = function(data) {
         jsloader.add('', data.res.unknown[i].url, data.res.unknown[i].url.async);
     }
 
-    // co zrobić po załadowaniu skryptów frameworka
     jsloader.onLoad('framework', function () {
         jQuery.app.define("path_base", data.path.base);
         jQuery.app.define("path_webui", data.path.webui);
@@ -63,7 +61,6 @@ var startapp = function(data) {
         jQuery.app.trans.add(data.translations);
 
         // webui vendors
-        // dopiero po załadowaniu frameworka można używać AMD
         require(["webui-vendor"], function (vendor) {
             vendor(data.path.webui);
         });
@@ -80,6 +77,5 @@ var startapp = function(data) {
         });
     });
 
-    // zamień żeby nikt nie użył po raz kolejny
     startapp = undefined;
 };

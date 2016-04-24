@@ -46,8 +46,6 @@
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
                     'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
                     'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
-                    'jquery.themepunch.tools': path + '/slider-revolution4/js/jquery.themepunch.tools.min',
-                    'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min',
                     'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
                     'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
                     'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
@@ -74,8 +72,7 @@
     });
 
     vendorCss = {
-        'selectize': 'style/selectize/selectize',
-        'jquery.themepunch.revolution': 'slider-revolution4/slider-style'
+        'selectize': 'style/selectize/selectize'
     };
 
     define("webui-vendor-css", function () {

@@ -1,0 +1,14 @@
+{
+    "copy": [
+        "vsymfo-tinymce-helper/tinymce.helper.min.js",
+        "chartjs/Chart.min.js",
+        "chartjs-type-linealt/chartjs-type-linealt.min.js",
+        "highcharts-release/highcharts.js",
+        "jquery-smooth-scroll/jquery.smooth-scroll.min.js",
+        "jquery.easing/js/jquery.easing.min.js",
+        "jquery-sortable/source/js/jquery-sortable-min.js",
+        "tinysort/dist/tinysort.min.js",
+        "bootstrap-paginator/build/bootstrap-paginator.min.js",
+        "bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+    ]
+}

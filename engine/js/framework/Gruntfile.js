@@ -16,6 +16,7 @@ module.exports = function (grunt) {
             build: {
                 src: [
                     "jquery/dist/jquery.js",
+                    "tether/dist/js/tether.js",
                     "bootstrap/dist/js/bootstrap.js",
                     "underscore/underscore.js",
                     "backbone/backbone.js"
@@ -31,6 +32,7 @@ module.exports = function (grunt) {
             marionette: {
                 src: [
                     "jquery/dist/jquery.js",
+                    "tether/dist/js/tether.js",
                     "bootstrap/dist/js/bootstrap.js",
                     "underscore/underscore.js",
                     "backbone/backbone.js",
@@ -58,6 +60,7 @@ module.exports = function (grunt) {
             no_bb: {
                 src: [
                     "jquery/dist/jquery.js",
+                    "tether/dist/js/tether.js",
                     "bootstrap/dist/js/bootstrap.js"
                 ].concat(depsForAll),
                 dest: "framework-no-bb.js"

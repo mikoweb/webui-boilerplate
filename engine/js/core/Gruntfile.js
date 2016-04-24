@@ -5,16 +5,7 @@ module.exports = function (grunt) {
         concat: {
             build: {
                 src: [
-                    // https://github.com/mikoweb/jquery-sprintf
                     "jquery-sprintf/jquery.sprintf.js",
-                    // HTML5 polyfills
-                    // http://ericleads.com/h5validate/
-                    "jquery.h5validate.js",
-                    // https://github.com/mathiasbynens/jquery-placeholder
-                    "jquery-placeholder/jquery.placeholder.js",
-                    // https://github.com/mathiasbynens/jquery-details
-                    "jquery-details/jquery.details.js",
-                    // Inicjalizacja pluginów
                     "init-plugins.js"
                 ],
                 dest: "core.js"

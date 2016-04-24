@@ -15484,8 +15484,7 @@ var requirejs, require, define;
                     'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
                     'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
                     'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
-                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
-                    'bootstrap-hover-dropdown': path + '/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min'
+                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min'
                 },
                 'shim': {
                     'tinymce': {

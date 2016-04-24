@@ -1,23 +1,29 @@
 (function () {
     "use strict";
 
-    define("jquery", [], function () {
+    define('jquery', [], function () {
         return jQuery;
     });
 
-    define("bootstrap", ['jquery'], function ($) {
+    define('bootstrap', ['jquery'], function ($) {
         return $;
     });
 
     if (_) {
-        define("underscore", [], function() {
+        define('underscore', [], function() {
             return _;
         });
     }
 
     if (Backbone) {
-        define("backbone", ['underscore', 'jquery'], function() {
+        define('backbone', ['underscore', 'jquery'], function() {
             return Backbone;
+        });
+    }
+
+    if (Marionette) {
+        define('marionette', ['backbone'], function() {
+            return Marionette;
         });
     }
 
@@ -67,7 +73,7 @@
         }
     }
 
-    define("webui-vendor", function () {
+    define('webui-vendor', function () {
         return vendor;
     });
 
@@ -75,7 +81,7 @@
         'selectize': 'style/selectize/selectize'
     };
 
-    define("webui-vendor-css", function () {
+    define('webui-vendor-css', function () {
         return vendorCss;
     });
 }());

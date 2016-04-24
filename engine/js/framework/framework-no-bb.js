@@ -1,5 +1,5 @@
 /*!
- * jQuery JavaScript Library v2.2.2
+ * jQuery JavaScript Library v2.2.3
  * http://jquery.com/
  *
  * Includes Sizzle.js
@@ -9,7 +9,7 @@
  * Released under the MIT license
  * http://jquery.org/license
  *
- * Date: 2016-03-17T17:51Z
+ * Date: 2016-04-05T19:26Z
  */
 
 (function( global, factory ) {
@@ -65,7 +65,7 @@ var support = {};
 
 
 var
-	version = "2.2.2",
+	version = "2.2.3",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -9475,7 +9475,7 @@ jQuery.fn.load = function( url, params, callback ) {
 		// If it fails, this function gets "jqXHR", "status", "error"
 		} ).always( callback && function( jqXHR, status ) {
 			self.each( function() {
-				callback.apply( self, response || [ jqXHR.responseText, status, jqXHR ] );
+				callback.apply( this, response || [ jqXHR.responseText, status, jqXHR ] );
 			} );
 		} );
 	}
@@ -14351,23 +14351,29 @@ var requirejs, require, define;
 (function () {
     "use strict";
 
-    define("jquery", [], function () {
+    define('jquery', [], function () {
         return jQuery;
     });
 
-    define("bootstrap", ['jquery'], function ($) {
+    define('bootstrap', ['jquery'], function ($) {
         return $;
     });
 
-    if (_) {
-        define("underscore", [], function() {
+    if (typeof _ !== 'undefined') {
+        define('underscore', [], function() {
             return _;
         });
     }
 
-    if (Backbone) {
-        define("backbone", ['underscore', 'jquery'], function() {
+    if (typeof Backbone !== 'undefined') {
+        define('backbone', ['underscore', 'jquery'], function() {
             return Backbone;
+        });
+    }
+
+    if (typeof Marionette !== 'undefined') {
+        define('marionette', ['backbone'], function() {
+            return Marionette;
         });
     }
 
@@ -14396,12 +14402,10 @@ var requirejs, require, define;
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
                     'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
                     'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
-                    'jquery.themepunch.tools': path + '/slider-revolution4/js/jquery.themepunch.tools.min',
-                    'jquery.themepunch.revolution': path + '/slider-revolution4/js/jquery.themepunch.revolution.min',
                     'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
                     'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
-                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min.js',
-                    'bootstrap-hover-dropdown': path + '/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'
+                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
+                    'bootstrap-hover-dropdown': path + '/vendor/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min'
                 },
                 'shim': {
                     'tinymce': {
@@ -14419,16 +14423,15 @@ var requirejs, require, define;
         }
     }
 
-    define("webui-vendor", function () {
+    define('webui-vendor', function () {
         return vendor;
     });
 
     vendorCss = {
-        'selectize': 'style/selectize/selectize',
-        'jquery.themepunch.revolution': 'slider-revolution4/slider-style'
+        'selectize': 'style/selectize/selectize'
     };
 
-    define("webui-vendor-css", function () {
+    define('webui-vendor-css', function () {
         return vendorCss;
     });
 }());

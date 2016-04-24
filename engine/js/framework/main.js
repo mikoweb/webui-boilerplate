@@ -9,19 +9,19 @@
         return $;
     });
 
-    if (_) {
+    if (typeof _ !== 'undefined') {
         define('underscore', [], function() {
             return _;
         });
     }
 
-    if (Backbone) {
+    if (typeof Backbone !== 'undefined') {
         define('backbone', ['underscore', 'jquery'], function() {
             return Backbone;
         });
     }
 
-    if (Marionette) {
+    if (typeof Marionette !== 'undefined') {
         define('marionette', ['backbone'], function() {
             return Marionette;
         });

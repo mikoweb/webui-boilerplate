@@ -1,14 +1,12 @@
 /*
- * This file is part of the Joomla Rapid Framework
- *
- * website: www.vision-web.pl
- * (c) Rafał Mikołajun <rafal@vision-web.pl>
+ * website: mikoweb.pl
+ * (c) Rafał Mikołajun <rafal@mikoweb.pl>
  */
 
 /**
- * Loader skryptów wykorzystujący yepnope.
- * @author Rafał Mikołajun <rafal@vision-web.pl>
- * @package Joomla Rapid Framework
+ * Biblioteka do grupowania skryptów
+ *
+ * @author Rafał Mikołajun <rafal@mikoweb.pl>
  * @copyright 2014 Rafał Mikołajun
  * @license GPL v2
  */
@@ -22,15 +20,15 @@ var jsloader = (function() {
         nonloaded = 0;
 
     /**
-     * tablica zawierająca zestaw testów pod kątem wymagań strony względem przeglądarki
-     * format: {test: yepnope_callback, complete: false}
+     * Kolekcja testów przeglądarki
+     * struktura: {test: yepnope_callback, complete: false}
+     *
      * @type {Array}
      */
     requirements = [];
     requirements.many = 0;
 
     /**
-     * Wywołaj mnie jeśli jestem funkcją
      * @param {Function} test
      */
     function callFunction(test) {
@@ -40,8 +38,9 @@ var jsloader = (function() {
     }
 
     /**
-     * Dodaj nowe wymaganie
-     * @param {Object} options
+     * Dodaj wymaganie
+     *
+     * @param {Object} options jest to argument przekazywany do funkcji yepnope
      */
     function addRequirement(options) {
         if (typeof options === 'object') {
@@ -75,9 +74,10 @@ var jsloader = (function() {
     }
 
     /**
-     * Wstaw nową grupę skryptów
-     * @param {string} name
-     * @param {Array} [dependencies]
+     * Dodaj grupę skryptów
+     *
+     * @param {string} name nazwa grupy
+     * @param {Array} [dependencies] zależności
      */
     function addGroup(name, dependencies) {
         if (typeof name !== 'string') {
@@ -101,10 +101,11 @@ var jsloader = (function() {
     }
 
     /**
-     * Nowa lista skryptów do załadowania
-     * @param {string} group
-     * @param {Array} files
-     * @param {bool} [async]
+     * Dodaj skrypty do załadowania
+     *
+     * @param {string} group grupa do, której przypisujesz kolekcję skryptów
+     * @param {Array} files kolekcja ścieżek do skryptów
+     * @param {Boolean} [async=true] czy ładować asynchronicznie
      */
     function addScript(group, files, async) {
         if (typeof group !== 'string') {
@@ -123,12 +124,13 @@ var jsloader = (function() {
 
         arr.push({
             files: files,
-            async: async ? true : false
+            async: Boolean(async)
         });
     }
 
     /**
      * Rozpocznij testowanie przeglądarki
+     *
      * @param {Function} callback
      */
     function runTest(callback) {
@@ -140,11 +142,14 @@ var jsloader = (function() {
                     requirements[i].test(callback);
                 }
             }
+        } else {
+            callback();
         }
     }
 
     /**
-     * zarejestruj zdarzenie onLoad
+     * Dodaj listenera onLoad
+     *
      * @param {string|Function} [arg1]
      * @param {Function} [arg2]
      */
@@ -159,25 +164,26 @@ var jsloader = (function() {
             }
 
             if (scripts[arg1] !== undefined && scripts[arg1].load) {
-                // jeśli onload już nastąpiło uruchom funkcję teraz
+                // funkcja zostanie uruchomiona, jeżeli "onLoad" już nastąpiło
                 callFunction(arg2);
             } else {
-                // zarejestruj funkcję na liście
+                // dodaj do listy
                 loadEvent[arg1].push(arg2);
             }
         } else if (arguments.length === 1 && typeof arg1 === 'function') {
             if (nonloaded === 0) {
-                // jeśli wszystkie grupy załadowane
+                // funkcja zostanie uruchomiona, kiedy wszystkie grupy będą załadowane
                 callFunction(arg1);
             } else {
-                // dodaj na listę
+                // dodaj do listy
                 loadAllEvent.push(arg1);
             }
         }
     }
 
     /**
-     * uruchom zdarzenie onLoad
+     * Wywołaj zdarzenie onLoad
+     *
      * @param {string} group
      */
     function onLoadEvent(group) {
@@ -203,8 +209,9 @@ var jsloader = (function() {
     }
 
     /**
-     * wstrzyknij skrypt
-     * @param {string} url
+     * Wstrzyknij skrypt
+     *
+     * @param {String} url
      * @param {Function} callback
      */
     function inject(url, callback) {
@@ -217,10 +224,9 @@ var jsloader = (function() {
     }
 
     /**
-     * ładowarka skryptów
      * @param {Array} res
-     * @param {bool} async
-     * @param {function} [callback]
+     * @param {Boolean} async
+     * @param {Function} [callback]
      */
     function loader(res, async, callback) {
         if (!Array.isArray(res)) {
@@ -261,13 +267,13 @@ var jsloader = (function() {
                 helper(0);
             }
         } else {
-            // jeśli nic nie ma odrazu funkcja wołaj funkcje zwrotną
             callFunction(callback);
         }
     }
 
     /**
-     * wstrzyknij wszytskie skrypty z podanej grupy
+     * Ładowanie skryptów o podanej grupie
+     *
      * @param {string} name
      * @param {Function} [callback]
      */
@@ -340,15 +346,12 @@ var jsloader = (function() {
     }
 
     return {
-        /**
-         * Inicjalizacja loadera
-         */
         init: function () {
             if (!initialized) {
                 runTest(function () {
                     var i, k;
 
-                    // dodaj listy z poczekalni
+                    // dodaj skrypty do poczekalni
                     for (i = 0; i < waiting.length; i++) {
                         addScript(waiting[i][0], waiting[i][1], waiting[i][2]);
                     }
@@ -372,25 +375,24 @@ var jsloader = (function() {
                 initialized = true;
             }
         },
-
         /**
-         * Nowe listy skryptów trafiają do poczekalni
-         * @param {string} group
+         * Nowe skrypty trafiają do poczekalni
+         * 
+         * @param {String} group
          * @param {Array} files
-         * @param {bool} [async]
+         * @param {Boolean} [async]
          */
         add: function (group, files, async) {
             waiting.push([group, files, async]);
         },
-
         /**
-         * Ustaw limit czasu wczytywania jednego skryptu
-         * @param {integer} timeout
+         * Po przekroczeniu tego czasu ładowanie skryptu zostanie przerwane
+         *
+         * @param {Number} timeout
          */
         timeout: function (timeout) {
             injectTimeout = timeout;
         },
-
         requirement: addRequirement,
         group: addGroup,
         onLoad: addOnLoadEvent

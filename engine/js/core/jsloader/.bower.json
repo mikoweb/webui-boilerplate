@@ -1,11 +1,11 @@
 {
   "name": "jsloader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/mikoweb/jsloader",
   "authors": [
-    "Rafał Mikołajun <rafal@vision-web.pl>"
+    "Rafał Mikołajun <rafal@mikoweb.pl>"
   ],
-  "description": "Loader skryptów wykorzystujący yepnope.",
+  "description": "Library for grouping scripts",
   "main": "jsloader.js",
   "keywords": [
     "yepnope",
@@ -14,13 +14,20 @@
     "script inject"
   ],
   "license": "GPLv2",
-  "_release": "0.0.2",
+  "dependencies": {
+    "yepnope": "1.5.4"
+  },
+  "devDependencies": {
+    "jquery": "~2.2",
+    "qunit": "~1.22"
+  },
+  "_release": "0.0.3",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.2",
-    "commit": "c1dc9db7e13c3812f24ec081727515a6487961b5"
+    "tag": "0.0.3",
+    "commit": "b8926e215a44bea93448a662516f4319579aeb0d"
   },
-  "_source": "git://github.com/mikoweb/jsloader.git",
-  "_target": "~0.0.2",
+  "_source": "https://github.com/mikoweb/jsloader.git",
+  "_target": "~0.0.3",
   "_originalSource": "jsloader"
 }

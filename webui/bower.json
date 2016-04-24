@@ -11,6 +11,6 @@
         "jquery-sortable": "~0.9.12",
         "tinysort": "~2.2.2",
         "bootstrap-paginator": "~1.0.2",
-        "bootstrap-hover-dropdown": "~2.1.3"
+        "bootstrap": "~4.0.0"
     }
 }

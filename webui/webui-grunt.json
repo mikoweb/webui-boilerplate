@@ -8,7 +8,6 @@
         "jquery.easing/js/jquery.easing.min.js",
         "jquery-sortable/source/js/jquery-sortable-min.js",
         "tinysort/dist/tinysort.min.js",
-        "bootstrap-paginator/build/bootstrap-paginator.min.js",
-        "bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"
+        "bootstrap-paginator/build/bootstrap-paginator.min.js"
     ]
 }

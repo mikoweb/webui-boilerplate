@@ -28,25 +28,17 @@
     }
 
     var used = false, vendorCss;
-    function vendor(path) {
+    function vendor(path, locale) {
         if (!used) {
             var pathPart = document.createElement('a');
             pathPart.href= path;
+            locale = locale || 'en';
 
-            /*
-             * Informacja!
-             * W przypadku tinyMCE konieczne są ściezki bez domeny, ponieważ mogą wystąpić problemy z
-             * dostępem do obiektu parent.tinymce w elementach iframe, które stanowią okna modalne np.
-             * podczas używania pluginu codemirror. Problem występuje, gdy włączone są serwery CDN - wtedy
-             * w adresie URL występuje inna nazwa domeny niż domena główna i otrzymujemy błąd:
-             * Error: Permission denied to access property "tinymce"1 source.html.
-             */
             require.config({
                 'paths': {
                     'tinymce':  pathPart.pathname + '/tinymce/tinymce.min',
                     'tinymce.jquery': pathPart.pathname + '/tinymce/jquery.tinymce.min',
                     'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
-                    'selectize': path + '/selectize-fix/selectize.min',
                     'chartjs': path + '/vendor/chartjs/Chart.min',
                     'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
                     'highcharts': path + '/vendor/highcharts-release/highcharts',
@@ -54,7 +46,8 @@
                     'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
                     'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
                     'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
-                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min'
+                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
+                    'select2': path + '/vendor/select2/dist/js/select2.full.min'
                 },
                 'shim': {
                     'tinymce': {
@@ -77,7 +70,7 @@
     });
 
     vendorCss = {
-        'selectize': 'style/selectize/selectize'
+        'select2': 'style/select2/select2'
     };
 
     define('webui-vendor-css', function () {

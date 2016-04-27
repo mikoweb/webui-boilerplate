@@ -20,8 +20,8 @@ require(['jquery', 'tinysort', 'jquery.sortable'], function ($, tinysort) {
     sort();
 
     elToSort.sortable({
-        onDrop: function ($item, container, parent, event) {
-            parent($item);
+        onDrop: function ($item, container, parent) {
+            parent($item, container);
             sort();
         }
     });

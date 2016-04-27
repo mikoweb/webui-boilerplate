@@ -1,10 +1,10 @@
 module.exports = function (grunt) {
-    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         concat: {
             build: {
                 src: [
+                    "jquery-app/jquery.app.js",
                     "jquery-sprintf/jquery.sprintf.js",
                     "init-plugins.js"
                 ],

@@ -1,8 +1,7 @@
 {
-    "name": "WebUI dependencies",
+    "name": "WebUI vendor",
     "dependencies": {
         "vsymfo-tinymce-helper": "~0.0.2",
-        "selectize": "~0.12.1",
         "chartjs": "~1.0.1",
         "chartjs-type-linealt": "~0.0.4",
         "highcharts-release": "~4.1.1",
@@ -11,6 +10,7 @@
         "jquery-sortable": "~0.9.12",
         "tinysort": "~2.2.2",
         "bootstrap-paginator": "~1.0.2",
-        "bootstrap": "~4.0.0"
+        "bootstrap": "~4.0.0",
+        "select2": "~4.0.0"
     }
 }

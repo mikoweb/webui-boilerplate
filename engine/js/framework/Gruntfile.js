@@ -4,12 +4,10 @@ var depsForAll = [
     "requirejs/require.js",
     "main.js",
     // od tego miejsca można używać define
-    "jquery-app/jquery.app.js",
     "webui-cssloader/webui-cssloader.js"
 ];
 
 module.exports = function (grunt) {
-    // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON("package.json"),
         concat: {

@@ -1,9 +1,7 @@
-/*globals jsloader, Modernizr*/
-
 /**
  * To jest plik rozruchowy, który powinieneś dostosować do własnych potrzeb
  */
-var startapp = function(data) {
+function startapp (data) {
     "use strict";
 
     var k, i;
@@ -16,25 +14,6 @@ var startapp = function(data) {
         nope: [data.path.webui_engine + '/js/es5-shim.min.js', data.path.webui_engine + '/js/es5-sham.min.js']
     });
 
-    /**
-     * Struktura obiektu data:
-     *
-     * {
-     *  "res": {
-     *      "resources" {
-     *          "group_name": [{"url": [file, ...], "async": true|false},
-     *          ...
-     *      },
-     *      // zależności
-     *      "dependencies": {"framework": [], "core": ["framework"], "module": ["core"]},
-     *      // zasoby o nieokreślonej grupie
-     *      "unknown": [
-     *          {"url": [file, ...], "async": true|false},
-     *          ...
-     *      ]
-     *  }
-     * }
-     */
     for (k in data.res.resources) {
         if (data.res.resources.hasOwnProperty(k)) {
             jsloader.group(k, data.res.dependencies[k]);
@@ -55,18 +34,11 @@ var startapp = function(data) {
     }
 
     jsloader.onLoad('framework', function () {
-        jQuery.app.define("path_base", data.path.base);
-        jQuery.app.define("path_webui", data.path.webui);
-        jQuery.app.define("path_webui_engine", data.path.webui_engine);
-        jQuery.app.trans.add(data.translations);
-
-        // webui vendors
-        require(["webui-vendor"], function (vendor) {
-            vendor(data.path.webui);
+        require(['webui-vendor'], function (vendor) {
+            vendor(data.path.webui, data.locale);
         });
 
-        // webui css loader
-        require(["webui-cssloader", "webui-vendor-css"], function (loader, paths) {
+        require(['webui-cssloader', 'webui-vendor-css'], function (loader, paths) {
             loader.timeout(data.timeout);
             loader.mode('static');
             loader.setBasePath(data.path.webui);
@@ -77,5 +49,14 @@ var startapp = function(data) {
         });
     });
 
+    jsloader.onLoad('core', function () {
+        require(['jquery'], function ($) {
+            $.app.define("path_base", data.path.base);
+            $.app.define("path_webui", data.path.webui);
+            $.app.define("path_webui_engine", data.path.webui_engine);
+            $.app.trans.add(data.translations);
+        });
+    });
+
     startapp = undefined;
-};
+}

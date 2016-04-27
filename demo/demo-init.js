@@ -18,7 +18,8 @@ startapp({
         },
         "unknown": []
     },
-    "translations":{},
+    "translations": {},
+    "locale": "en",
     "path": {
         "base": "./",
         "webui": "../webui",

@@ -1,9 +1,0 @@
-https://github.com/brianreavis/selectize.js/issues/749
-
-Problem z opcją allowEmptyOption.
-
-zamiana:
-if (!key || this.options.hasOwnProperty(key)) return false;
-
-na:
-if ((!key || this.options.hasOwnProperty(key)) && !this.settings.allowEmptyOption) return false;

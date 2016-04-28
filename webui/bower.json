@@ -1,6 +1,7 @@
 {
     "name": "WebUI vendor",
     "dependencies": {
+        "webui-tinymce": "4.1.9",
         "vsymfo-tinymce-helper": "~0.0.2",
         "chartjs": "~1.0.1",
         "chartjs-type-linealt": "~0.0.4",

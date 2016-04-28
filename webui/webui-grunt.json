@@ -14,6 +14,10 @@
         {
             "directory": "select2/dist/js/i18n",
             "src": "**"
+        },
+        {
+            "directory": "webui-tinymce",
+            "src": "**"
         }
     ]
 }

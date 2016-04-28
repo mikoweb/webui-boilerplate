@@ -35,14 +35,14 @@ function startapp (data) {
 
     jsloader.onLoad('framework', function () {
         require(['webui-vendor'], function (vendor) {
-            vendor(data.path.webui, data.locale);
+            vendor(data.path.webui, data.locale, data.requirejs);
         });
 
-        require(['webui-cssloader', 'webui-vendor-css'], function (loader, paths) {
+        require(['webui-cssloader'], function (loader) {
             loader.timeout(data.timeout);
             loader.mode('static');
             loader.setBasePath(data.path.webui);
-            loader.definePath(paths);
+            loader.definePath(data.cssloader);
             if (data.css_callback_timeout !== undefined) {
                 loader.setCallbackTimeout(data.css_callback_timeout);
             }

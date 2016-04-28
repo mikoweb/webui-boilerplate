@@ -27,53 +27,31 @@
         });
     }
 
-    var used = false, vendorCss;
-    function vendor(path, locale) {
+    var used = false;
+    function vendor(path, locale, config) {
         if (!used) {
-            var pathPart = document.createElement('a');
+            var pathPart = document.createElement('a'), key;
             pathPart.href= path;
             locale = locale || 'en';
 
-            require.config({
-                'paths': {
-                    'tinymce':  pathPart.pathname + '/vendor/webui-tinymce/tinymce.min',
-                    'tinymce.jquery': pathPart.pathname + '/vendor/webui-tinymce/jquery.tinymce.min',
-                    'tinymce.helper': path + '/vendor/vsymfo-tinymce-helper/tinymce.helper.min',
-                    'chartjs': path + '/vendor/chartjs/Chart.min',
-                    'chartjs.type.linealt': path + '/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
-                    'highcharts': path + '/vendor/highcharts-release/highcharts',
-                    'jquery.smooth-scroll': path + '/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
-                    'jquery.easing': path + '/vendor/jquery.easing/js/jquery.easing.min',
-                    'jquery.sortable': path + '/vendor/jquery-sortable/source/js/jquery-sortable-min',
-                    'tinysort': path + '/vendor/tinysort/dist/tinysort.min',
-                    'bootstrap-paginator': path + '/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
-                    'select2': path + '/vendor/select2/dist/js/select2.full.min'
-                },
-                'shim': {
-                    'tinymce': {
-                        exports: 'tinymce'
-                    },
-                    'tinymce.jquery': ['jquery', 'tinymce'],
-                    'highcharts': {
-                        deps: ['jquery'],
-                        exports: 'Highcharts'
+            if (config.paths) {
+                for (key in config.paths) {
+                    if (config.paths.hasOwnProperty(key)) {
+                        config.paths[key] = config.paths[key]
+                            .replace(/\{\{path\}\}/g, path)
+                            .replace(/\{\{pathname\}\}/g, pathPart.pathname)
+                            .replace(/\{\{locale\}\}/g, locale)
+                        ;
                     }
                 }
-            });
+            }
 
+            require.config(config);
             used = true;
         }
     }
 
     define('webui-vendor', function () {
         return vendor;
-    });
-
-    vendorCss = {
-        'select2': 'style/select2/select2'
-    };
-
-    define('webui-vendor-css', function () {
-        return vendorCss;
     });
 }());

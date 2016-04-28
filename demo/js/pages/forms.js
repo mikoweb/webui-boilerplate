@@ -8,7 +8,7 @@ require(['jquery', 'jquery.app', 'select2', 'webui-cssloader'], function ($, app
 
         $('#input-tags').select2({
             tags: true,
-            tokenSeparators: [','],
+            tokenSeparators: [',']
         });
 
         $('#select-gear').select2();

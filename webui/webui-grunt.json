@@ -8,6 +8,12 @@
         "jquery.easing/js/jquery.easing.min.js",
         "jquery-sortable/source/js/jquery-sortable-min.js",
         "tinysort/dist/tinysort.min.js",
-        "bootstrap-paginator/build/bootstrap-paginator.min.js"
+        "bootstrap-paginator/build/bootstrap-paginator.min.js",
+        "select2/dist/js/select2.full.min.js",
+        "select2/dist/js/select2.min.js",
+        {
+            "directory": "select2/dist/js/i18n",
+            "src": "**"
+        }
     ]
 }

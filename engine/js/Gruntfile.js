@@ -4,6 +4,7 @@ module.exports = function (grunt) {
         concat: {
             build: {
                 src: [
+                    "marionette-fix.js",
                     "modernizr/modernizr.custom.js",
                     "modernizr/modernizr.es5.js",
                     "modernizr/isarray.js",

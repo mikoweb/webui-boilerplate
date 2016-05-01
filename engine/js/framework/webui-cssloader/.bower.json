@@ -1,6 +1,6 @@
 {
   "name": "webui-cssloader",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "homepage": "https://github.com/mikoweb/webui-cssloader",
   "authors": [
     "Rafał Mikołajun <rafal@vision-web.pl>"
@@ -19,13 +19,13 @@
     "qunit": "~1.22",
     "requirejs": "~2.2"
   },
-  "_release": "0.2.1",
+  "_release": "0.3.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.2.1",
-    "commit": "3ee3671733dbd9809551369fe65773de84199509"
+    "tag": "v0.3.0",
+    "commit": "fe268b092bc3d8017002ea34920ad8a76f41275f"
   },
   "_source": "https://github.com/mikoweb/webui-cssloader.git",
-  "_target": "~0.2.1",
+  "_target": "~0.3",
   "_originalSource": "webui-cssloader"
 }

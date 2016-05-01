@@ -168,40 +168,52 @@
 
     /**
      * Ładowanie arkusza
-     * @param {string} filename
+     * @param {String|Array} filename
      * @param {Function} [callback]
      * @param {Object} [elemAttributes]
-     * @param {int} [callTimeout]
+     * @param {number} [callTimeout]
      */
     function inject(filename, callback, elemAttributes, callTimeout) {
-        var path, ctimeout;
+        var path, multipleCallback, multipleLoads = 0, i,
+            ctimeout = callTimeout || callbackTimeout;
 
-        if (callTimeout) {
-            ctimeout = callTimeout;
+        if (Array.isArray(filename)) {
+            multipleCallback = function () {
+                ++multipleLoads;
+                if (multipleLoads === filename.length && callback) {
+                    callback();
+                }
+            };
+
+            for (i = 0; i < filename.length; ++i) {
+                if (typeof filename[i] !== 'string') {
+                    throw new TypeError('Filename is not string');
+                }
+
+                inject(filename[i], multipleCallback, elemAttributes, callTimeout);
+            }
         } else {
-            ctimeout = callbackTimeout;
-        }
+            if (filename.charAt(0) === '@' && getPath(filename.substring(1)) !== undefined) {
+                filename = getPath(filename.substring(1));
+            }
 
-        if (filename.charAt(0) === '@' && getPath(filename.substring(1)) !== undefined) {
-            filename = getPath(filename.substring(1));
-        }
+            switch (injectMode) {
+                case 'dynamic':
+                    path = patternPath.replace("{package-name}", encodeURIComponent(filename).replace(/%2F/g, "|"));
+                    break;
+                case 'static':
+                default:
+                    path = basePath + '/' + filename + '.css';
+            }
 
-        switch (injectMode) {
-            case 'dynamic':
-                path = patternPath.replace("{package-name}", encodeURIComponent(filename).replace(/%2F/g, "|"));
-                break;
-            case 'static':
-            default:
-                path = basePath + '/' + filename + '.css';
-        }
+            path = getDomainPath() + path;
 
-        path = getDomainPath() + path;
-
-        if (injected[path] === undefined) {
-            injected[path] = true;
-            styleSheetCreate(path, callback || function () {}, elemAttributes, ctimeout);
-        } else if (callback) {
-            callback();
+            if (injected[path] === undefined) {
+                injected[path] = true;
+                styleSheetCreate(path, callback || function () {}, elemAttributes, ctimeout);
+            } else if (callback) {
+                callback();
+            }
         }
     }
 

@@ -39,7 +39,6 @@ function startapp (data) {
         });
 
         require(['webui-cssloader'], function (loader) {
-            loader.timeout(data.timeout);
             loader.mode('static');
             loader.setBasePath(data.path.webui);
             loader.definePath(data.cssloader);

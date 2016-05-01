@@ -1,0 +1,114 @@
+<h1>Forms</h1>
+<form class="form">
+    <fieldset>
+        <legend>Selectbox</legend>
+        <div class="form-group">
+            <label for="select-field">Native Select</label>
+            <div class="input-group" title="lorem ipsum" data-placement="top">
+                <select class="form-control" id="select-field" required>
+                    <option value="">wybierz</option>
+                    <option>test</option>
+                </select>
+                <span class="input-group-addon">.00</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select-field-sm">Native Select</label>
+            <select class="form-control form-control-sm" title="lorem ipsum" data-placement="top" id="select-field-sm">
+                <option value="">wybierz</option>
+                <option>test</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select-field-lg">Native Select</label>
+            <select class="form-control form-control-lg" title="lorem ipsum" data-placement="top" id="select-field-lg">
+                <option value="">wybierz</option>
+                <option>test</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select2_1">Select2</label>
+            <select class="form-control select" id="select2_1">
+                <option value="AL">Alabama</option>
+                <option value="WY">Wyoming</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select2_2">Select2</label>
+            <div class="input-group">
+                <select required class="form-control select" id="select2_2">
+                    <option value="">wybierz</option>
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+                <span class="input-group-addon">.00</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select2_3">Select2</label>
+            <div class="input-group">
+                <span class="input-group-addon">.00</span>
+                <select class="form-control select" id="select2_3">
+                    <option value="">wybierz</option>
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select2_4">Select2</label>
+            <div class="input-group">
+                <span class="input-group-addon">.00</span>
+                <select class="form-control form-control-lg select" id="select2_4">
+                    <option value="">wybierz</option>
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="select2_5">Select2</label>
+            <div class="input-group">
+                <span class="input-group-addon">.00</span>
+                <select class="form-control form-control-sm select" id="select2_5" multiple>
+                    <option value="AL">Alabama</option>
+                    <option value="WY">Wyoming</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Tagging</legend>
+        <div class="form-group">
+            <label for="input-tags">Tags</label>
+            <select id="input-tags" class="form-control select_tags" multiple></select>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Option Groups</legend>
+        <div class="form-group">
+            <label for="select-gear">Gear</label>
+            <select id="select-gear" class="form-control select">
+                <optgroup label="Default value">
+                    <option value="">Select gear...</option>
+                </optgroup>
+                <optgroup label="Climbing">
+                    <option value="pitons">Pitons</option>
+                    <option value="cams">Cams</option>
+                    <option value="nuts">Nuts</option>
+                    <option value="bolts">Bolts</option>
+                    <option value="stoppers">Stoppers</option>
+                    <option value="sling">Sling</option>
+                </optgroup>
+                <optgroup label="Skiing">
+                    <option value="skis">Skis</option>
+                    <option value="skins">Skins</option>
+                    <option value="poles">Poles</option>
+                </optgroup>
+            </select>
+        </div>
+    </fieldset>
+    <fieldset class="form-group" style="height: 200px;">
+        <button class="btn btn-primary" type="submit">Test</button>
+    </fieldset>
+</form>

@@ -1,0 +1,9 @@
+.body--preloader {
+    height: 100vh;
+    background: url('images/body-preloader.gif') center no-repeat;
+}
+
+.container--preloader {
+    min-height: 400px;
+    background: url('images/body-preloader.gif') center no-repeat;
+}

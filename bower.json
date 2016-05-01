@@ -1,12 +1,12 @@
 {
     "name": "WebUI complete package",
-    "version": "0.1.2",
-    "homepage": "http://vision-web.pl",
+    "version": "0.2.0",
+    "homepage": "https://github.com/mikoweb",
     "authors": [
-        "Rafał Mikołajun <rafal@vision-web.pl>"
+        "Rafał Mikołajun <rafal@mikoweb.pl>"
     ],
     "main": "engine/startapp.js",
-    "license": "CC-BY-NC-ND",
+    "license": "GPLv3",
     "ignore": [
         "LICENSE",
         "demo"

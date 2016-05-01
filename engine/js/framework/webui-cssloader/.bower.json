@@ -1,11 +1,11 @@
 {
   "name": "webui-cssloader",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/mikoweb/webui-cssloader",
   "authors": [
     "Rafał Mikołajun <rafal@vision-web.pl>"
   ],
-  "description": "Loader arkuszy stylów dla WebUI.",
+  "description": "Dynamically loading CSS files",
   "main": "webui-cssloader.js",
   "keywords": [
     "webui",
@@ -13,13 +13,19 @@
     "css loader"
   ],
   "license": "GPLv2",
-  "_release": "0.2.0",
+  "ignore": [],
+  "devDependencies": {
+    "jquery": "~2.2",
+    "qunit": "~1.22",
+    "requirejs": "~2.2"
+  },
+  "_release": "0.2.1",
   "_resolution": {
     "type": "version",
-    "tag": "0.2.0",
-    "commit": "3b619d88a9f986d3b8efbe965c4b4166a6243d46"
+    "tag": "v0.2.1",
+    "commit": "3ee3671733dbd9809551369fe65773de84199509"
   },
-  "_source": "git://github.com/mikoweb/webui-cssloader.git",
-  "_target": "~0.2.0",
+  "_source": "https://github.com/mikoweb/webui-cssloader.git",
+  "_target": "~0.2.1",
   "_originalSource": "webui-cssloader"
 }

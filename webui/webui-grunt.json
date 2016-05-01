@@ -1,6 +1,8 @@
 {
     "copy": [
+        "requirejs-text/text.js",
         "vsymfo-tinymce-helper/tinymce.helper.min.js",
+        "nunjucks/browser/nunjucks.min.js",
         "chartjs/Chart.min.js",
         "chartjs-type-linealt/chartjs-type-linealt.min.js",
         "highcharts-release/highcharts.js",

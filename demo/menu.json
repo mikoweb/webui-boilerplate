@@ -1,0 +1,28 @@
+[
+    {
+        "id": "index",
+        "name": "WebUI",
+        "href": "#page/index",
+        "default": true
+    },
+    {
+        "id": "editot",
+        "name": "Editor",
+        "href": "#page/editor"
+    },
+    {
+        "id": "forms",
+        "name": "Forms",
+        "href": "#page/forms"
+    },
+    {
+        "id": "charts",
+        "name": "Charts",
+        "href": "#page/charts"
+    },
+    {
+        "id": "sortable",
+        "name": "Sortable",
+        "href": "#page/sortable"
+    }
+]

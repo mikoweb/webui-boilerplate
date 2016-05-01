@@ -17376,17 +17376,9 @@ var requirejs, require, define;
 (function () {
     "use strict";
 
-    var timeout = 5000, module, injected = {}, injectMode = 'static', domainPath = '',
+    var module, injected = {}, injectMode = 'static', domainPath = '',
         basePath = '.', patternPath = './{package-name}', definitions = {},
         head = document.getElementsByTagName('head')[0], callbackTimeout = 0;
-
-    /**
-     * Maksymalny czas wczytywania arkusza
-     * @param {int} time
-     */
-    function setLoadTimeout(time) {
-        timeout = time;
-    }
 
     /**
      * Opóźnienie wykonywania callbacka po wczytyaniu arkusza.
@@ -17464,9 +17456,7 @@ var requirejs, require, define;
     function styleSheetCreate(href, callback, elemAttributes, timeout) {
         var link = document.createElement('link'), prop, called = false, cssnum, ti;
 
-        if (timeout === undefined) {
-            timeout = 0;
-        }
+        timeout = timeout || 0;
 
         if (typeof elemAttributes !== "object") {
             elemAttributes = {};
@@ -17569,12 +17559,9 @@ var requirejs, require, define;
 
         if (injected[path] === undefined) {
             injected[path] = true;
-
-            if (callback) {
-                styleSheetCreate(path, callback, elemAttributes, ctimeout);
-            } else {
-                styleSheetCreate(path, function () {}, elemAttributes, ctimeout);
-            }
+            styleSheetCreate(path, callback || function () {}, elemAttributes, ctimeout);
+        } else if (callback) {
+            callback();
         }
     }
 
@@ -17623,7 +17610,6 @@ var requirejs, require, define;
     }
 
     module = {
-        timeout: setLoadTimeout,
         inject: inject,
         mode: setInjectMode,
         setDomainPath: setDomainPath,

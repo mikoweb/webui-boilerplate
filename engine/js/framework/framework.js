@@ -16706,7 +16706,7 @@ var Popover = (function ($) {
   }
 }.call(this));
 
-//     Backbone.js 1.3.2
+//     Backbone.js 1.3.3
 
 //     (c) 2010-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 //     Backbone may be freely distributed under the MIT license.
@@ -16752,7 +16752,7 @@ var Popover = (function ($) {
   var slice = Array.prototype.slice;
 
   // Current version of the library. Keep in sync with `package.json`.
-  Backbone.VERSION = '1.3.2';
+  Backbone.VERSION = '1.3.3';
 
   // For Backbone's purposes, jQuery, Zepto, Ender, or My Library (kidding) owns
   // the `$` variable.
@@ -20846,17 +20846,9 @@ var requirejs, require, define;
 (function () {
     "use strict";
 
-    var timeout = 5000, module, injected = {}, injectMode = 'static', domainPath = '',
+    var module, injected = {}, injectMode = 'static', domainPath = '',
         basePath = '.', patternPath = './{package-name}', definitions = {},
         head = document.getElementsByTagName('head')[0], callbackTimeout = 0;
-
-    /**
-     * Maksymalny czas wczytywania arkusza
-     * @param {int} time
-     */
-    function setLoadTimeout(time) {
-        timeout = time;
-    }
 
     /**
      * Opóźnienie wykonywania callbacka po wczytyaniu arkusza.
@@ -20934,9 +20926,7 @@ var requirejs, require, define;
     function styleSheetCreate(href, callback, elemAttributes, timeout) {
         var link = document.createElement('link'), prop, called = false, cssnum, ti;
 
-        if (timeout === undefined) {
-            timeout = 0;
-        }
+        timeout = timeout || 0;
 
         if (typeof elemAttributes !== "object") {
             elemAttributes = {};
@@ -21039,12 +21029,9 @@ var requirejs, require, define;
 
         if (injected[path] === undefined) {
             injected[path] = true;
-
-            if (callback) {
-                styleSheetCreate(path, callback, elemAttributes, ctimeout);
-            } else {
-                styleSheetCreate(path, function () {}, elemAttributes, ctimeout);
-            }
+            styleSheetCreate(path, callback || function () {}, elemAttributes, ctimeout);
+        } else if (callback) {
+            callback();
         }
     }
 
@@ -21093,7 +21080,6 @@ var requirejs, require, define;
     }
 
     module = {
-        timeout: setLoadTimeout,
         inject: inject,
         mode: setInjectMode,
         setDomainPath: setDomainPath,

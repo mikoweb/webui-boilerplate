@@ -1,10 +1,19 @@
 {
-    "name": "WebUI complete package",
-    "version": "0.2.2",
+    "name": "webui",
+    "description": "Web User Interface to build dynamic apps in browser",
     "homepage": "https://github.com/mikoweb",
     "authors": [
         "Rafał Mikołajun <rafal@mikoweb.pl>"
     ],
+    "keywords": [
+        "webui",
+        "ui",
+        "gui",
+        "requirejs",
+        "backbone",
+        "marionette"
+    ],
+    "moduleType": "amd",
     "main": "engine/startapp.js",
     "license": "GPLv3",
     "ignore": [

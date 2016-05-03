@@ -14,6 +14,10 @@
         "select2/dist/js/select2.full.min.js",
         "select2/dist/js/select2.min.js",
         {
+            "directory": "select2/src/scss",
+            "src": "**"
+        },
+        {
             "directory": "select2/dist/js/i18n",
             "src": "**"
         },

@@ -35,7 +35,7 @@
                 "nunjucks": "{{path}}/vendor/nunjucks/browser/nunjucks.min",
                 "tinymce": "{{pathname}}/vendor/webui-tinymce/tinymce.min",
                 "tinymce.jquery": "{{pathname}}/vendor/webui-tinymce/jquery.tinymce.min",
-                "tinymce.helper": "{{path}}/vendor/vsymfo-tinymce-helper/tinymce.helper.min",
+                "tinymce.helper": "{{path}}/vendor/webui-tinymce-helper/tinymce.helper.min",
                 "chartjs": "{{path}}/vendor/chartjs/Chart.min",
                 "chartjs.type.linealt": "{{path}}/vendor/chartjs-type-linealt/chartjs-type-linealt.min",
                 "highcharts": "{{path}}/vendor/highcharts-release/highcharts",

@@ -3,7 +3,6 @@
 
     startapp({
         "timeout": 60000,
-        "css_callback_timeout": 300,
         "res": {
             "resources": {
                 "framework": [{

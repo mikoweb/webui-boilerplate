@@ -53,3 +53,9 @@ Call the `startapp` function with certain options e.g [demo-init.js](https://git
 
 See the source code [demo](https://github.com/mikoweb/webui/tree/master/demo).
 
+## License
+
+This library is under the GPLv3 license. See the complete license in the file:
+
+    LICENSE
+

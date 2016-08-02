@@ -1,5 +1,5 @@
 {
-    "name": "WebUI vendor",
+    "name": "WebUI demo",
     "dependencies": {
         "requirejs-text": "~2.0.15",
         "webui-tinymce": "4.3.11",

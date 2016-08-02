@@ -1,6 +1,6 @@
 ## Installation
 
-Install WebUI cli.
+Install WebUI CLI.
 
 Look here:
 [Command line tool to install WebUI](https://github.com/mikoweb/node-webui-installer)
@@ -11,9 +11,9 @@ Create a file `webui.json`:
 
 ```javascript
 {
-    "version": "~0.2.3",            // which version to install?
+    "version": "~0.2.6",            // which version to install?
     "directory": "web/js",          // the directory where you installed a library
-    "bowerDir": "./"                // the directory where the bower.json
+    "bowerDir": "./"                // (optional) the directory where the bower.json
 }
 ```
 
@@ -25,7 +25,7 @@ Adding dependencies to [bower.json](https://github.com/bower/spec):
 }
 ```
 
-Create a file `webui-grunt.json` to define which files are to be copied to the vendor e.g:
+Create a file (optional) `webui-grunt.json` to define which files are to be copied to the vendor e.g:
 
 ```javascript
 {

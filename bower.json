@@ -15,7 +15,7 @@
     ],
     "moduleType": "amd",
     "main": "engine/startapp.js",
-    "license": "GPLv3",
+    "license": "LGPLv3",
     "ignore": [
         "LICENSE",
         "demo"

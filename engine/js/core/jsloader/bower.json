@@ -1,6 +1,6 @@
 {
     "name": "jsloader",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "homepage": "https://github.com/mikoweb/jsloader",
     "authors": [
         "Rafał Mikołajun <rafal@mikoweb.pl>"
@@ -13,12 +13,15 @@
         "loader",
         "script inject"
     ],
-    "license": "GPLv2",
+    "license": "LGPLv3",
     "dependencies": {
         "yepnope": "1.5.4"
     },
     "devDependencies": {
         "jquery": "~2.2",
         "qunit": "~1.22"
-    }
+    },
+    "ignore": [
+        "tests"
+    ]
 }

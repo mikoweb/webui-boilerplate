@@ -15,7 +15,7 @@
     "tag": "0.0.1",
     "commit": "6b8a81dc23a78b83eb2933b9319c0b58a5245387"
   },
-  "_source": "git://github.com/mikoweb/jquery-sprintf.git",
+  "_source": "https://github.com/mikoweb/jquery-sprintf.git",
   "_target": "~0.0.1",
   "_originalSource": "jquery-sprintf"
 }

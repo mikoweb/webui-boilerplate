@@ -2,7 +2,7 @@
  * Kontener aplikacji
  * @author Rafał Mikołajun <rafal@vision-web.pl>
  * @copyright 2014 Rafał Mikołajun
- * @license GPL v2
+ * @license LGPLv3
  */
 
 (function ($) {

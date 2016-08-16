@@ -10,7 +10,7 @@
  * @author Rafał Mikołajun <rafal@vision-web.pl>
  * @package WebUI
  * @copyright 2014 Rafał Mikołajun
- * @license GPL v2
+ * @license LGPLv3
  */
 
 (function () {

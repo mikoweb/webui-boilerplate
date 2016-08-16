@@ -1,6 +1,6 @@
 {
     "name": "webui-cssloader",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "homepage": "https://github.com/mikoweb/webui-cssloader",
     "authors": [
         "Rafał Mikołajun <rafal@vision-web.pl>"
@@ -12,8 +12,10 @@
         "vsymfo",
         "css loader"
     ],
-    "license": "GPLv2",
-    "ignore": [],
+    "license": "LGPLv3",
+    "ignore": [
+        "tests"
+    ],
     "devDependencies": {
         "jquery": "~2.2",
         "qunit": "~1.22",

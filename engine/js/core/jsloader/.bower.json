@@ -1,6 +1,6 @@
 {
   "name": "jsloader",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "homepage": "https://github.com/mikoweb/jsloader",
   "authors": [
     "Rafał Mikołajun <rafal@mikoweb.pl>"
@@ -13,7 +13,7 @@
     "loader",
     "script inject"
   ],
-  "license": "GPLv2",
+  "license": "LGPLv3",
   "dependencies": {
     "yepnope": "1.5.4"
   },
@@ -21,13 +21,16 @@
     "jquery": "~2.2",
     "qunit": "~1.22"
   },
-  "_release": "0.0.3",
+  "ignore": [
+    "tests"
+  ],
+  "_release": "0.0.4",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.3",
-    "commit": "b8926e215a44bea93448a662516f4319579aeb0d"
+    "tag": "0.0.4",
+    "commit": "bc28e338bd672a06f5bdf7705927c993bdf2c4e8"
   },
   "_source": "https://github.com/mikoweb/jsloader.git",
-  "_target": "~0.0.3",
+  "_target": "~0.0.4",
   "_originalSource": "jsloader"
 }

@@ -37,7 +37,7 @@
     "tag": "3.0.2",
     "commit": "6d4062fe0a663167080b50f7665cdb26874f7510"
   },
-  "_source": "git://github.com/scottjehl/picturefill.git",
+  "_source": "https://github.com/scottjehl/picturefill.git",
   "_target": "~3.0.1",
   "_originalSource": "picturefill"
 }

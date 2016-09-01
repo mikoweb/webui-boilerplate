@@ -1,894 +1,670 @@
-if (typeof global === 'undefined' && window !== 'undefined') {
-    var global = window;   
+/*!
+ * modernizr v3.3.1
+ * Build https://modernizr.com/download?-es5array-es5date-es5function-es5object-es5string-touchevents-setclasses-dontmin
+ *
+ * Copyright (c)
+ *  Faruk Ates
+ *  Paul Irish
+ *  Alex Sexton
+ *  Ryan Seddon
+ *  Patrick Kettner
+ *  Stu Cox
+ *  Richard Herrera
+
+ * MIT License
+ */
+
+/*
+ * Modernizr tests which native CSS3 and HTML5 features are available in the
+ * current UA and makes the results available to you in two ways: as properties on
+ * a global `Modernizr` object, and as classes on the `<html>` element. This
+ * information allows you to progressively enhance your pages with a granular level
+ * of control over the experience.
+*/
+
+;(function(window, document, undefined){
+  var classes = [];
+  
+
+  var tests = [];
+  
+
+  /**
+   *
+   * ModernizrProto is the constructor for Modernizr
+   *
+   * @class
+   * @access public
+   */
+
+  var ModernizrProto = {
+    // The current version, dummy
+    _version: '3.3.1',
+
+    // Any settings that don't work as separate modules
+    // can go in here as configuration.
+    _config: {
+      'classPrefix': '',
+      'enableClasses': true,
+      'enableJSClass': true,
+      'usePrefixes': true
+    },
+
+    // Queue of tests
+    _q: [],
+
+    // Stub these for people who are listening
+    on: function(test, cb) {
+      // I don't really think people should do this, but we can
+      // safe guard it a bit.
+      // -- NOTE:: this gets WAY overridden in src/addTest for actual async tests.
+      // This is in case people listen to synchronous tests. I would leave it out,
+      // but the code to *disallow* sync tests in the real version of this
+      // function is actually larger than this.
+      var self = this;
+      setTimeout(function() {
+        cb(self[test]);
+      }, 0);
+    },
+
+    addTest: function(name, fn, options) {
+      tests.push({name: name, fn: fn, options: options});
+    },
+
+    addAsyncTest: function(fn) {
+      tests.push({name: null, fn: fn});
+    }
+  };
+
+  
+
+  // Fake some of Object.create so we can force non test results to be non "own" properties.
+  var Modernizr = function() {};
+  Modernizr.prototype = ModernizrProto;
+
+  // Leak modernizr globally when you `require` it rather than force it here.
+  // Overwrite name so constructor name is nicer :D
+  Modernizr = new Modernizr();
+
+  
+/*!
+{
+  "name": "ES5 Array",
+  "property": "es5array",
+  "notes": [{
+    "name": "ECMAScript 5.1 Language Specification",
+    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+  }],
+  "polyfills": ["es5shim"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "tags": ["es5"]
 }
-/* Modernizr 2.8.3 (Custom Build) | MIT & BSD
- * Build: http://modernizr.com/download/#-fontface-backgroundsize-borderimage-borderradius-boxshadow-flexbox-hsla-multiplebgs-opacity-rgba-textshadow-cssanimations-csscolumns-generatedcontent-cssgradients-cssreflections-csstransforms-csstransforms3d-csstransitions-applicationcache-canvas-canvastext-draganddrop-hashchange-history-audio-video-indexeddb-input-inputtypes-localstorage-postmessage-sessionstorage-websockets-websqldatabase-webworkers-geolocation-inlinesvg-smil-svg-svgclippaths-touch-webgl-shiv-cssclasses-addtest-prefixed-teststyles-testprop-testallprops-hasevent-prefixes-domprefixes
- */
+!*/
+/* DOC
+Check if browser implements ECMAScript 5 Array per specification.
+*/
+
+  Modernizr.addTest('es5array', function() {
+    return !!(Array.prototype &&
+      Array.prototype.every &&
+      Array.prototype.filter &&
+      Array.prototype.forEach &&
+      Array.prototype.indexOf &&
+      Array.prototype.lastIndexOf &&
+      Array.prototype.map &&
+      Array.prototype.some &&
+      Array.prototype.reduce &&
+      Array.prototype.reduceRight &&
+      Array.isArray);
+  });
+
+/*!
+{
+  "name": "ES5 Date",
+  "property": "es5date",
+  "notes": [{
+    "name": "ECMAScript 5.1 Language Specification",
+    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+  }],
+  "polyfills": ["es5shim"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "tags": ["es5"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 5 Date per specification.
+*/
+
+  Modernizr.addTest('es5date', function() {
+    var isoDate = '2013-04-12T06:06:37.307Z',
+      canParseISODate = false;
+    try {
+      canParseISODate = !!Date.parse(isoDate);
+    } catch (e) {
+      // no ISO date parsing yet
+    }
+    return !!(Date.now &&
+      Date.prototype &&
+      Date.prototype.toISOString &&
+      Date.prototype.toJSON &&
+      canParseISODate);
+  });
+
+/*!
+{
+  "name": "ES5 Function",
+  "property": "es5function",
+  "notes": [{
+    "name": "ECMAScript 5.1 Language Specification",
+    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+  }],
+  "polyfills": ["es5shim"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "tags": ["es5"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 5 Function per specification.
+*/
+
+  Modernizr.addTest('es5function', function() {
+    return !!(Function.prototype && Function.prototype.bind);
+  });
+
+/*!
+{
+  "name": "ES5 Object",
+  "property": "es5object",
+  "notes": [{
+    "name": "ECMAScript 5.1 Language Specification",
+    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+  }],
+  "polyfills": ["es5shim", "es5sham"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "tags": ["es5"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 5 Object per specification.
+*/
+
+  Modernizr.addTest('es5object', function() {
+    return !!(Object.keys &&
+      Object.create &&
+      Object.getPrototypeOf &&
+      Object.getOwnPropertyNames &&
+      Object.isSealed &&
+      Object.isFrozen &&
+      Object.isExtensible &&
+      Object.getOwnPropertyDescriptor &&
+      Object.defineProperty &&
+      Object.defineProperties &&
+      Object.seal &&
+      Object.freeze &&
+      Object.preventExtensions);
+  });
+
+/*!
+{
+  "name": "ES5 String",
+  "property": "es5string",
+  "notes": [{
+    "name": "ECMAScript 5.1 Language Specification",
+    "href": "http://www.ecma-international.org/ecma-262/5.1/"
+  }],
+  "polyfills": ["es5shim"],
+  "authors": ["Ron Waldon (@jokeyrhyme)"],
+  "tags": ["es5"]
+}
+!*/
+/* DOC
+Check if browser implements ECMAScript 5 String per specification.
+*/
+
+  Modernizr.addTest('es5string', function() {
+    return !!(String.prototype && String.prototype.trim);
+  });
+
+
+  /**
+   * is returns a boolean if the typeof an obj is exactly type.
+   *
+   * @access private
+   * @function is
+   * @param {*} obj - A thing we want to check the type of
+   * @param {string} type - A string to compare the typeof against
+   * @returns {boolean}
+   */
+
+  function is(obj, type) {
+    return typeof obj === type;
+  }
+  ;
+
+  /**
+   * Run through all tests and detect their support in the current UA.
+   *
+   * @access private
+   */
+
+  function testRunner() {
+    var featureNames;
+    var feature;
+    var aliasIdx;
+    var result;
+    var nameIdx;
+    var featureName;
+    var featureNameSplit;
+
+    for (var featureIdx in tests) {
+      if (tests.hasOwnProperty(featureIdx)) {
+        featureNames = [];
+        feature = tests[featureIdx];
+        // run the test, throw the return value into the Modernizr,
+        // then based on that boolean, define an appropriate className
+        // and push it into an array of classes we'll join later.
+        //
+        // If there is no name, it's an 'async' test that is run,
+        // but not directly added to the object. That should
+        // be done with a post-run addTest call.
+        if (feature.name) {
+          featureNames.push(feature.name.toLowerCase());
+
+          if (feature.options && feature.options.aliases && feature.options.aliases.length) {
+            // Add all the aliases into the names list
+            for (aliasIdx = 0; aliasIdx < feature.options.aliases.length; aliasIdx++) {
+              featureNames.push(feature.options.aliases[aliasIdx].toLowerCase());
+            }
+          }
+        }
+
+        // Run the test, or use the raw value if it's not a function
+        result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
+
+
+        // Set each of the names on the Modernizr object
+        for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
+          featureName = featureNames[nameIdx];
+          // Support dot properties as sub tests. We don't do checking to make sure
+          // that the implied parent tests have been added. You must call them in
+          // order (either in the test, or make the parent test a dependency).
+          //
+          // Cap it to TWO to make the logic simple and because who needs that kind of subtesting
+          // hashtag famous last words
+          featureNameSplit = featureName.split('.');
+
+          if (featureNameSplit.length === 1) {
+            Modernizr[featureNameSplit[0]] = result;
+          } else {
+            // cast to a Boolean, if not one already
+            /* jshint -W053 */
+            if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+              Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
+            }
+
+            Modernizr[featureNameSplit[0]][featureNameSplit[1]] = result;
+          }
+
+          classes.push((result ? '' : 'no-') + featureNameSplit.join('-'));
+        }
+      }
+    }
+  }
+  ;
+
+  /**
+   * docElement is a convenience wrapper to grab the root element of the document
+   *
+   * @access private
+   * @returns {HTMLElement|SVGElement} The root element of the document
+   */
+
+  var docElement = document.documentElement;
+  
+
+  /**
+   * A convenience helper to check if the document we are running in is an SVG document
+   *
+   * @access private
+   * @returns {boolean}
+   */
+
+  var isSVG = docElement.nodeName.toLowerCase() === 'svg';
+  
+
+  /**
+   * setClasses takes an array of class names and adds them to the root element
+   *
+   * @access private
+   * @function setClasses
+   * @param {string[]} classes - Array of class names
+   */
+
+  // Pass in an and array of class names, e.g.:
+  //  ['no-webp', 'borderradius', ...]
+  function setClasses(classes) {
+    var className = docElement.className;
+    var classPrefix = Modernizr._config.classPrefix || '';
+
+    if (isSVG) {
+      className = className.baseVal;
+    }
+
+    // Change `no-js` to `js` (independently of the `enableClasses` option)
+    // Handle classPrefix on this too
+    if (Modernizr._config.enableJSClass) {
+      var reJS = new RegExp('(^|\\s)' + classPrefix + 'no-js(\\s|$)');
+      className = className.replace(reJS, '$1' + classPrefix + 'js$2');
+    }
+
+    if (Modernizr._config.enableClasses) {
+      // Add the new classes
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
+      isSVG ? docElement.className.baseVal = className : docElement.className = className;
+    }
+
+  }
+
+  ;
+
+  /**
+   * List of property values to set for css tests. See ticket #21
+   * http://git.io/vUGl4
+   *
+   * @memberof Modernizr
+   * @name Modernizr._prefixes
+   * @optionName Modernizr._prefixes
+   * @optionProp prefixes
+   * @access public
+   * @example
+   *
+   * Modernizr._prefixes is the internal list of prefixes that we test against
+   * inside of things like [prefixed](#modernizr-prefixed) and [prefixedCSS](#-code-modernizr-prefixedcss). It is simply
+   * an array of kebab-case vendor prefixes you can use within your code.
+   *
+   * Some common use cases include
+   *
+   * Generating all possible prefixed version of a CSS property
+   * ```js
+   * var rule = Modernizr._prefixes.join('transform: rotate(20deg); ');
+   *
+   * rule === 'transform: rotate(20deg); webkit-transform: rotate(20deg); moz-transform: rotate(20deg); o-transform: rotate(20deg); ms-transform: rotate(20deg);'
+   * ```
+   *
+   * Generating all possible prefixed version of a CSS value
+   * ```js
+   * rule = 'display:' +  Modernizr._prefixes.join('flex; display:') + 'flex';
+   *
+   * rule === 'display:flex; display:-webkit-flex; display:-moz-flex; display:-o-flex; display:-ms-flex; display:flex'
+   * ```
+   */
+
+  // we use ['',''] rather than an empty array in order to allow a pattern of .`join()`ing prefixes to test
+  // values in feature detects to continue to work
+  var prefixes = (ModernizrProto._config.usePrefixes ? ' -webkit- -moz- -o- -ms- '.split(' ') : ['','']);
+
+  // expose these for the plugin API. Look in the source for how to join() them against your input
+  ModernizrProto._prefixes = prefixes;
+
+  
+
+  /**
+   * createElement is a convenience wrapper around document.createElement. Since we
+   * use createElement all over the place, this allows for (slightly) smaller code
+   * as well as abstracting away issues with creating elements in contexts other than
+   * HTML documents (e.g. SVG documents).
+   *
+   * @access private
+   * @function createElement
+   * @returns {HTMLElement|SVGElement} An HTML or SVG element
+   */
+
+  function createElement() {
+    if (typeof document.createElement !== 'function') {
+      // This is the case in IE7, where the type of createElement is "object".
+      // For this reason, we cannot call apply() as Object is not a Function.
+      return document.createElement(arguments[0]);
+    } else if (isSVG) {
+      return document.createElementNS.call(document, 'http://www.w3.org/2000/svg', arguments[0]);
+    } else {
+      return document.createElement.apply(document, arguments);
+    }
+  }
+
+  ;
+
+  /**
+   * getBody returns the body of a document, or an element that can stand in for
+   * the body if a real body does not exist
+   *
+   * @access private
+   * @function getBody
+   * @returns {HTMLElement|SVGElement} Returns the real body of a document, or an
+   * artificially created element that stands in for the body
+   */
+
+  function getBody() {
+    // After page load injecting a fake body doesn't work so check if body exists
+    var body = document.body;
+
+    if (!body) {
+      // Can't use the real body create a fake one.
+      body = createElement(isSVG ? 'svg' : 'body');
+      body.fake = true;
+    }
+
+    return body;
+  }
+
+  ;
+
+  /**
+   * injectElementWithStyles injects an element with style element and some CSS rules
+   *
+   * @access private
+   * @function injectElementWithStyles
+   * @param {string} rule - String representing a css rule
+   * @param {function} callback - A function that is used to test the injected element
+   * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
+   * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
+   * @returns {boolean}
+   */
+
+  function injectElementWithStyles(rule, callback, nodes, testnames) {
+    var mod = 'modernizr';
+    var style;
+    var ret;
+    var node;
+    var docOverflow;
+    var div = createElement('div');
+    var body = getBody();
+
+    if (parseInt(nodes, 10)) {
+      // In order not to give false positives we create a node for each test
+      // This also allows the method to scale for unspecified uses
+      while (nodes--) {
+        node = createElement('div');
+        node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
+        div.appendChild(node);
+      }
+    }
+
+    style = createElement('style');
+    style.type = 'text/css';
+    style.id = 's' + mod;
+
+    // IE6 will false positive on some tests due to the style element inside the test div somehow interfering offsetHeight, so insert it into body or fakebody.
+    // Opera will act all quirky when injecting elements in documentElement when page is served as xml, needs fakebody too. #270
+    (!body.fake ? div : body).appendChild(style);
+    body.appendChild(div);
+
+    if (style.styleSheet) {
+      style.styleSheet.cssText = rule;
+    } else {
+      style.appendChild(document.createTextNode(rule));
+    }
+    div.id = mod;
+
+    if (body.fake) {
+      //avoid crashing IE8, if background image is used
+      body.style.background = '';
+      //Safari 5.13/5.1.4 OSX stops loading if ::-webkit-scrollbar is used and scrollbars are visible
+      body.style.overflow = 'hidden';
+      docOverflow = docElement.style.overflow;
+      docElement.style.overflow = 'hidden';
+      docElement.appendChild(body);
+    }
+
+    ret = callback(div, rule);
+    // If this is done after page load we don't want to remove the body so check if body exists
+    if (body.fake) {
+      body.parentNode.removeChild(body);
+      docElement.style.overflow = docOverflow;
+      // Trigger layout so kinetic scrolling isn't disabled in iOS6+
+      docElement.offsetHeight;
+    } else {
+      div.parentNode.removeChild(div);
+    }
+
+    return !!ret;
+
+  }
+
+  ;
+
+  /**
+   * testStyles injects an element with style element and some CSS rules
+   *
+   * @memberof Modernizr
+   * @name Modernizr.testStyles
+   * @optionName Modernizr.testStyles()
+   * @optionProp testStyles
+   * @access public
+   * @function testStyles
+   * @param {string} rule - String representing a css rule
+   * @param {function} callback - A function that is used to test the injected element
+   * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
+   * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
+   * @returns {boolean}
+   * @example
+   *
+   * `Modernizr.testStyles` takes a CSS rule and injects it onto the current page
+   * along with (possibly multiple) DOM elements. This lets you check for features
+   * that can not be detected by simply checking the [IDL](https://developer.mozilla.org/en-US/docs/Mozilla/Developer_guide/Interface_development_guide/IDL_interface_rules).
+   *
+   * ```js
+   * Modernizr.testStyles('#modernizr { width: 9px; color: papayawhip; }', function(elem, rule) {
+   *   // elem is the first DOM node in the page (by default #modernizr)
+   *   // rule is the first argument you supplied - the CSS rule in string form
+   *
+   *   addTest('widthworks', elem.style.width === '9px')
+   * });
+   * ```
+   *
+   * If your test requires multiple nodes, you can include a third argument
+   * indicating how many additional div elements to include on the page. The
+   * additional nodes are injected as children of the `elem` that is returned as
+   * the first argument to the callback.
+   *
+   * ```js
+   * Modernizr.testStyles('#modernizr {width: 1px}; #modernizr2 {width: 2px}', function(elem) {
+   *   document.getElementById('modernizr').style.width === '1px'; // true
+   *   document.getElementById('modernizr2').style.width === '2px'; // true
+   *   elem.firstChild === document.getElementById('modernizr2'); // true
+   * }, 1);
+   * ```
+   *
+   * By default, all of the additional elements have an ID of `modernizr[n]`, where
+   * `n` is its index (e.g. the first additional, second overall is `#modernizr2`,
+   * the second additional is `#modernizr3`, etc.).
+   * If you want to have more meaningful IDs for your function, you can provide
+   * them as the fourth argument, as an array of strings
+   *
+   * ```js
+   * Modernizr.testStyles('#foo {width: 10px}; #bar {height: 20px}', function(elem) {
+   *   elem.firstChild === document.getElementById('foo'); // true
+   *   elem.lastChild === document.getElementById('bar'); // true
+   * }, 2, ['foo', 'bar']);
+   * ```
+   *
+   */
+
+  var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
+  
+/*!
+{
+  "name": "Touch Events",
+  "property": "touchevents",
+  "caniuse" : "touch",
+  "tags": ["media", "attribute"],
+  "notes": [{
+    "name": "Touch Events spec",
+    "href": "https://www.w3.org/TR/2013/WD-touch-events-20130124/"
+  }],
+  "warnings": [
+    "Indicates if the browser supports the Touch Events spec, and does not necessarily reflect a touchscreen device"
+  ],
+  "knownBugs": [
+    "False-positive on some configurations of Nokia N900",
+    "False-positive on some BlackBerry 6.0 builds – https://github.com/Modernizr/Modernizr/issues/372#issuecomment-3112695"
+  ]
+}
+!*/
+/* DOC
+Indicates if the browser supports the W3C Touch Events API.
+
+This *does not* necessarily reflect a touchscreen device:
+
+* Older touchscreen devices only emulate mouse events
+* Modern IE touch devices implement the Pointer Events API instead: use `Modernizr.pointerevents` to detect support for that
+* Some browsers & OS setups may enable touch APIs when no touchscreen is connected
+* Future browsers may implement other event models for touch interactions
+
+See this article: [You Can't Detect A Touchscreen](http://www.stucox.com/blog/you-cant-detect-a-touchscreen/).
+
+It's recommended to bind both mouse and touch/pointer events simultaneously – see [this HTML5 Rocks tutorial](http://www.html5rocks.com/en/mobile/touchandmouse/).
+
+This test will also return `true` for Firefox 4 Multitouch support.
+*/
+
+  // Chrome (desktop) used to lie about its support on this, but that has since been rectified: http://crbug.com/36415
+  Modernizr.addTest('touchevents', function() {
+    var bool;
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+      bool = true;
+    } else {
+      // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+      // https://git.io/vznFH
+      var query = ['@media (', prefixes.join('touch-enabled),('), 'heartz', ')', '{#modernizr{top:9px;position:absolute}}'].join('');
+      testStyles(query, function(node) {
+        bool = node.offsetTop === 9;
+      });
+    }
+    return bool;
+  });
+
+
+  // Run each test
+  testRunner();
+
+  // Remove the "no-js" class if it exists
+  setClasses(classes);
+
+  delete ModernizrProto.addTest;
+  delete ModernizrProto.addAsyncTest;
+
+  // Run the things that are supposed to run after the tests
+  for (var i = 0; i < Modernizr._q.length; i++) {
+    Modernizr._q[i]();
+  }
+
+  // Leak Modernizr namespace
+  window.Modernizr = Modernizr;
+
+
 ;
 
-
-
-window.Modernizr = (function( window, document, undefined ) {
-
-    var version = '2.8.3',
-
-        Modernizr = {},
-
-        enableClasses = true,
-
-        docElement = document.documentElement,
-
-        mod = 'modernizr',
-        modElem = document.createElement(mod),
-        mStyle = modElem.style,
-
-        inputElem  = document.createElement('input')  ,
-
-        smile = ':)',
-
-        toString = {}.toString,
-
-        prefixes = ' -webkit- -moz- -o- -ms- '.split(' '),
-
-
-
-        omPrefixes = 'Webkit Moz O ms',
-
-        cssomPrefixes = omPrefixes.split(' '),
-
-        domPrefixes = omPrefixes.toLowerCase().split(' '),
-
-        ns = {'svg': 'http://www.w3.org/2000/svg'},
-
-        tests = {},
-        inputs = {},
-        attrs = {},
-
-        classes = [],
-
-        slice = classes.slice,
-
-        featureName,
-
-
-        injectElementWithStyles = function( rule, callback, nodes, testnames ) {
-
-            var style, ret, node, docOverflow,
-                div = document.createElement('div'),
-                body = document.body,
-                fakeBody = body || document.createElement('body');
-
-            if ( parseInt(nodes, 10) ) {
-                while ( nodes-- ) {
-                    node = document.createElement('div');
-                    node.id = testnames ? testnames[nodes] : mod + (nodes + 1);
-                    div.appendChild(node);
-                }
-            }
-
-            style = ['&#173;','<style id="s', mod, '">', rule, '</style>'].join('');
-            div.id = mod;
-            (body ? div : fakeBody).innerHTML += style;
-            fakeBody.appendChild(div);
-            if ( !body ) {
-                fakeBody.style.background = '';
-                fakeBody.style.overflow = 'hidden';
-                docOverflow = docElement.style.overflow;
-                docElement.style.overflow = 'hidden';
-                docElement.appendChild(fakeBody);
-            }
-
-            ret = callback(div, rule);
-            if ( !body ) {
-                fakeBody.parentNode.removeChild(fakeBody);
-                docElement.style.overflow = docOverflow;
-            } else {
-                div.parentNode.removeChild(div);
-            }
-
-            return !!ret;
-
-        },
-
-
-
-        isEventSupported = (function() {
-
-            var TAGNAMES = {
-                'select': 'input', 'change': 'input',
-                'submit': 'form', 'reset': 'form',
-                'error': 'img', 'load': 'img', 'abort': 'img'
-            };
-
-            function isEventSupported( eventName, element ) {
-
-                element = element || document.createElement(TAGNAMES[eventName] || 'div');
-                eventName = 'on' + eventName;
-
-                var isSupported = eventName in element;
-
-                if ( !isSupported ) {
-                    if ( !element.setAttribute ) {
-                        element = document.createElement('div');
-                    }
-                    if ( element.setAttribute && element.removeAttribute ) {
-                        element.setAttribute(eventName, '');
-                        isSupported = is(element[eventName], 'function');
-
-                        if ( !is(element[eventName], 'undefined') ) {
-                            element[eventName] = undefined;
-                        }
-                        element.removeAttribute(eventName);
-                    }
-                }
-
-                element = null;
-                return isSupported;
-            }
-            return isEventSupported;
-        })(),
-
-
-        _hasOwnProperty = ({}).hasOwnProperty, hasOwnProp;
-
-    if ( !is(_hasOwnProperty, 'undefined') && !is(_hasOwnProperty.call, 'undefined') ) {
-        hasOwnProp = function (object, property) {
-            return _hasOwnProperty.call(object, property);
-        };
-    }
-    else {
-        hasOwnProp = function (object, property) {
-            return ((property in object) && is(object.constructor.prototype[property], 'undefined'));
-        };
-    }
-
-
-    if (!Function.prototype.bind) {
-        Function.prototype.bind = function bind(that) {
-
-            var target = this;
-
-            if (typeof target != "function") {
-                throw new TypeError();
-            }
-
-            var args = slice.call(arguments, 1),
-                bound = function () {
-
-                    if (this instanceof bound) {
-
-                        var F = function(){};
-                        F.prototype = target.prototype;
-                        var self = new F();
-
-                        var result = target.apply(
-                            self,
-                            args.concat(slice.call(arguments))
-                        );
-                        if (Object(result) === result) {
-                            return result;
-                        }
-                        return self;
-
-                    } else {
-
-                        return target.apply(
-                            that,
-                            args.concat(slice.call(arguments))
-                        );
-
-                    }
-
-                };
-
-            return bound;
-        };
-    }
-
-    function setCss( str ) {
-        mStyle.cssText = str;
-    }
-
-    function setCssAll( str1, str2 ) {
-        return setCss(prefixes.join(str1 + ';') + ( str2 || '' ));
-    }
-
-    function is( obj, type ) {
-        return typeof obj === type;
-    }
-
-    function contains( str, substr ) {
-        return !!~('' + str).indexOf(substr);
-    }
-
-    function testProps( props, prefixed ) {
-        for ( var i in props ) {
-            var prop = props[i];
-            if ( !contains(prop, "-") && mStyle[prop] !== undefined ) {
-                return prefixed == 'pfx' ? prop : true;
-            }
-        }
-        return false;
-    }
-
-    function testDOMProps( props, obj, elem ) {
-        for ( var i in props ) {
-            var item = obj[props[i]];
-            if ( item !== undefined) {
-
-                if (elem === false) return props[i];
-
-                if (is(item, 'function')){
-                    return item.bind(elem || obj);
-                }
-
-                return item;
-            }
-        }
-        return false;
-    }
-
-    function testPropsAll( prop, prefixed, elem ) {
-
-        var ucProp  = prop.charAt(0).toUpperCase() + prop.slice(1),
-            props   = (prop + ' ' + cssomPrefixes.join(ucProp + ' ') + ucProp).split(' ');
-
-        if(is(prefixed, "string") || is(prefixed, "undefined")) {
-            return testProps(props, prefixed);
-
-        } else {
-            props = (prop + ' ' + (domPrefixes).join(ucProp + ' ') + ucProp).split(' ');
-            return testDOMProps(props, prefixed, elem);
-        }
-    }    tests['flexbox'] = function() {
-        return testPropsAll('flexWrap');
-    };    tests['canvas'] = function() {
-        var elem = document.createElement('canvas');
-        return !!(elem.getContext && elem.getContext('2d'));
-    };
-
-    tests['canvastext'] = function() {
-        return !!(Modernizr['canvas'] && is(document.createElement('canvas').getContext('2d').fillText, 'function'));
-    };
-
-
-
-    tests['webgl'] = function() {
-        return !!window.WebGLRenderingContext;
-    };
-
-
-    tests['touch'] = function() {
-        var bool;
-
-        if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
-            bool = true;
-        } else {
-            injectElementWithStyles(['@media (',prefixes.join('touch-enabled),('),mod,')','{#modernizr{top:9px;position:absolute}}'].join(''), function( node ) {
-                bool = node.offsetTop === 9;
-            });
-        }
-
-        return bool;
-    };
-
-
-
-    tests['geolocation'] = function() {
-        return 'geolocation' in navigator;
-    };
-
-
-    tests['postmessage'] = function() {
-        return !!window.postMessage;
-    };
-
-
-    tests['websqldatabase'] = function() {
-        return !!window.openDatabase;
-    };
-
-    tests['indexedDB'] = function() {
-        return !!testPropsAll("indexedDB", window);
-    };
-
-    tests['hashchange'] = function() {
-        return isEventSupported('hashchange', window) && (document.documentMode === undefined || document.documentMode > 7);
-    };
-
-    tests['history'] = function() {
-        return !!(window.history && history.pushState);
-    };
-
-    tests['draganddrop'] = function() {
-        var div = document.createElement('div');
-        return ('draggable' in div) || ('ondragstart' in div && 'ondrop' in div);
-    };
-
-    tests['websockets'] = function() {
-        return 'WebSocket' in window || 'MozWebSocket' in window;
-    };
-
-
-    tests['rgba'] = function() {
-        setCss('background-color:rgba(150,255,150,.5)');
-
-        return contains(mStyle.backgroundColor, 'rgba');
-    };
-
-    tests['hsla'] = function() {
-        setCss('background-color:hsla(120,40%,100%,.5)');
-
-        return contains(mStyle.backgroundColor, 'rgba') || contains(mStyle.backgroundColor, 'hsla');
-    };
-
-    tests['multiplebgs'] = function() {
-        setCss('background:url(https://),url(https://),red url(https://)');
-
-        return (/(url\s*\(.*?){3}/).test(mStyle.background);
-    };    tests['backgroundsize'] = function() {
-        return testPropsAll('backgroundSize');
-    };
-
-    tests['borderimage'] = function() {
-        return testPropsAll('borderImage');
-    };
-
-
-
-    tests['borderradius'] = function() {
-        return testPropsAll('borderRadius');
-    };
-
-    tests['boxshadow'] = function() {
-        return testPropsAll('boxShadow');
-    };
-
-    tests['textshadow'] = function() {
-        return document.createElement('div').style.textShadow === '';
-    };
-
-
-    tests['opacity'] = function() {
-        setCssAll('opacity:.55');
-
-        return (/^0.55$/).test(mStyle.opacity);
-    };
-
-
-    tests['cssanimations'] = function() {
-        return testPropsAll('animationName');
-    };
-
-
-    tests['csscolumns'] = function() {
-        return testPropsAll('columnCount');
-    };
-
-
-    tests['cssgradients'] = function() {
-        var str1 = 'background-image:',
-            str2 = 'gradient(linear,left top,right bottom,from(#9f9),to(white));',
-            str3 = 'linear-gradient(left top,#9f9, white);';
-
-        setCss(
-            (str1 + '-webkit- '.split(' ').join(str2 + str1) +
-            prefixes.join(str3 + str1)).slice(0, -str1.length)
-        );
-
-        return contains(mStyle.backgroundImage, 'gradient');
-    };
-
-
-    tests['cssreflections'] = function() {
-        return testPropsAll('boxReflect');
-    };
-
-
-    tests['csstransforms'] = function() {
-        return !!testPropsAll('transform');
-    };
-
-
-    tests['csstransforms3d'] = function() {
-
-        var ret = !!testPropsAll('perspective');
-
-        if ( ret && 'webkitPerspective' in docElement.style ) {
-
-            injectElementWithStyles('@media (transform-3d),(-webkit-transform-3d){#modernizr{left:9px;position:absolute;height:3px;}}', function( node, rule ) {
-                ret = node.offsetLeft === 9 && node.offsetHeight === 3;
-            });
-        }
-        return ret;
-    };
-
-
-    tests['csstransitions'] = function() {
-        return testPropsAll('transition');
-    };
-
-
-
-    tests['fontface'] = function() {
-        var bool;
-
-        injectElementWithStyles('@font-face {font-family:"font";src:url("https://")}', function( node, rule ) {
-            var style = document.getElementById('smodernizr'),
-                sheet = style.sheet || style.styleSheet,
-                cssText = sheet ? (sheet.cssRules && sheet.cssRules[0] ? sheet.cssRules[0].cssText : sheet.cssText || '') : '';
-
-            bool = /src/i.test(cssText) && cssText.indexOf(rule.split(' ')[0]) === 0;
-        });
-
-        return bool;
-    };
-
-    tests['generatedcontent'] = function() {
-        var bool;
-
-        injectElementWithStyles(['#',mod,'{font:0/0 a}#',mod,':after{content:"',smile,'";visibility:hidden;font:3px/1 a}'].join(''), function( node ) {
-            bool = node.offsetHeight >= 3;
-        });
-
-        return bool;
-    };
-    tests['video'] = function() {
-        var elem = document.createElement('video'),
-            bool = false;
-
-        try {
-            if ( bool = !!elem.canPlayType ) {
-                bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('video/ogg; codecs="theora"')      .replace(/^no$/,'');
-
-                bool.h264 = elem.canPlayType('video/mp4; codecs="avc1.42E01E"') .replace(/^no$/,'');
-
-                bool.webm = elem.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/,'');
-            }
-
-        } catch(e) { }
-
-        return bool;
-    };
-
-    tests['audio'] = function() {
-        var elem = document.createElement('audio'),
-            bool = false;
-
-        try {
-            if ( bool = !!elem.canPlayType ) {
-                bool      = new Boolean(bool);
-                bool.ogg  = elem.canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/,'');
-                bool.mp3  = elem.canPlayType('audio/mpeg;')               .replace(/^no$/,'');
-
-                bool.wav  = elem.canPlayType('audio/wav; codecs="1"')     .replace(/^no$/,'');
-                bool.m4a  = ( elem.canPlayType('audio/x-m4a;')            ||
-                elem.canPlayType('audio/aac;'))             .replace(/^no$/,'');
-            }
-        } catch(e) { }
-
-        return bool;
-    };
-
-
-    tests['localstorage'] = function() {
-        try {
-            localStorage.setItem(mod, mod);
-            localStorage.removeItem(mod);
-            return true;
-        } catch(e) {
-            return false;
-        }
-    };
-
-    tests['sessionstorage'] = function() {
-        try {
-            sessionStorage.setItem(mod, mod);
-            sessionStorage.removeItem(mod);
-            return true;
-        } catch(e) {
-            return false;
-        }
-    };
-
-
-    tests['webworkers'] = function() {
-        return !!window.Worker;
-    };
-
-
-    tests['applicationcache'] = function() {
-        return !!window.applicationCache;
-    };
-
-
-    tests['svg'] = function() {
-        return !!document.createElementNS && !!document.createElementNS(ns.svg, 'svg').createSVGRect;
-    };
-
-    tests['inlinesvg'] = function() {
-        var div = document.createElement('div');
-        div.innerHTML = '<svg/>';
-        return (div.firstChild && div.firstChild.namespaceURI) == ns.svg;
-    };
-
-    tests['smil'] = function() {
-        return !!document.createElementNS && /SVGAnimate/.test(toString.call(document.createElementNS(ns.svg, 'animate')));
-    };
-
-
-    tests['svgclippaths'] = function() {
-        return !!document.createElementNS && /SVGClipPath/.test(toString.call(document.createElementNS(ns.svg, 'clipPath')));
-    };
-
-    function webforms() {
-        Modernizr['input'] = (function( props ) {
-            for ( var i = 0, len = props.length; i < len; i++ ) {
-                attrs[ props[i] ] = !!(props[i] in inputElem);
-            }
-            if (attrs.list){
-                attrs.list = !!(document.createElement('datalist') && window.HTMLDataListElement);
-            }
-            return attrs;
-        })('autocomplete autofocus list placeholder max min multiple pattern required step'.split(' '));
-        Modernizr['inputtypes'] = (function(props) {
-
-            for ( var i = 0, bool, inputElemType, defaultView, len = props.length; i < len; i++ ) {
-
-                inputElem.setAttribute('type', inputElemType = props[i]);
-                bool = inputElem.type !== 'text';
-
-                if ( bool ) {
-
-                    inputElem.value         = smile;
-                    inputElem.style.cssText = 'position:absolute;visibility:hidden;';
-
-                    if ( /^range$/.test(inputElemType) && inputElem.style.WebkitAppearance !== undefined ) {
-
-                        docElement.appendChild(inputElem);
-                        defaultView = document.defaultView;
-
-                        bool =  defaultView.getComputedStyle &&
-                        defaultView.getComputedStyle(inputElem, null).WebkitAppearance !== 'textfield' &&
-                        (inputElem.offsetHeight !== 0);
-
-                        docElement.removeChild(inputElem);
-
-                    } else if ( /^(search|tel)$/.test(inputElemType) ){
-                    } else if ( /^(url|email)$/.test(inputElemType) ) {
-                        bool = inputElem.checkValidity && inputElem.checkValidity() === false;
-
-                    } else {
-                        bool = inputElem.value != smile;
-                    }
-                }
-
-                inputs[ props[i] ] = !!bool;
-            }
-            return inputs;
-        })('search tel url email datetime date month week time datetime-local number range color'.split(' '));
-    }
-    for ( var feature in tests ) {
-        if ( hasOwnProp(tests, feature) ) {
-            featureName  = feature.toLowerCase();
-            Modernizr[featureName] = tests[feature]();
-
-            classes.push((Modernizr[featureName] ? '' : 'no-') + featureName);
-        }
-    }
-
-    Modernizr.input || webforms();
-
-
-    Modernizr.addTest = function ( feature, test ) {
-        if ( typeof feature == 'object' ) {
-            for ( var key in feature ) {
-                if ( hasOwnProp( feature, key ) ) {
-                    Modernizr.addTest( key, feature[ key ] );
-                }
-            }
-        } else {
-
-            feature = feature.toLowerCase();
-
-            if ( Modernizr[feature] !== undefined ) {
-                return Modernizr;
-            }
-
-            test = typeof test == 'function' ? test() : test;
-
-            if (typeof enableClasses !== "undefined" && enableClasses) {
-                docElement.className += ' ' + (test ? '' : 'no-') + feature;
-            }
-            Modernizr[feature] = test;
-
-        }
-
-        return Modernizr;
-    };
-
-
-    setCss('');
-    modElem = inputElem = null;
-
-    ;(function(window, document) {
-        var version = '3.7.0';
-
-        var options = window.html5 || {};
-
-        var reSkip = /^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i;
-
-        var saveClones = /^(?:a|b|code|div|fieldset|h1|h2|h3|h4|h5|h6|i|label|li|ol|p|q|span|strong|style|table|tbody|td|th|tr|ul)$/i;
-
-        var supportsHtml5Styles;
-
-        var expando = '_html5shiv';
-
-        var expanID = 0;
-
-        var expandoData = {};
-
-        var supportsUnknownElements;
-
-        (function() {
-            try {
-                var a = document.createElement('a');
-                a.innerHTML = '<xyz></xyz>';
-                supportsHtml5Styles = ('hidden' in a);
-
-                supportsUnknownElements = a.childNodes.length == 1 || (function() {
-                    (document.createElement)('a');
-                    var frag = document.createDocumentFragment();
-                    return (
-                    typeof frag.cloneNode == 'undefined' ||
-                    typeof frag.createDocumentFragment == 'undefined' ||
-                    typeof frag.createElement == 'undefined'
-                    );
-                }());
-            } catch(e) {
-                supportsHtml5Styles = true;
-                supportsUnknownElements = true;
-            }
-
-        }());
-
-        function addStyleSheet(ownerDocument, cssText) {
-            var p = ownerDocument.createElement('p'),
-                parent = ownerDocument.getElementsByTagName('head')[0] || ownerDocument.documentElement;
-
-            p.innerHTML = 'x<style>' + cssText + '</style>';
-            return parent.insertBefore(p.lastChild, parent.firstChild);
-        }
-
-        function getElements() {
-            var elements = html5.elements;
-            return typeof elements == 'string' ? elements.split(' ') : elements;
-        }
-
-        function getExpandoData(ownerDocument) {
-            var data = expandoData[ownerDocument[expando]];
-            if (!data) {
-                data = {};
-                expanID++;
-                ownerDocument[expando] = expanID;
-                expandoData[expanID] = data;
-            }
-            return data;
-        }
-
-        function createElement(nodeName, ownerDocument, data){
-            if (!ownerDocument) {
-                ownerDocument = document;
-            }
-            if(supportsUnknownElements){
-                return ownerDocument.createElement(nodeName);
-            }
-            if (!data) {
-                data = getExpandoData(ownerDocument);
-            }
-            var node;
-
-            if (data.cache[nodeName]) {
-                node = data.cache[nodeName].cloneNode();
-            } else if (saveClones.test(nodeName)) {
-                node = (data.cache[nodeName] = data.createElem(nodeName)).cloneNode();
-            } else {
-                node = data.createElem(nodeName);
-            }
-
-            return node.canHaveChildren && !reSkip.test(nodeName) && !node.tagUrn ? data.frag.appendChild(node) : node;
-        }
-
-        function createDocumentFragment(ownerDocument, data){
-            if (!ownerDocument) {
-                ownerDocument = document;
-            }
-            if(supportsUnknownElements){
-                return ownerDocument.createDocumentFragment();
-            }
-            data = data || getExpandoData(ownerDocument);
-            var clone = data.frag.cloneNode(),
-                i = 0,
-                elems = getElements(),
-                l = elems.length;
-            for(;i<l;i++){
-                clone.createElement(elems[i]);
-            }
-            return clone;
-        }
-
-        function shivMethods(ownerDocument, data) {
-            if (!data.cache) {
-                data.cache = {};
-                data.createElem = ownerDocument.createElement;
-                data.createFrag = ownerDocument.createDocumentFragment;
-                data.frag = data.createFrag();
-            }
-
-
-            ownerDocument.createElement = function(nodeName) {
-                if (!html5.shivMethods) {
-                    return data.createElem(nodeName);
-                }
-                return createElement(nodeName, ownerDocument, data);
-            };
-
-            ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-                'var n=f.cloneNode(),c=n.createElement;' +
-                'h.shivMethods&&(' +
-                getElements().join().replace(/[\w\-]+/g, function(nodeName) {
-                    data.createElem(nodeName);
-                    data.frag.createElement(nodeName);
-                    return 'c("' + nodeName + '")';
-                }) +
-                ');return n}'
-            )(html5, data.frag);
-        }
-
-        function shivDocument(ownerDocument) {
-            if (!ownerDocument) {
-                ownerDocument = document;
-            }
-            var data = getExpandoData(ownerDocument);
-
-            if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
-                data.hasCSS = !!addStyleSheet(ownerDocument,
-                    'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
-                    'mark{background:#FF0;color:#000}' +
-                    'template{display:none}'
-                );
-            }
-            if (!supportsUnknownElements) {
-                shivMethods(ownerDocument, data);
-            }
-            return ownerDocument;
-        }
-
-        var html5 = {
-
-            'elements': options.elements || 'abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video',
-
-            'version': version,
-
-            'shivCSS': (options.shivCSS !== false),
-
-            'supportsUnknownElements': supportsUnknownElements,
-
-            'shivMethods': (options.shivMethods !== false),
-
-            'type': 'default',
-
-            'shivDocument': shivDocument,
-
-            createElement: createElement,
-
-            createDocumentFragment: createDocumentFragment
-        };
-
-        window.html5 = html5;
-
-        shivDocument(document);
-
-    }(this, document));
-
-    Modernizr._version      = version;
-
-    Modernizr._prefixes     = prefixes;
-    Modernizr._domPrefixes  = domPrefixes;
-    Modernizr._cssomPrefixes  = cssomPrefixes;
-
-
-    Modernizr.hasEvent      = isEventSupported;
-
-    Modernizr.testProp      = function(prop){
-        return testProps([prop]);
-    };
-
-    Modernizr.testAllProps  = testPropsAll;
-
-
-    Modernizr.testStyles    = injectElementWithStyles;
-    Modernizr.prefixed      = function(prop, obj, elem){
-        if(!obj) {
-            return testPropsAll(prop, 'pfx');
-        } else {
-            return testPropsAll(prop, obj, elem);
-        }
-    };
-
-
-    docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
-
-    (enableClasses ? ' js ' + classes.join(' ') : '');
-
-    return Modernizr;
-
-})(this, this.document);
-;
-/**
- * https://github.com/Modernizr/Modernizr/tree/master/feature-detects/es5
- * http://kangax.github.io/es5-compat-table/
- */
-(function (Modernizr) {
-    "use strict";
-
-    Modernizr.addTest('es5array', function () {
-        return !!(Array.prototype &&
-            Array.prototype.every &&
-            Array.prototype.filter &&
-            Array.prototype.forEach &&
-            Array.prototype.indexOf &&
-            Array.prototype.lastIndexOf &&
-            Array.prototype.map &&
-            Array.prototype.some &&
-            Array.prototype.reduce &&
-            Array.prototype.reduceRight &&
-            Array.isArray);
-    });
-
-    Modernizr.addTest('es5date', function () {
-        var isoDate = '2013-04-12T06:06:37.307Z',
-            canParseISODate = false;
-        try {
-            canParseISODate = !!Date.parse(isoDate);
-        } catch (e) {
-            // no ISO date parsing yet
-        }
-        return !!(Date.now &&
-            Date.prototype &&
-            Date.prototype.toISOString &&
-            Date.prototype.toJSON &&
-            canParseISODate);
-    });
-
-    Modernizr.addTest('es5function', function () {
-        return !!(Function.prototype && Function.prototype.bind);
-    });
-
-    Modernizr.addTest('es5object', function () {
-        return !!(Object.keys &&
-            Object.create &&
-            Object.getPrototypeOf &&
-            Object.getOwnPropertyNames &&
-            Object.isSealed &&
-            Object.isFrozen &&
-            Object.isExtensible &&
-            Object.getOwnPropertyDescriptor &&
-            Object.defineProperty &&
-            Object.defineProperties &&
-            Object.seal &&
-            Object.freeze &&
-            Object.preventExtensions);
-    });
-
-    Modernizr.addTest('strictmode', (function(){'use strict'; return !this; })());
-
-    Modernizr.addTest('es5string', function () {
-        return !!(String.prototype && String.prototype.trim);
-    });
-}(Modernizr));
-Array.isArray||(Array.isArray=function(a){return''+a!==a&&{}.toString.call(a)=='[object Array]'});
+})(window, document);
 // yepnope.js
 // Version - 1.5.4pre
 //
@@ -1854,16 +1630,16 @@ var jsloader = (function() {
 }());
 
 /**
- * To jest plik rozruchowy, który powinieneś dostosować do własnych potrzeb
+ * This is sample bootstrap file.
  */
 function startapp (data) {
     "use strict";
 
     var k, i;
 
-    // czas po, którym wczytywanie zostanie zatrzymane
+    // stop loading after timeout
     jsloader.timeout(data.timeout);
-    // warunkowe wczytywanie es5-shim, jeżeli przeglądarka nie implementuje ES5
+    // load es5-shim if browser not support
     jsloader.requirement({
         test: Modernizr.es5array && Modernizr.es5date && Modernizr.es5function && Modernizr.es5object && Modernizr.es5string,
         nope: [data.path.webui_engine + '/js/es5-shim.min.js', data.path.webui_engine + '/js/es5-sham.min.js']
@@ -1878,12 +1654,11 @@ function startapp (data) {
         }
     }
 
-    // jeżeli wykryto urządzenie dotykowe to załaduj jQuery Mobile
-    if (Modernizr.touch) {
+    // load jQuery Mobile Events on touch device
+    if (Modernizr.touchevents) {
         jsloader.add("core", [data.path.webui_engine + '/js/framework/jquery.mobile.only-events.min.js'], true);
     }
 
-    // zasoby nieznane - nieprzypisane do żadnej grupy
     for (i = 0; i < data.res.unknown.length; i++) {
         jsloader.add('', data.res.unknown[i].url, data.res.unknown[i].url.async);
     }

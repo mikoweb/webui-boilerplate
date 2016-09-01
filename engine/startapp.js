@@ -1,14 +1,14 @@
 /**
- * To jest plik rozruchowy, który powinieneś dostosować do własnych potrzeb
+ * This is sample bootstrap file.
  */
 function startapp (data) {
     "use strict";
 
     var k, i;
 
-    // czas po, którym wczytywanie zostanie zatrzymane
+    // stop loading after timeout
     jsloader.timeout(data.timeout);
-    // warunkowe wczytywanie es5-shim, jeżeli przeglądarka nie implementuje ES5
+    // load es5-shim if browser not support
     jsloader.requirement({
         test: Modernizr.es5array && Modernizr.es5date && Modernizr.es5function && Modernizr.es5object && Modernizr.es5string,
         nope: [data.path.webui_engine + '/js/es5-shim.min.js', data.path.webui_engine + '/js/es5-sham.min.js']
@@ -23,12 +23,11 @@ function startapp (data) {
         }
     }
 
-    // jeżeli wykryto urządzenie dotykowe to załaduj jQuery Mobile
-    if (Modernizr.touch) {
+    // load jQuery Mobile Events on touch device
+    if (Modernizr.touchevents) {
         jsloader.add("core", [data.path.webui_engine + '/js/framework/jquery.mobile.only-events.min.js'], true);
     }
 
-    // zasoby nieznane - nieprzypisane do żadnej grupy
     for (i = 0; i < data.res.unknown.length; i++) {
         jsloader.add('', data.res.unknown[i].url, data.res.unknown[i].url.async);
     }

@@ -3,7 +3,6 @@
     "dependencies": {
         "jsloader": "~0.0.4",
         "jquery-sprintf": "~0.0.1",
-        "picturefill": "~3.0.1",
         "jquery-app": "~0.2.2"
     }
 }

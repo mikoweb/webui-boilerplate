@@ -11,9 +11,11 @@ Create a file `webui.json`:
 
 ```javascript
 {
-    "version": "~0.2.6",            // which version to install?
-    "directory": "web/js",          // the directory where you installed a library
-    "bowerDir": "./"                // (optional) the directory where the bower.json
+    "version": "~0.2.9",            // version of library
+    "directory": "private/webui",   // library directory
+    "bowerDir": "./",               // (optional) the directory where is the bower.json
+    "vendorDir": "public/vendor",   // (optional) location of vendor folder; default value: directory + '/webui/vendor'
+    "publicDir": "public/webui"     // (optional) public folder will be copied to this location; by default not copied
 }
 ```
 

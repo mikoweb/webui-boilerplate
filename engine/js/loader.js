@@ -1642,7 +1642,7 @@ function startapp (data) {
     // load es5-shim if browser not support
     jsloader.requirement({
         test: Modernizr.es5array && Modernizr.es5date && Modernizr.es5function && Modernizr.es5object && Modernizr.es5string,
-        nope: [data.path.webui_engine + '/js/es5-shim.min.js', data.path.webui_engine + '/js/es5-sham.min.js']
+        nope: [data.path.public + '/es5-shim.min.js', data.path.public + '/es5-sham.min.js']
     });
 
     for (k in data.res.resources) {
@@ -1656,7 +1656,7 @@ function startapp (data) {
 
     // load jQuery Mobile Events on touch device
     if (Modernizr.touchevents) {
-        jsloader.add("core", [data.path.webui_engine + '/js/framework/jquery.mobile.only-events.min.js'], true);
+        jsloader.add('core', [data.path.public + '/jquery.mobile.only-events.min.js'], true);
     }
 
     for (i = 0; i < data.res.unknown.length; i++) {
@@ -1677,9 +1677,10 @@ function startapp (data) {
 
     jsloader.onLoad('core', function () {
         require(['jquery'], function ($) {
-            $.app.define("path_base", data.path.base);
-            $.app.define("path_webui", data.path.webui);
-            $.app.define("path_webui_engine", data.path.webui_engine);
+            $.app.define('path_base', data.path.base);
+            $.app.define('path_webui', data.path.webui);
+            $.app.define('path_webui_engine', data.path.webui_engine);
+            $.app.define('path_public', data.path.public);
             $.app.trans.add(data.translations);
         });
     });

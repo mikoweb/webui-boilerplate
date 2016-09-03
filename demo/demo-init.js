@@ -2,65 +2,66 @@
     "use strict";
 
     startapp({
-        "timeout": 60000,
-        "res": {
-            "resources": {
-                "framework": [{
-                    "url": ["../engine/js/framework/framework-marionette.min.js"],
-                    "async": true
+        timeout: 60000,
+        res: {
+            resources: {
+                framework: [{
+                    url: ['../engine/js/framework/framework-marionette.min.js'],
+                    async: true
                 }],
-                "core": [{
-                    "url": ["../engine/js/core/core.min.js"],
-                    "async": true
+                core: [{
+                    url: ['../engine/js/core/core.min.js'],
+                    async: true
                 }]
             },
-            "dependencies": {
-                "framework": [],
-                "core": ["framework"]
+            dependencies: {
+                framework: [],
+                core: ['framework']
             },
-            "unknown": []
+            unknown: []
         },
-        "translations": {},
-        "locale": "en",
-        "path": {
-            "base": basePath,
-            "webui": basePath + "webui",
-            "webui_engine": basePath + "engine"
+        translations: {},
+        locale: 'en',
+        path: {
+            base: basePath,
+            webui: basePath + 'webui',
+            webui_engine: basePath + 'engine',
+            'public': basePath + 'public'
         },
-        "requirejs": {
-            "baseUrl": basePath + "demo/js/requirejs",
-            "paths": {
-                "text": "{{path}}/vendor/requirejs-text/text",
-                "nunjucks": "{{path}}/vendor/nunjucks/browser/nunjucks.min",
-                "tinymce": "{{pathname}}/vendor/webui-tinymce/tinymce.min",
-                "tinymce.jquery": "{{pathname}}/vendor/webui-tinymce/jquery.tinymce.min",
-                "tinymce.helper": "{{path}}/vendor/webui-tinymce-helper/tinymce.helper.min",
-                "chartjs": "{{path}}/vendor/chartjs/Chart.min",
-                "chartjs.type.linealt": "{{path}}/vendor/chartjs-type-linealt/chartjs-type-linealt.min",
-                "highcharts": "{{path}}/vendor/highcharts-release/highcharts",
-                "jquery.smooth-scroll": "{{path}}/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min",
-                "jquery.easing": "{{path}}/vendor/jquery.easing/js/jquery.easing.min",
-                "jquery.sortable": "{{path}}/vendor/jquery-sortable/source/js/jquery-sortable-min",
-                "tinysort": "{{path}}/vendor/tinysort/dist/tinysort.min",
-                "bootstrap-paginator": "{{path}}/vendor/bootstrap-paginator/build/bootstrap-paginator.min",
-                "select2": "{{path}}/vendor/select2/dist/js/select2.full.min"
+        requirejs: {
+            baseUrl: basePath + 'demo/js/requirejs',
+            paths: {
+                'text': '{{path}}/vendor/requirejs-text/text',
+                'nunjucks': '{{path}}/vendor/nunjucks/browser/nunjucks.min',
+                'tinymce': '{{pathname}}/vendor/webui-tinymce/tinymce.min',
+                'tinymce.jquery': '{{pathname}}/vendor/webui-tinymce/jquery.tinymce.min',
+                'tinymce.helper': '{{path}}/vendor/webui-tinymce-helper/tinymce.helper.min',
+                'chartjs': '{{path}}/vendor/chartjs/Chart.min',
+                'chartjs.type.linealt': '{{path}}/vendor/chartjs-type-linealt/chartjs-type-linealt.min',
+                'highcharts': '{{path}}/vendor/highcharts-release/highcharts',
+                'jquery.smooth-scroll': '{{path}}/vendor/jquery-smooth-scroll/jquery.smooth-scroll.min',
+                'jquery.easing': '{{path}}/vendor/jquery.easing/js/jquery.easing.min',
+                'jquery.sortable': '{{path}}/vendor/jquery-sortable/source/js/jquery-sortable-min',
+                'tinysort': '{{path}}/vendor/tinysort/dist/tinysort.min',
+                'bootstrap-paginator': '{{path}}/vendor/bootstrap-paginator/build/bootstrap-paginator.min',
+                'select2': '{{path}}/vendor/select2/dist/js/select2.full.min'
             },
-            "shim": {
-                "nunjucks" : {
-                    "exports": "nunjucks"
+            shim: {
+                'nunjucks' : {
+                    exports: 'nunjucks'
                 },
-                "tinymce": {
-                    "exports": "tinymce"
+                'tinymce': {
+                    exports: 'tinymce'
                 },
-                "tinymce.jquery": ["jquery", "tinymce"],
-                "highcharts": {
-                    "deps": ["jquery"],
-                    "exports": "Highcharts"
+                'tinymce.jquery': ['jquery', 'tinymce'],
+                'highcharts': {
+                    deps: ['jquery'],
+                    exports: 'Highcharts'
                 }
             }
         },
-        "cssloader": {
-            "select2": "style/select2/select2"
+        cssloader: {
+            'select2': 'style/select2/select2'
         }
     });
 }('/WebUI/'));

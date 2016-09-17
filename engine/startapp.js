@@ -45,13 +45,11 @@ function startapp (data) {
     });
 
     jsloader.onLoad('core', function () {
-        require(['jquery'], function ($) {
-            $.app.define('path_base', data.path.base);
-            $.app.define('path_webui', data.path.webui);
-            $.app.define('path_webui_engine', data.path.webui_engine);
-            $.app.define('path_public', data.path.public);
-            $.app.trans.add(data.translations);
-        });
+        jQuery.app.define('path_base', data.path.base);
+        jQuery.app.define('path_webui', data.path.webui);
+        jQuery.app.define('path_webui_engine', data.path.webui_engine);
+        jQuery.app.define('path_public', data.path.public);
+        jQuery.app.trans.add(data.translations);
     });
 
     startapp = undefined;

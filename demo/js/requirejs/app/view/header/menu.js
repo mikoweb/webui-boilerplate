@@ -6,7 +6,7 @@ define('app/view/header/menu', ['marionette', 'jquery', 'nunjucks', 'app/view/he
 function (Marionette, $, Nunjucks, ItemView, template) {
     "use strict";
 
-    return Marionette.CompositeView.extend({
+    return Marionette.CollectionView.extend({
         childViewContainer: '.navbar-nav',
         childView: ItemView,
         tagName: 'nav',

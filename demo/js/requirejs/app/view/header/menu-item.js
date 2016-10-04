@@ -6,7 +6,7 @@ define('app/view/header/menu-item', ['backbone', 'marionette', 'jquery', 'nunjuc
 function (Backbone, Marionette, $, Nunjucks, template) {
     "use strict";
 
-    return Marionette.ItemView.extend({
+    return Marionette.View.extend({
         tagName: 'li',
         className: 'nav-item',
         modelEvents: {

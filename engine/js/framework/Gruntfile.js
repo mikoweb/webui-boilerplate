@@ -1,9 +1,6 @@
 var depsForAll = [
-    // requirejs w tym miejscu bo powyższe biblioteki mają się zadeklarować globalnie
-    // powyższe biblioteki będą zdefiniowane jako moduły w main.js
     "requirejs/require.js",
     "main.js",
-    // od tego miejsca można używać define
     "webui-cssloader/webui-cssloader.js"
 ];
 
@@ -34,6 +31,7 @@ module.exports = function (grunt) {
                     "bootstrap/dist/js/bootstrap.js",
                     "underscore/underscore.js",
                     "backbone/backbone.js",
+                    "backbone.radio/build/backbone.radio.js",
                     "marionette/lib/backbone.marionette.js"
                 ].concat(depsForAll),
                 dest: "framework-marionette.js"
@@ -43,6 +41,7 @@ module.exports = function (grunt) {
                     "jquery/dist/jquery.js",
                     "underscore/underscore.js",
                     "backbone/backbone.js",
+                    "backbone.radio/build/backbone.radio.js",
                     "marionette/lib/backbone.marionette.js"
                 ].concat(depsForAll),
                 dest: "framework-marionette-no-twbs.js"
@@ -99,7 +98,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    // Default task.
     grunt.registerTask('default', [
         'concat:build', 
         'uglify:build',
@@ -114,5 +112,6 @@ module.exports = function (grunt) {
         'concat:no_bb',
         'uglify:no_bb'
     ]);
+
     grunt.registerTask('jquery.mobile', ['uglify:query_mobile']);
 };

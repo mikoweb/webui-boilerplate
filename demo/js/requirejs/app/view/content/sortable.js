@@ -6,7 +6,7 @@ define('app/view/content/sortable', ['jquery', 'marionette', 'nunjucks',
 function ($, Marionette, Nunjucks, template, tinysort) {
     "use strict";
 
-    return Marionette.ItemView.extend({
+    return Marionette.View.extend({
         tagName: 'section',
         ui: {
             sortable: 'ul.sortable-test',
@@ -26,7 +26,7 @@ function ($, Marionette, Nunjucks, template, tinysort) {
                 tinysort($(this).find('> li'), options);
             });
         },
-        onShow: function () {
+        onDomRefresh: function () {
             var view = this;
             this.ui.sortable.sortable();
             this.sort();

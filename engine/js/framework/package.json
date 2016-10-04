@@ -1,13 +1,14 @@
 {
-    "name": "engine-framework",
-    "repository": {},
-    "private": true,
-    "version": "0.0.2",
-    "engines": {
-        "node": ">= 0.12.0"
-    },
-    "devDependencies": {
-        "grunt-contrib-uglify": "~1.0",
-        "grunt-contrib-concat": "~1.0"
-    }
+  "name": "engine-framework",
+  "repository": {},
+  "private": true,
+  "version": "0.0.2",
+  "engines": {
+    "node": ">4.2.0"
+  },
+  "devDependencies": {
+    "grunt": "~1.0",
+    "grunt-contrib-concat": "~1.0",
+    "grunt-contrib-uglify": "~1.0"
+  }
 }

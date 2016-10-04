@@ -6,7 +6,7 @@ define('app/view/content/charts', ['jquery', 'marionette', 'nunjucks',
 function ($, Marionette, Nunjucks, template, Chart, Highcharts) {
     "use strict";
 
-    return Marionette.ItemView.extend({
+    return Marionette.View.extend({
         tagName: 'section',
         ui: {
             chart1: '#chart1',
@@ -16,7 +16,7 @@ function ($, Marionette, Nunjucks, template, Chart, Highcharts) {
         template: function () {
             return $(Nunjucks.renderString(template));
         },
-        onShow: function () {
+        onDomRefresh: function () {
             Chart.defaults.global.responsive = true;
             Chart.defaults.global.maintainAspectRatio = false;
 

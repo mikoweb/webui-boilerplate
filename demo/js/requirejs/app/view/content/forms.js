@@ -6,7 +6,7 @@ define('app/view/content/forms', ['jquery', 'marionette', 'nunjucks',
 function ($, Marionette, Nunjucks, template, Select2, loader) {
     "use strict";
 
-    return Marionette.ItemView.extend({
+    return Marionette.View.extend({
         tagName: 'section',
         ui: {
             form: '.form'
@@ -23,7 +23,7 @@ function ($, Marionette, Nunjucks, template, Select2, loader) {
         onFormSubmit: function (e) {
             e.preventDefault();
         },
-        onShow: function () {
+        onDomRefresh: function () {
             var view = this;
 
             loader.inject('@select2', function () {

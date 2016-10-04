@@ -6,7 +6,7 @@ define('app/view/content/index', ['jquery', 'marionette', 'nunjucks',
 function ($, Marionette, Nunjucks, template) {
     "use strict";
 
-    return Marionette.ItemView.extend({
+    return Marionette.View.extend({
         tagName: 'section',
         template: function () {
             return $(Nunjucks.renderString(template));

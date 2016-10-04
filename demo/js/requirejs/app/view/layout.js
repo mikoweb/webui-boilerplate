@@ -6,7 +6,7 @@ define('app/view/layout', ['jquery', 'marionette', 'nunjucks', 'text!template/ba
 function ($, Marionette, Nunjucks, template, MenuCollection, MenuView) {
     "use strict";
 
-    return Marionette.LayoutView.extend({
+    return Marionette.View.extend({
         el: $('body'),
         regions: {
             header: "#header",
@@ -19,7 +19,7 @@ function ($, Marionette, Nunjucks, template, MenuCollection, MenuView) {
         initialize: function () {
             var content = this.getRegion('content');
             this.once('render', this.removePreloader);
-            content.on('before:show', this.onContentShow);
+            content.on('show', this.onContentShow);
             content.on('empty', this.onContentEmpty);
         },
         removePreloader: function () {

@@ -42,7 +42,6 @@ export default class LayoutView extends Marionette.View {
         });
 
         menu.fetch();
-        console.log(region);
         region.show(view);
 
         if (router) {

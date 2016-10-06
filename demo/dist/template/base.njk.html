@@ -1,0 +1,11 @@
+<header id="header">
+    <nav class="navbar navbar-light bg-faded">
+        <ul class="nav navbar-nav" id="menu"></ul>
+    </nav>
+</header>
+<main id="content" class="container">{% block content %}{% endblock %}</main>
+<footer id="footer">
+    {% block footer %}
+    <p>Created by <a href="https://github.com/mikoweb">Rafał Mikołajun.</a><br />WebUI is released under the LGPLv3 license.</p>
+    {% endblock %}
+</footer>

@@ -1,0 +1,27 @@
+export default class PageController {
+    index() {
+        showView('app/view/content/index');
+    }
+    editor() {
+        showView('app/view/content/editor');
+    }
+    forms() {
+        showView('app/view/content/forms');
+    }
+    charts() {
+        showView('app/view/content/charts');
+    }
+    sortable() {
+        showView('app/view/content/sortable');
+    }
+}
+
+/**
+ * @param {string} viewName
+ * @param {Object} [options]
+ */
+function showView (viewName, options) {
+    require([viewName, 'app/app'], function (View, app) {
+        app.default.getLayout().getRegion('content').show(new View.default(options));
+    });
+}

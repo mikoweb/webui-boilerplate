@@ -15,8 +15,8 @@
         jsloader.onLoad('core', function () {
             "use strict";
             require(['app/app', 'app/view/content/index'], function (app, View) {
-                app.initLayout(new View());
-                app.start();
+                app.default.initLayout(new View.default());
+                app.default.start();
             });
         });
         jsloader.init();

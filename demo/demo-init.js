@@ -6,7 +6,10 @@
         res: {
             resources: {
                 framework: [{
-                    url: ['../engine/js/framework/framework-marionette.min.js'],
+                    url: [
+                        '../engine/js/framework/framework-marionette.min.js',
+                        'babel-helpers.js'
+                    ],
                     async: true
                 }],
                 core: [{
@@ -29,7 +32,7 @@
             'public': basePath + 'public'
         },
         requirejs: {
-            baseUrl: basePath + 'demo/js/requirejs',
+            baseUrl: basePath + 'demo/dist',
             paths: {
                 'text': '{{path}}/vendor/requirejs-text/text',
                 'nunjucks': '{{path}}/vendor/nunjucks/browser/nunjucks.min',

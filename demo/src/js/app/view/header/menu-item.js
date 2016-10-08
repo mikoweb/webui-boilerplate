@@ -16,7 +16,7 @@ export default class MenuItemView extends Marionette.View {
         return $(Nunjucks.renderString(template, data));
     }
     onRender() {
-        let url = Backbone.history.getFragment();
+        const url = Backbone.history.getFragment();
         this.$el.find('.' + this.className).removeClass('active');
         if (url) {
             this.$el.find('a[href="#' + url + '"]').parent().addClass('active');

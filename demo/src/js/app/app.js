@@ -35,12 +35,11 @@ class App extends Marionette.Application {
             throw new Error('Layout is already initialized');
         }
 
-        let content;
         this.layout = new LayoutView({
             el: $('body')
         });
+        const content = this.layout.getRegion('content');
         this.layout.render();
-        content = this.layout.getRegion('content');
 
         if (contentView) {
             content.show(contentView);
@@ -50,7 +49,7 @@ class App extends Marionette.Application {
     }
 }
 
-let app = new App();
+const app = new App();
 app.on('start', function() {
     Backbone.history.start();
 });

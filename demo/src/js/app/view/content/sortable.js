@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Nunjucks from 'nunjucks';
 import template from 'text!template/content/sortable.njk.html';
 import tinysort from 'tinysort';
-import sortable from 'jquery.sortable';
+import 'jquery.sortable';
 
 export default class SortableView extends Marionette.View {
     tagName = 'section';
@@ -26,7 +26,7 @@ export default class SortableView extends Marionette.View {
         });
     }
     onDomRefresh() {
-        let view = this;
+        const view = this;
         this.ui.sortable.sortable();
         this.sort();
         this.ui.sortableTinysort.sortable({

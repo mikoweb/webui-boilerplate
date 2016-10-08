@@ -7,7 +7,7 @@ import MenuView from 'app/view/header/menu';
 
 export default class LayoutView extends Marionette.View {
     initialize() {
-        let content = this.getRegion('content');
+        const content = this.getRegion('content');
         this.once('render', this.removePreloader);
         content.on('show', this._onContentShow);
         content.on('empty', this._onContentEmpty);
@@ -35,9 +35,9 @@ export default class LayoutView extends Marionette.View {
      * @param {Marionette.AppRouter} [router]
      */
     showMenu(router) {
-        let region = this.getRegion('menu');
-        let menu = new MenuCollection();
-        let view = new MenuView({
+        const region = this.getRegion('menu');
+        const menu = new MenuCollection();
+        const view = new MenuView({
             collection: menu
         });
 

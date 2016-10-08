@@ -2,7 +2,7 @@ import Marionette from 'marionette';
 import $ from 'jquery';
 import Nunjucks from 'nunjucks';
 import template from 'text!template/content/forms.njk.html';
-import Select2 from 'select2';
+import 'select2';
 import loader from 'webui-cssloader';
 
 export default class FormsView extends Marionette.View {
@@ -17,7 +17,7 @@ export default class FormsView extends Marionette.View {
         return $(Nunjucks.renderString(template));
     }
     onDomRefresh() {
-        let view = this;
+        const view = this;
         loader.inject('@select2', function () {
             view.$el.find('.select').select2();
             view.$el.find('.select_tags').select2({

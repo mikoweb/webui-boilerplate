@@ -4,7 +4,7 @@ import Nunjucks from 'nunjucks';
 import template from 'text!template/content/editor.njk.html';
 import helper from 'tinymce.helper';
 import app from 'jquery.app';
-import tinymce from 'tinymce.jquery';
+import 'tinymce.jquery';
 
 export default class EditorView extends Marionette.View {
     tagName = 'section';

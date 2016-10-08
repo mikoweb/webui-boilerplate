@@ -4,7 +4,7 @@ import Nunjucks from 'nunjucks';
 import template from 'text!template/content/charts.njk.html';
 import Chart from 'chartjs';
 import Highcharts from 'highcharts';
-import ChartLinealt from 'chartjs.type.linealt';
+import 'chartjs.type.linealt';
 
 export default class ChartsView extends Marionette.View {
     tagName = 'section';

@@ -1,4 +1,4 @@
-// Backbone.Radio v2.0.0-pre.1
+// Backbone.Radio v2.0.0
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('underscore'), require('backbone')) :
@@ -9,19 +9,17 @@
   _ = 'default' in _ ? _['default'] : _;
   Backbone = 'default' in Backbone ? Backbone['default'] : Backbone;
 
-  var babelHelpers = {};
-  babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
     return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
   };
-  babelHelpers;
 
   var previousRadio = Backbone.Radio;
 
   var Radio = Backbone.Radio = {};
 
-  Radio.VERSION = '2.0.0-pre.1';
+  Radio.VERSION = '2.0.0';
 
   // This allows you to run multiple instances of Radio on the same
   // webapp. After loading the new version, call `noConflict()` to
@@ -65,7 +63,7 @@
     var results = {};
 
     // Handle event maps.
-    if ((typeof name === 'undefined' ? 'undefined' : babelHelpers.typeof(name)) === 'object') {
+    if ((typeof name === 'undefined' ? 'undefined' : _typeof(name)) === 'object') {
       for (var key in name) {
         var result = obj[action].apply(obj, [key, name[key]].concat(rest));
         eventSplitter.test(key) ? _.extend(results, result) : results[key] = result;
@@ -147,7 +145,7 @@
   // This is to produce an identical function in both tuneIn and tuneOut,
   // so that Backbone.Events unregisters it.
   function _partial(channelName) {
-    return _logs[channelName] || (_logs[channelName] = _.partial(Radio.log, channelName));
+    return _logs[channelName] || (_logs[channelName] = _.bind(Radio.log, Radio, channelName));
   }
 
   _.extend(Radio, {
@@ -157,7 +155,7 @@
       if (typeof console === 'undefined') {
         return;
       }
-      var args = _.drop(arguments, 2);
+      var args = _.toArray(arguments).slice(2);
       console.log('[' + channelName + '] "' + eventName + '"', args);
     },
 
@@ -198,7 +196,7 @@
 
     // Make a request
     request: function request(name) {
-      var args = _.rest(arguments);
+      var args = _.toArray(arguments).slice(1);
       var results = Radio._eventsApi(this, 'request', name, args);
       if (results) {
         return results;
@@ -332,7 +330,7 @@
   _.each(systems, function (system) {
     _.each(system, function (method, methodName) {
       Radio[methodName] = function (channelName) {
-        args = _.rest(arguments);
+        args = _.toArray(arguments).slice(1);
         channel = this.channel(channelName);
         return channel[methodName].apply(channel, args);
       };
@@ -341,7 +339,9 @@
 
   Radio.reset = function (channelName) {
     var channels = !channelName ? this._channels : [this._channels[channelName]];
-    _.invoke(channels, 'reset');
+    _.each(channels, function (channel) {
+      channel.reset();
+    });
   };
 
   return Radio;

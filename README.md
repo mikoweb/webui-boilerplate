@@ -11,7 +11,7 @@ Create a file `webui.json`:
 
 ```javascript
 {
-    "version": "~0.2.9",            // version of library
+    "version": "~0.4.0",            // version of library
     "directory": "private/webui",   // library directory
     "bowerDir": "./",               // (optional) the directory where is the bower.json
     "vendorDir": "public/vendor",   // (optional) location of vendor folder; default value: directory + '/webui/vendor'

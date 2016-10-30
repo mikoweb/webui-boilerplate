@@ -1,6 +1,6 @@
 {
     "name": "webui",
-    "description": "Web User Interface to build dynamic apps in browser",
+    "description": "WebUI Boilerplate - Package for building web apps. Contains: RequireJS, Marionette, Backbone, Underscore, Bootstrap, jQuery.",
     "homepage": "https://github.com/mikoweb",
     "authors": [
         "Rafał Mikołajun <rafal@mikoweb.pl>"

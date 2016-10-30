@@ -1,0 +1,31 @@
+{
+    "name": "webui-boilerplate",
+    "author": {
+        "name": "Rafał Mikołajun"
+    },
+    "license": "LGPL-3.0",
+    "version": "0.4.0",
+    "description": "WebUI Boilerplate - Package for building web apps. Contains: RequireJS, Marionette, Backbone, Underscore, Bootstrap, jQuery.",
+    "keywords": [
+        "webui",
+        "boilerplate",
+        "marionette",
+        "backbone",
+        "bootstrap"
+    ],
+    "main": "engine/startapp.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mikoweb/webui-boilerplate.git"
+    },
+    "engines": {
+        "node": ">4.2.0"
+    },
+    "files": [
+        "engine",
+        "public",
+        "webui",
+        "LICENSE",
+        "README.md"
+    ]
+}

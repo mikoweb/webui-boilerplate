@@ -22,6 +22,7 @@
         "node": ">4.2.0"
     },
     "files": [
+        ".webuirc",
         "demo",
         "engine",
         "public",

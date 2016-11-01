@@ -1,4 +1,16 @@
 {
-    "version": "~0.2.6",
-    "directory": ".."
+  "version": "~1.0.1",
+  "directory": "webui",
+  "publicDir": "webui",
+  "libDir": "lib",
+  "libs": [
+    ["text", "requirejs-text/text.js", "requirejs-text/requirejs-text.js", "uglify"],
+    ["chartjs", "chart.js/Chart.min.js", "chart.js/chart.js"],
+    ["highcharts", "highcharts/lib/highcharts.js", "highcharts/highcharts.js"],
+    ["jquery.sortable", "jquery-sortable/source/js/jquery-sortable-min.js", "jquery-sortable/jquery-sortable.js"],
+    ["nunjucks", "nunjucks/browser/nunjucks.min.js", "nunjucks/nunjucks.js"],
+    ["select2", "select2/dist/js/select2.full.min.js", "select2/select2.js"],
+    ["select2-i18n", "select2/dist/js/i18n", "select2/i18n"],
+    ["tinysort", "tinysort/dist/tinysort.min.js", "tinysort/tinysort.js"]
+  ]
 }

@@ -39,9 +39,6 @@ module.exports = function(grunt) {
                 ]
             }
         },
-        exec: {
-            babelHelpers: './node_modules/.bin/babel-external-helpers > ../babel-helpers.js'
-        },
         uglify: {
             dist: {
                 expand: true,
@@ -80,12 +77,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-replace');
-    grunt.loadNpmTasks('grunt-exec');
 
-    grunt.registerTask('default', [
+    grunt.registerTask('dist', [
         'babel:dist',
         'replace:dist',
-        'exec:babelHelpers',
         'uglify:dist',
         'uglify:babelHelpers'
     ]);
@@ -93,7 +88,6 @@ module.exports = function(grunt) {
     grunt.registerTask('dev-dist', [
         'babel:dist',
         'replace:dist',
-        'exec:babelHelpers',
         'uglify:babelHelpers'
     ]);
 };

@@ -4,13 +4,11 @@ import Nunjucks from 'nunjucks';
 import template from 'text!template/content/charts.njk.html';
 import Chart from 'chartjs';
 import Highcharts from 'highcharts';
-import 'chartjs.type.linealt';
 
 export default class ChartsView extends Marionette.View {
     tagName = 'section';
     ui = {
         chart1: '#chart1',
-        chart2: '#chart2',
         highchart: '#highchart'
     };
     template() {
@@ -46,38 +44,6 @@ export default class ChartsView extends Marionette.View {
             ]
         }, {
             animationSteps: 5,
-            animation: false
-        });
-
-        new Chart(this.ui.chart2.get(0).getContext("2d")).LineAlt({
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            labelsFilter: function (value, index) {
-                return (index + 1) % 2 !== 0;
-            },
-            labelsRotate: 0,
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                {
-                    label: "My Second dataset",
-                    fillColor: "rgba(151,187,205,0.2)",
-                    strokeColor: "rgba(151,187,205,1)",
-                    pointColor: "rgba(151,187,205,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(151,187,205,1)",
-                    data: [28, 48, 40, 19, 86, 27, 90]
-                }
-            ]
-        }, {
             animation: false
         });
 

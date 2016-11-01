@@ -1,0 +1,11 @@
+{
+  "paths": {
+    "jquery.sortable": "{{path}}/jquery-sortable/jquery-sortable",
+    "chartjs": "{{path}}/chart.js/chart",
+    "tinysort": "{{path}}/tinysort/tinysort",
+    "nunjucks": "{{path}}/nunjucks/nunjucks",
+    "select2": "{{path}}/select2/select2",
+    "highcharts": "{{path}}/highcharts/highcharts",
+    "text": "{{path}}/requirejs-text/requirejs-text"
+  }
+}

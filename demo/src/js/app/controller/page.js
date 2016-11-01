@@ -12,9 +12,6 @@ export default class PageController {
     index() {
         showView('app/view/content/index');
     }
-    editor() {
-        showView('app/view/content/editor');
-    }
     forms() {
         showView('app/view/content/forms');
     }

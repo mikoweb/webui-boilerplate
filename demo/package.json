@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "webui": "webui",
+    "uglifyjs": "uglifyjs",
+    "install": "webui copy-engine && webui copy-libs"
+  },
+  "dependencies": {
+    "uglify-js": "^2.7.4",
+    "webui-boilerplate": "~1.0.1",
+    "webui-cli": "~1.0.0",
+    "chart.js": "~1.0.1",
+    "highcharts": "~4.1.1",
+    "jquery-sortable": "~0.9.12",
+    "nunjucks": "~2.4.2",
+    "requirejs-text": "~2.0.12",
+    "select2": "~4.0.0",
+    "tinysort": "~2.3.6"
+  }
+}

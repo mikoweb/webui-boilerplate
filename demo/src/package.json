@@ -5,6 +5,13 @@
   "engines": {
     "node": ">4.2.0"
   },
+  "scripts": {
+    "grunt": "grunt",
+    "babel-external-helpers": "babel-external-helpers",
+    "copy-babel-helpers": "babel-external-helpers > ../babel-helpers.js",
+    "dist": "npm run copy-babel-helpers && grunt dist",
+    "dev-dist": "npm run copy-babel-helpers && grunt dev-dist"
+  },
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-plugin-external-helpers": "^6.8.0",
@@ -16,7 +23,6 @@
     "grunt-babel": "^6.0.0",
     "grunt-contrib-uglify": "~1.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-exec": "^1.0.1",
     "grunt-replace": "^1.0.1"
   }
 }

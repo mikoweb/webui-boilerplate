@@ -10,7 +10,6 @@ class App extends Marionette.Application {
             controller: new PageController,
             appRoutes: {
                 'page/index': 'index',
-                'page/editor': 'editor',
                 'page/forms': 'forms',
                 'page/charts': 'charts',
                 'page/sortable': 'sortable'

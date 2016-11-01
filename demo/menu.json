@@ -6,11 +6,6 @@
         "default": true
     },
     {
-        "id": "editot",
-        "name": "Editor",
-        "href": "#page/editor"
-    },
-    {
         "id": "forms",
         "name": "Forms",
         "href": "#page/forms"

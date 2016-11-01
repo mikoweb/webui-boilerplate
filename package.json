@@ -4,7 +4,7 @@
         "name": "Rafał Mikołajun"
     },
     "license": "LGPL-3.0",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "WebUI Boilerplate - Package for building web apps. Contains: RequireJS, Marionette, Backbone, Underscore, Bootstrap, jQuery.",
     "keywords": [
         "webui",

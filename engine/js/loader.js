@@ -1659,13 +1659,15 @@ function startapp (data) {
         jsloader.add('core', [data.path.public + '/jquery.mobile.only-events.min.js'], true);
     }
 
-    for (i = 0; i < data.res.unknown.length; i++) {
-        jsloader.add('', data.res.unknown[i].url, data.res.unknown[i].url.async);
+    if (data.res.unknown) {
+        for (i = 0; i < data.res.unknown.length; i++) {
+            jsloader.add('', data.res.unknown[i].url, data.res.unknown[i].url.async);
+        }
     }
 
     jsloader.onLoad('framework', function () {
         require(['webui-vendor'], function (vendor) {
-            vendor(data.path.webui, data.locale, data.requirejs);
+            vendor(data.path.lib, data.locale, data.requirejs);
         });
 
         require(['webui-cssloader'], function (loader) {
@@ -1676,13 +1678,12 @@ function startapp (data) {
     });
 
     jsloader.onLoad('core', function () {
-        require(['jquery'], function ($) {
-            $.app.define('path_base', data.path.base);
-            $.app.define('path_webui', data.path.webui);
-            $.app.define('path_webui_engine', data.path.webui_engine);
-            $.app.define('path_public', data.path.public);
-            $.app.trans.add(data.translations);
-        });
+        jQuery.app.define('path_base', data.path.base);
+        jQuery.app.define('path_webui', data.path.webui);
+        jQuery.app.define('path_webui_engine', data.path.webui_engine);
+        jQuery.app.define('path_public', data.path.public);
+        jQuery.app.define('path_lib', data.path.lib);
+        jQuery.app.trans.add(data.translations);
     });
 
     startapp = undefined;
